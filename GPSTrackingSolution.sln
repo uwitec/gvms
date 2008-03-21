@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPSGatewaySimulator", "GPSGatewaySimulator\GPSGatewaySimulator.csproj", "{47E6892C-AABA-4A6D-BB0A-76EF977CAC28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPSTrackingMonitor", "GPSTrackingMonitor\GPSTrackingMonitor.csproj", "{91E302F3-516B-487C-AE68-24E9D3EC769B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapConfigure", "MapConfigure\MapConfigure.csproj", "{D9EAC292-525E-40B2-9437-E901419F93BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPSTrackingRecorder", "GPSTrackingRecorder\GPSTrackingRecorder.csproj", "{AAF367ED-2036-4C70-8FD2-36CB56D5002D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommnicationMessage", "CommunicationMessage\CommnicationMessage.csproj", "{39DFF12D-2100-4D2F-907A-F30C0E93A9B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sMap", "..\branches\sMap\sMap\sMap.csproj", "{576CA58B-B3BD-403C-9828-4908DA0D6C2C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{47E6892C-AABA-4A6D-BB0A-76EF977CAC28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47E6892C-AABA-4A6D-BB0A-76EF977CAC28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47E6892C-AABA-4A6D-BB0A-76EF977CAC28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47E6892C-AABA-4A6D-BB0A-76EF977CAC28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91E302F3-516B-487C-AE68-24E9D3EC769B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91E302F3-516B-487C-AE68-24E9D3EC769B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91E302F3-516B-487C-AE68-24E9D3EC769B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91E302F3-516B-487C-AE68-24E9D3EC769B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9EAC292-525E-40B2-9437-E901419F93BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9EAC292-525E-40B2-9437-E901419F93BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9EAC292-525E-40B2-9437-E901419F93BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9EAC292-525E-40B2-9437-E901419F93BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAF367ED-2036-4C70-8FD2-36CB56D5002D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAF367ED-2036-4C70-8FD2-36CB56D5002D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAF367ED-2036-4C70-8FD2-36CB56D5002D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAF367ED-2036-4C70-8FD2-36CB56D5002D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39DFF12D-2100-4D2F-907A-F30C0E93A9B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39DFF12D-2100-4D2F-907A-F30C0E93A9B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39DFF12D-2100-4D2F-907A-F30C0E93A9B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39DFF12D-2100-4D2F-907A-F30C0E93A9B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{576CA58B-B3BD-403C-9828-4908DA0D6C2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{576CA58B-B3BD-403C-9828-4908DA0D6C2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{576CA58B-B3BD-403C-9828-4908DA0D6C2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{576CA58B-B3BD-403C-9828-4908DA0D6C2C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

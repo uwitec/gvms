@@ -1,0 +1,16 @@
+obj\Debug\GPSGatewaySimulator.exe
+obj\Debug\GPSGatewaySimulator.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Interop.MapObjects2.dll
+obj\Debug\GPSGatewaySimulator.csproj.ResolveComReference.cache
+obj\Debug\GPSGatewaySimulator.frmLoadRandomLocation.resources
+obj\Debug\GPSGatewaySimulator.frmMain.resources
+obj\Debug\GPSGatewaySimulator.frmSendMessage.resources
+obj\Debug\GPSGatewaySimulator.frmSetLoadParas.resources
+obj\Debug\GPSGatewaySimulator.Properties.Resources.resources
+obj\Debug\GPSGatewaySimulator.csproj.GenerateResource.Cache
+bin\Debug\GPSGatewaySimulator.exe
+bin\Debug\GPSGatewaySimulator.pdb
+bin\Debug\CommnicationMessage.dll
+bin\Debug\CommnicationMessage.pdb
+bin\Debug\Interop.MapObjects2.dll

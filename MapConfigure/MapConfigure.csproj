@@ -1,0 +1,234 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D9EAC292-525E-40B2-9437-E901419F93BD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MapConfigure</RootNamespace>
+    <AssemblyName>MapConfigure</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IrisSkin2, Version=2006.3.22.45, Culture=neutral, PublicKeyToken=0ed4c5f2bbf81ac0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\program files\IrisSkin\Bin\IrisSkin2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.1.2706.19617, Culture=neutral, PublicKeyToken=d481317c817cec47, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\GPSTrackingMonitor\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseHandler\CoordinateConvert.cs" />
+    <Compile Include="BaseHandler\DatabaseManager.cs" />
+    <Compile Include="BaseHandler\ExceptionHandler.cs" />
+    <Compile Include="BaseHandler\MapManager.cs" />
+    <Compile Include="BaseHandler\XMLManager.cs" />
+    <Compile Include="ExceptionHandler.cs" />
+    <Compile Include="frmAttributesData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAttributesData.Designer.cs">
+      <DependentUpon>frmAttributesData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDataDictionary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDataDictionary.Designer.cs">
+      <DependentUpon>frmDataDictionary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmIdentify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIdentify.Designer.cs">
+      <DependentUpon>frmIdentify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLayerDatatable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLayerDatatable.Designer.cs">
+      <DependentUpon>frmLayerDatatable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLayerProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLayerProperties.Designer.cs">
+      <DependentUpon>frmLayerProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLegend.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLegend.Designer.cs">
+      <DependentUpon>frmLegend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMap.Designer.cs">
+      <DependentUpon>frmMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNavigation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNavigation.Designer.cs">
+      <DependentUpon>frmNavigation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmToolPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmToolPanel.Designer.cs">
+      <DependentUpon>frmToolPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobeVariables.cs" />
+    <Compile Include="MapUtil\FeatureInformations.cs" />
+    <Compile Include="MapUtil\LayerInformations.cs" />
+    <Compile Include="MapUtil\MapOperation.cs" />
+    <Compile Include="MapUtil\MapOperationType.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAttributesData.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmAttributesData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmIdentify.resx">
+      <DependentUpon>frmIdentify.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLayerProperties.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmLayerProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLegend.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmLegend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMap.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNavigation.resx">
+      <DependentUpon>frmNavigation.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Utilities\LayerProperty.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="readme.txt" />
+    <None Include="Resources\ZoomIn.bmp" />
+    <None Include="Resources\undo.bmp" />
+    <None Include="Resources\Refresh.bmp" />
+    <None Include="Resources\redo.bmp" />
+    <None Include="Resources\polygonShape.bmp" />
+    <None Include="Resources\pointShape.bmp" />
+    <None Include="Resources\PanRight.bmp" />
+    <None Include="Resources\PanLeft.bmp" />
+    <None Include="Resources\Pan.bmp" />
+    <None Include="Resources\measure.bmp" />
+    <None Include="Resources\lineShape.bmp" />
+    <None Include="Resources\layergroup.bmp" />
+    <None Include="Resources\Image1.bmp" />
+    <None Include="Resources\Identify.bmp" />
+    <None Include="Resources\FullExtent.bmp" />
+    <None Include="Resources\folder_open.bmp" />
+    <None Include="Resources\find.bmp" />
+    <None Include="Resources\Export.bmp" />
+    <None Include="Resources\Edit.bmp" />
+    <None Include="Resources\Delete.bmp" />
+    <None Include="Resources\ArcView_switch_selection.bmp" />
+    <None Include="Resources\ZoomOut.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxMapObjects2">
+      <Guid>{9BD6A640-CE75-11D1-AF04-204C4F4F5020}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="MapObjects2">
+      <Guid>{9BD6A640-CE75-11D1-AF04-204C4F4F5020}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Database\" />
+    <Folder Include="DataGridOperation\" />
+    <Folder Include="Exceptions\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
