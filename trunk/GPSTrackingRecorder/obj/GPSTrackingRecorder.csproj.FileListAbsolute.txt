@@ -1,0 +1,11 @@
+D:\项目\SIOGR项目\GPSTracking\trunk\GPSTrackingRecorder\bin\Debug\GPSTrackingRecorder.exe
+D:\项目\SIOGR项目\GPSTracking\trunk\GPSTrackingRecorder\bin\Debug\GPSTrackingRecorder.pdb
+D:\项目\SIOGR项目\GPSTracking\trunk\GPSTrackingRecorder\obj\Debug\ResolveAssemblyReference.cache
+D:\项目\SIOGR项目\GPSTracking\trunk\GPSTrackingRecorder\obj\Debug\GPSTrackingRecorder.Properties.Resources.resources
+D:\项目\SIOGR项目\GPSTracking\trunk\GPSTrackingRecorder\obj\Debug\GPSTrackingRecorder.csproj.GenerateResource.Cache
+D:\项目\SIOGR项目\GPSTracking\trunk\GPSTrackingRecorder\obj\Debug\GPSTrackingRecorder.exe
+D:\项目\SIOGR项目\GPSTracking\trunk\GPSTrackingRecorder\obj\Debug\GPSTrackingRecorder.pdb
+D:\项目\SIOGR项目\GPSTracking\trunk\GPSTrackingRecorder\obj\Debug\GPSTrackingRecorder.frmMain.resources
+D:\项目\SIOGR项目\GPSTracking\trunk\GPSTrackingRecorder\obj\Debug\GPSTrackingRecorder.frmSocketConfig.resources
+D:\项目\SIOGR项目\GPSTracking\trunk\GPSTrackingRecorder\bin\Debug\SocketCommnication.dll
+D:\项目\SIOGR项目\GPSTracking\trunk\GPSTrackingRecorder\bin\Debug\SocketCommnication.pdb

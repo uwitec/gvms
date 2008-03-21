@@ -1,0 +1,382 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{91E302F3-516B-487C-AE68-24E9D3EC769B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GPSTrackingMonitor</RootNamespace>
+    <AssemblyName>GPSTrackingMonitor</AssemblyName>
+    <StartupObject>GPSTrackingMonitor.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.Framework, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="ESRI.MapObjects2.Core, Version=2.4.1.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86" />
+    <Reference Include="ESRI.MapObjects2.Custom, Version=2.4.1.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86" />
+    <Reference Include="ESRI.MapObjects2.MemTable, Version=2.4.1.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>E:\WINDOWS\assembly\GAC_MSIL\System.Web.Services\2.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.1.2706.19617, Culture=neutral, PublicKeyToken=d481317c817cec47, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>X:\下载\界面美化\DockPanel_2_1_Bin\Release\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseHandler\Comparison.cs" />
+    <Compile Include="BaseHandler\CoordinateConvert.cs" />
+    <Compile Include="BaseHandler\DatabaseManager.cs" />
+    <Compile Include="BaseHandler\DistinctRowsQuery.cs" />
+    <Compile Include="BaseHandler\ExceptionHandler.cs" />
+    <Compile Include="BaseHandler\GPSTrackingReplay.cs" />
+    <Compile Include="BaseHandler\MapManager.cs" />
+    <Compile Include="BaseHandler\ShortestPath.cs" />
+    <Compile Include="BaseHandler\SocketCommunication.cs" />
+    <Compile Include="BaseHandler\XMLManager.cs" />
+    <Compile Include="Communications\MessageArguments.cs" />
+    <Compile Include="Communications\MessagePool.cs" />
+    <Compile Include="Communications\SocketClient.cs" />
+    <Compile Include="Configures\CommunicationConfigureInfos.cs" />
+    <Compile Include="Configures\ConfigureInfos.cs" />
+    <Compile Include="Configures\ConfigureOperation.cs" />
+    <Compile Include="CustomControl\LegendControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControl\LegendControl.Designer.cs">
+      <DependentUpon>LegendControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\SymbolSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControl\SymbolSelector.Designer.cs">
+      <DependentUpon>SymbolSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdvanceFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdvanceFilter.Designer.cs">
+      <DependentUpon>frmAdvanceFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCarDetailInfos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCarDetailInfos.Designer.cs">
+      <DependentUpon>frmCarDetailInfos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRealtimeCarInfos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRealtimeCarInfos.Designer.cs">
+      <DependentUpon>frmRealtimeCarInfos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCarSearcher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCarSearcher.Designer.cs">
+      <DependentUpon>frmCarSearcher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConfigure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConfigure.Designer.cs">
+      <DependentUpon>frmConfigure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFeatureQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFeatureQuery.Designer.cs">
+      <DependentUpon>frmFeatureQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmIdentify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIdentify.Designer.cs">
+      <DependentUpon>frmIdentify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLegend.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLegend.Designer.cs">
+      <DependentUpon>frmLegend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMap.Designer.cs">
+      <DependentUpon>frmMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNavigation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNavigation.Designer.cs">
+      <DependentUpon>frmNavigation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReport.Designer.cs">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmShortestPath.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShortestPath.Designer.cs">
+      <DependentUpon>frmShortestPath.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStartup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStartup.Designer.cs">
+      <DependentUpon>frmStartup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStatistic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStatistic.Designer.cs">
+      <DependentUpon>frmStatistic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTackingReplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTackingReplay.Designer.cs">
+      <DependentUpon>frmTackingReplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmToolPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmToolPanel.Designer.cs">
+      <DependentUpon>frmToolPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobeEvents.cs" />
+    <Compile Include="GlobeVariables.cs" />
+    <Compile Include="MapUtil\AdvanceMeasure.cs" />
+    <Compile Include="MapUtil\FeatureInformations.cs" />
+    <Compile Include="MapUtil\GDIHelper.cs" />
+    <Compile Include="MapUtil\ILayerInformation.cs" />
+    <Compile Include="MapUtil\LayerInformations.cs" />
+    <Compile Include="MapUtil\MapOperation.cs" />
+    <Compile Include="MapUtil\MapOperationType.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CustomControl\SymbolSelector.resx">
+      <DependentUpon>SymbolSelector.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAbout.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdvanceFilter.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmAdvanceFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCarDetailInfos.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmCarDetailInfos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCarSearcher.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmCarSearcher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConfigure.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmConfigure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmIdentify.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmIdentify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLegend.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmLegend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMap.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNavigation.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmNavigation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRealtimeCarInfos.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmRealtimeCarInfos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStartup.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmStartup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStatistic.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmStatistic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTackingReplay.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmTackingReplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="RealtimeMonite\DataStructConverter.cs" />
+    <Compile Include="RealtimeMonite\GeoeventUpdate.cs" />
+    <Compile Include="RealtimeMonite\TrackingDataTableStruct.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RealtimeMonite\CustomSymbol.cs">
+    </Compile>
+    <Compile Include="TrackingReplay\TrackingData.cs" />
+    <Compile Include="TrackingReplay\TrackingDataStructure.cs" />
+    <Compile Include="TrackingReplay\ReplayOperation.cs" />
+    <Compile Include="TrackingReplay\TrackInterpolate.cs" />
+    <Compile Include="Utilities\CarSearch.cs" />
+    <Compile Include="Utilities\CarSearchType.cs" />
+    <Compile Include="Utilities\DataFilter.cs" />
+    <Compile Include="Utilities\CustomFormatProvider.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="readme.txt" />
+    <Content Include="Resources\layergroup.ico" />
+    <None Include="app.config" />
+    <None Include="Resources\Export.bmp" />
+    <None Include="Resources\Image1.bmp" />
+    <None Include="Resources\polygonShape.bmp" />
+    <None Include="Resources\pointShape.bmp" />
+    <None Include="Resources\lineShape.bmp" />
+    <None Include="Resources\layergroup.bmp" />
+    <None Include="Resources\folder_open.bmp" />
+    <None Include="Resources\ArcView_switch_selection.bmp" />
+    <None Include="Resources\undo.bmp" />
+    <None Include="Resources\redo.bmp" />
+    <None Include="Resources\find.bmp" />
+    <None Include="Resources\PanLeft.bmp" />
+    <None Include="Resources\Pan.bmp" />
+    <None Include="Resources\measure.bmp" />
+    <None Include="Resources\Identify.bmp" />
+    <None Include="Resources\Edit.bmp" />
+    <None Include="Resources\Delete.bmp" />
+    <None Include="Resources\PanRight.bmp" />
+    <None Include="Resources\Refresh.bmp" />
+    <None Include="Resources\FullExtent.bmp" />
+    <None Include="Resources\ZoomOut.bmp" />
+    <None Include="Resources\ZoomIn.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxMapObjects2">
+      <Guid>{9BD6A640-CE75-11D1-AF04-204C4F4F5020}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="MapObjects2">
+      <Guid>{9BD6A640-CE75-11D1-AF04-204C4F4F5020}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommunicationMessage\CommnicationMessage.csproj">
+      <Project>{39DFF12D-2100-4D2F-907A-F30C0E93A9B2}</Project>
+      <Name>CommnicationMessage</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Exceptions\" />
+    <Folder Include="InformationQuery\" />
+    <Folder Include="Reports\" />
+    <Folder Include="Statistic\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

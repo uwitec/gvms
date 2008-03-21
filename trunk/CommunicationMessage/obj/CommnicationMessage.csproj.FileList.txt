@@ -1,0 +1,10 @@
+obj\Debug\ResolveAssemblyReference.cache
+bin\Debug\CommnicationMessage.dll
+bin\Debug\CommnicationMessage.pdb
+obj\Debug\CommnicationMessage.dll
+obj\Debug\CommnicationMessage.pdb
+bin\Release\CommnicationMessage.dll
+bin\Release\CommnicationMessage.pdb
+obj\Release\ResolveAssemblyReference.cache
+obj\Release\CommnicationMessage.dll
+obj\Release\CommnicationMessage.pdb

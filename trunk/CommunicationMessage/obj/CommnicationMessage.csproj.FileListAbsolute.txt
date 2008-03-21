@@ -1,0 +1,5 @@
+D:\项目\SIOGR项目\GPSTracking\trunk\CommunicationMessage\bin\Debug\SocketCommnication.dll
+D:\项目\SIOGR项目\GPSTracking\trunk\CommunicationMessage\bin\Debug\SocketCommnication.pdb
+D:\项目\SIOGR项目\GPSTracking\trunk\CommunicationMessage\obj\Debug\ResolveAssemblyReference.cache
+D:\项目\SIOGR项目\GPSTracking\trunk\CommunicationMessage\obj\Debug\SocketCommnication.dll
+D:\项目\SIOGR项目\GPSTracking\trunk\CommunicationMessage\obj\Debug\SocketCommnication.pdb
