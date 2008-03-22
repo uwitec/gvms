@@ -221,7 +221,6 @@ namespace MapConfigure.MapUtil
 
             return dLen1 / dLen2;
         }
-
         
 
         #region distroied code
