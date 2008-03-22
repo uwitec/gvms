@@ -80,7 +80,6 @@ namespace GPSTrackingMonitor
                         RealtimeMonite.DataStructConverter.CommInfosToDataRow(oTrackingMessage, ref dr);
                         RealtimeMonite.TrackingDataTableStruct.UpdateRow(dr, ref GlobeVariables.RealtimeCarInfosTable);
                     }
-
                 });
             }
             catch { }
@@ -137,6 +136,7 @@ namespace GPSTrackingMonitor
         private void mnuStatistic_Click(object sender, EventArgs e)
         {
             frmStatistic oFrmStatistic = new frmStatistic();
+            oFrmStatistic.Text = this.dgvRealtimeCarInfos.RowCount.ToString();
             oFrmStatistic.Show();
 
         }

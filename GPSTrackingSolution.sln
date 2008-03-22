@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPSTrackingRecorder", "GPST
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommnicationMessage", "CommunicationMessage\CommnicationMessage.csproj", "{39DFF12D-2100-4D2F-907A-F30C0E93A9B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sMap", "..\branches\sMap\sMap\sMap.csproj", "{576CA58B-B3BD-403C-9828-4908DA0D6C2C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,10 +37,6 @@ Global
 		{39DFF12D-2100-4D2F-907A-F30C0E93A9B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39DFF12D-2100-4D2F-907A-F30C0E93A9B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39DFF12D-2100-4D2F-907A-F30C0E93A9B2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{576CA58B-B3BD-403C-9828-4908DA0D6C2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{576CA58B-B3BD-403C-9828-4908DA0D6C2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{576CA58B-B3BD-403C-9828-4908DA0D6C2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{576CA58B-B3BD-403C-9828-4908DA0D6C2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

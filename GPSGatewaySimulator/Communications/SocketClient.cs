@@ -44,6 +44,9 @@ namespace GPSGatewaySimulator.Communications
 
         #region constructors
 
+        /// <summary>
+        /// 
+        /// </summary>
         public SocketClient()
         {
         }

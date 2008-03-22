@@ -9,16 +9,26 @@ namespace GPSGatewaySimulator.Communications
     {
         #region fields
 
+        /// <summary>
+        /// 
+        /// </summary>
         private CommnicationMessage.GPSTrackingMessage _message;
 
         #endregion
 
         #region constructors
 
+        /// <summary>
+        /// 
+        /// </summary>
         public MessageArguments()
         {
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
         public MessageArguments(CommnicationMessage.GPSTrackingMessage message)
         {
             this._message = message;
@@ -28,6 +38,9 @@ namespace GPSGatewaySimulator.Communications
 
         #region properties
 
+        /// <summary>
+        /// 
+        /// </summary>
         public CommnicationMessage.GPSTrackingMessage Message
         {
             get { return this._message; }

@@ -14,14 +14,20 @@ namespace GPSGatewaySimulator.RandomPoints
 
         #region public methods
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="tableNameInDB"></param>
+        /// <param name="pointsTable"></param>
         public void LoadPointsToDB(OleDbConnection connection,string tableNameInDB, DataTable pointsTable)
         {
-            int iCarCount = GlobeVariables.CarNumber;     //设置车辆数目
+            int iCarCount = GlobeVariables.DefaultCarNumber;     //设置车辆数目
             string[] sCarNumberAndPhones = new string[iCarCount];
 
             for (int i = 0; i < iCarCount; i++)
             {
-                sCarNumberAndPhones[i] =  GeneryRandomString.GetRandomString(RandomStringType.NumberAndChar, 10,i) + "#" + GeneryRandomString.GetRandomString(RandomStringType.OnlyNumber, 11,i);
+                sCarNumberAndPhones[i] =  GeneryRandomString.GetRandomString(RandomStringType.NumberAndChar, 8,i) + "#" + GeneryRandomString.GetRandomString(RandomStringType.OnlyNumber, 11,i);
             }
 
             connection.Open();
@@ -36,13 +42,14 @@ namespace GPSGatewaySimulator.RandomPoints
 
             foreach (DataRow dr in pointsTable.Rows)
             {
-                if (dr["GeoId"].ToString() != this._preGeoId) 
-                {
+                //如果需要根据线段的条数来决定车辆数，请去掉以下注释
+               // if (dr["GeoId"].ToString() != this._preGeoId) 
+               // {
                     this._carInfos = sCarNumberAndPhones[rnd.Next(0,iCarCount - 1)].Split('#');
                     this._orderIndex=0;
-                }
+             //   }
 
-                this._preGeoId = dr["GeoId"].ToString();
+                //this._preGeoId = dr["GeoId"].ToString();
                 string sCarNumber = this._carInfos[0];
                 string sPhone = this._carInfos[1];
                 this._orderIndex++;
@@ -64,6 +71,11 @@ namespace GPSGatewaySimulator.RandomPoints
             connection.Close(); 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="tableNameInDB"></param>
         public void DeleteAllPointsInDB(OleDbConnection connection,string tableNameInDB)
         {
             string sCmd = "delete from " + tableNameInDB;

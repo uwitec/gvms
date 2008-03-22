@@ -10,13 +10,19 @@ namespace GPSGatewaySimulator.RandomPoints
    {
        #region public methods
 
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="needPointsCount"></param>
+       /// <param name="interVal"></param>
+       /// <param name="vectorLayer"></param>
+       /// <returns></returns>
        public DataTable GetPointsFromRoadLayer(int needPointsCount,int interVal, MapLayer vectorLayer)
         {
             if (vectorLayer.shapeType != ShapeTypeConstants.moShapeTypeLine)
                 throw new Exception("请确定给定的图层是线类型。");
 
             DataTable dtResult = new HistoryTrakings.TrackingDataTableStruct();
-           // List<Point> oResult = new List<Point>();
             Recordset oRecords = vectorLayer.Records;
             DateTime tCurTime = DateTime.Now;
             int iCounter = 1;
