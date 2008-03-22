@@ -10,23 +10,26 @@ namespace MapConfigure
 {
     public partial class frmLayerProperties : Form
     {
-        public frmLayerProperties()
+        private MapObjects2.MapLayer _layer = null;
+
+        public frmLayerProperties(MapObjects2.MapLayer layer)
         {
             InitializeComponent();
+
+            if (layer == null)
+                throw new Exception("layer is null,please set a valid layer.");
+
+            this._layer = layer;
         }
 
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        private void frmLayerProperties_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
+        private void InitPars()
         {
 
-        }
-
-        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
-        {   
         }
     }
 }

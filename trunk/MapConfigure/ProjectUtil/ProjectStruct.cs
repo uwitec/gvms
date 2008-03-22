@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MapConfigure
+namespace MapConfigure.ProjectUtil
 {
-    class ExceptionHandler
+    class ProjectStruct
     {
-
+        
+        
     }
 }

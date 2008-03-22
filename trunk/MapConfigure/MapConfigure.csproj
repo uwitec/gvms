@@ -50,7 +50,6 @@
     <Compile Include="BaseHandler\ExceptionHandler.cs" />
     <Compile Include="BaseHandler\MapManager.cs" />
     <Compile Include="BaseHandler\XMLManager.cs" />
-    <Compile Include="ExceptionHandler.cs" />
     <Compile Include="frmAttributesData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,9 +113,26 @@
     <Compile Include="GlobeVariables.cs" />
     <Compile Include="MapUtil\FeatureInformations.cs" />
     <Compile Include="MapUtil\LayerInformations.cs" />
+    <Compile Include="MapUtil\LayerRender.cs" />
+    <Compile Include="MapUtil\LayerStyles.cs" />
     <Compile Include="MapUtil\MapOperation.cs" />
     <Compile Include="MapUtil\MapOperationType.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ProjectUtil\ClassBreakRenderStruct.cs" />
+    <Compile Include="ProjectUtil\GroupRenderStruct.cs" />
+    <Compile Include="ProjectUtil\ILayerStruct.cs" />
+    <Compile Include="ProjectUtil\ImageLayerInfoStruct.cs" />
+    <Compile Include="ProjectUtil\IRenderStruct.cs" />
+    <Compile Include="ProjectUtil\LabelRenderStruct.cs" />
+    <Compile Include="ProjectUtil\MapLayerInfoStruct.cs" />
+    <Compile Include="ProjectUtil\MapStruct.cs" />
+    <Compile Include="ProjectUtil\ProjectSerialization.cs" />
+    <Compile Include="ProjectUtil\ProjectStruct.cs" />
+    <Compile Include="ProjectUtil\RenderStruct.cs" />
+    <Compile Include="ProjectUtil\SymbolStruct.cs" />
+    <Compile Include="ProjectUtil\TextSymbolStruct.cs" />
+    <Compile Include="ProjectUtil\ValueRenderStruct.cs" />
+    <Compile Include="ProjectUtil\ViewExtent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAttributesData.resx">
       <SubType>Designer</SubType>
@@ -165,6 +181,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ProjectUtil\RenderType.cs" />
     <Compile Include="Utilities\LayerProperty.cs" />
   </ItemGroup>
   <ItemGroup>
