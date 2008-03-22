@@ -8,6 +8,11 @@ namespace GPSGatewaySimulator.HistoryTrakings
     {
         #region public methods
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="carRowInfos"></param>
+        /// <returns></returns>
         public static CommnicationMessage.GPSTrackingMessage DataRowToCommInfos(System.Data.DataRow carRowInfos)
         {
             CommnicationMessage.GPSTrackingMessage oCommInfos = new CommnicationMessage.GPSTrackingMessage();
@@ -31,6 +36,11 @@ namespace GPSGatewaySimulator.HistoryTrakings
             return oCommInfos;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="carCommInfos"></param>
+        /// <param name="carRowInfos"></param>
         public static void CommInfosToDataRow(CommnicationMessage.GPSTrackingMessage carCommInfos, ref System.Data.DataRow carRowInfos)
         {
             try

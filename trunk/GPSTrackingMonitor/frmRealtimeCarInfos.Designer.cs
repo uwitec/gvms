@@ -71,55 +71,55 @@
             this.toolStripSeparator1,
             this.mnuStatistic});
             this.cmnRealtimeCarInfos.Name = "cmnRealtimeCarInfos";
-            this.cmnRealtimeCarInfos.Size = new System.Drawing.Size(153, 154);
+            this.cmnRealtimeCarInfos.Size = new System.Drawing.Size(143, 132);
             // 
             // mnuViewDetailInfos
             // 
             this.mnuViewDetailInfos.Name = "mnuViewDetailInfos";
-            this.mnuViewDetailInfos.Size = new System.Drawing.Size(152, 22);
+            this.mnuViewDetailInfos.Size = new System.Drawing.Size(142, 22);
             this.mnuViewDetailInfos.Text = "查看详细信息";
             this.mnuViewDetailInfos.Click += new System.EventHandler(this.mnuViewTailInfos_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(139, 6);
             // 
             // mnuCarSearch
             // 
             this.mnuCarSearch.Name = "mnuCarSearch";
-            this.mnuCarSearch.Size = new System.Drawing.Size(152, 22);
+            this.mnuCarSearch.Size = new System.Drawing.Size(142, 22);
             this.mnuCarSearch.Text = "查找车辆";
             this.mnuCarSearch.Click += new System.EventHandler(this.mnuCarSearch_Click);
             // 
             // mnuCarLocate
             // 
             this.mnuCarLocate.Name = "mnuCarLocate";
-            this.mnuCarLocate.Size = new System.Drawing.Size(152, 22);
+            this.mnuCarLocate.Size = new System.Drawing.Size(142, 22);
             this.mnuCarLocate.Text = "定位车辆";
             this.mnuCarLocate.Click += new System.EventHandler(this.mnuCarLocate_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(139, 6);
             // 
             // mnuTrackingReplay
             // 
             this.mnuTrackingReplay.Name = "mnuTrackingReplay";
-            this.mnuTrackingReplay.Size = new System.Drawing.Size(152, 22);
+            this.mnuTrackingReplay.Size = new System.Drawing.Size(142, 22);
             this.mnuTrackingReplay.Text = "回放轨迹";
             this.mnuTrackingReplay.Click += new System.EventHandler(this.mnuTrackingReplay_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(139, 6);
             // 
             // mnuStatistic
             // 
             this.mnuStatistic.Name = "mnuStatistic";
-            this.mnuStatistic.Size = new System.Drawing.Size(152, 22);
+            this.mnuStatistic.Size = new System.Drawing.Size(142, 22);
             this.mnuStatistic.Text = "统计报表";
             this.mnuStatistic.Click += new System.EventHandler(this.mnuStatistic_Click);
             // 
@@ -130,8 +130,8 @@
             this.ClientSize = new System.Drawing.Size(795, 288);
             this.Controls.Add(this.dgvRealtimeCarInfos);
             this.Name = "frmRealtimeCarInfos";
-            this.TabText = "frmCarData";
-            this.Text = "frmCarData";
+            this.TabText = "车辆实时数据";
+            this.Text = "车辆实时数据";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmRealtimeCarInfos_FormClosing);
             this.Load += new System.EventHandler(this.frmRealtimeCarInfos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRealtimeCarInfos)).EndInit();

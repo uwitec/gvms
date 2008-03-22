@@ -12,12 +12,17 @@ namespace GPSGatewaySimulator.BaseHandler
     {
         #region public methods
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="DBPath"></param>
+        /// <returns></returns>
         public static OleDbConnection GetOleDbConnection(string DBPath)
         {
             string sConn = string.Format("Provider=Microsoft.Jet.OLEDB.4.0; Data Source={0}; User Id=; Password=;", DBPath);
 
             OleDbConnection oConn = new OleDbConnection(sConn);
-
+            
             try
             {
                 oConn.Open();
@@ -35,6 +40,12 @@ namespace GPSGatewaySimulator.BaseHandler
             return oConn;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="queryString"></param>
+        /// <returns></returns>
         public static DataTable GetData(OleDbConnection connection, string queryString)
         {
             DataTable dtResult = null;
@@ -59,6 +70,13 @@ namespace GPSGatewaySimulator.BaseHandler
             return dtResult;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="tableName"></param>
+        /// <param name="keyFieldName"></param>
+        /// <returns></returns>
         public static int GetColumnMaximmValue(OleDbConnection connection, string tableName, string keyFieldName)
         {
             string sQueryString = string.Format("select max({0}) as maxvalue from {1}", keyFieldName, tableName);

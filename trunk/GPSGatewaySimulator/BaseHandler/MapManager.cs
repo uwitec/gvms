@@ -9,6 +9,11 @@ namespace GPSGatewaySimulator.BaseHandler
     {
         #region public methods
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="layerPath"></param>
+        /// <returns></returns>
         public MapLayer GetLayer(string layerPath)
         {
             if (!System.IO.File.Exists(layerPath))

@@ -8,6 +8,13 @@ namespace CommnicationMessage
     {
         #region public methods
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="objectNeedSerialized"></param>
+        /// <param name="formatType"></param>
+        /// <returns></returns>
         public static  byte[] SerializeObjectToBytes(object objectNeedSerialized,SeralizeFormatType formatType)
         {
             System.Runtime.Serialization.IFormatter oFormatter = null;
@@ -28,6 +35,13 @@ namespace CommnicationMessage
             return oBuffer;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bytesNeedDeserialized"></param>
+        /// <param name="count"></param>
+        /// <param name="formatType"></param>
+        /// <returns></returns>
         public static object DeserializeBytesToObject(byte[] bytesNeedDeserialized,int count,SeralizeFormatType formatType)
         {
             System.Runtime.Serialization.IFormatter oFormatter = null;

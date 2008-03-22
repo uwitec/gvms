@@ -40,7 +40,7 @@ namespace GPSTrackingMonitor
 
         public static GPSTrackingMonitor.Communications.MessagePool MessagesCache = new GPSTrackingMonitor.Communications.MessagePool();
 
-        public static int IntervalUpdate = 1000;//单位：毫秒
+        public static int IntervalUpdate = 5000;//单位：毫秒
         
     }
 }

@@ -24,7 +24,7 @@ namespace GPSGatewaySimulator
         /// <summary>
         /// 设置模拟的车辆数目
         /// </summary>
-        public static readonly int CarNumber = 1000;
+        public static readonly int DefaultCarNumber = 1000;
 
     }
 }

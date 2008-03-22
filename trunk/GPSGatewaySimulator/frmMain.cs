@@ -17,6 +17,7 @@ namespace GPSGatewaySimulator
         private HistoryTrakings.TrackingDataTableStruct _tableTrackingPoints = new GPSGatewaySimulator.HistoryTrakings.TrackingDataTableStruct();
         private int _port = 0;
         private int _interval = 0;
+        private int _simulatedCarNumner = 0;
 
 
         #endregion
@@ -79,20 +80,13 @@ namespace GPSGatewaySimulator
             {
                 this._port = GlobeVariables.DefaultReceivePort;
                 this._interval = GlobeVariables.DefaultSendInterval;
+                this._simulatedCarNumner = GlobeVariables.DefaultCarNumber;
             }
             else
             {
-                if (!Int32.TryParse(oFrmSendMessage.Port, out this._port))
-                {
-                    MessageBox.Show("请确定输入了正确的端口号.");
-                    return;
-                }
-
-                if (!Int32.TryParse(oFrmSendMessage.Interval, out this._interval))
-                {
-                    MessageBox.Show("请确定输入了正确的间隔时间.");
-                    return;
-                }
+                this._interval = oFrmSendMessage.Interval;
+                this._port = oFrmSendMessage.Port;
+                this._simulatedCarNumner = oFrmSendMessage.SimulatedCarNumber;
             }
 
             this._socketServer.Intervalue = this._interval;

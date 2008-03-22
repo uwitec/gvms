@@ -9,6 +9,9 @@ namespace GPSGatewaySimulator.HistoryTrakings
     {
         #region constructors
 
+        /// <summary>
+        /// 
+        /// </summary>
         public TrackingDataTableStruct()
         {
             DataColumn colGeoId = new DataColumn("GeoId", typeof(string));

@@ -8,6 +8,13 @@ namespace GPSGatewaySimulator.RandomPoints
     {
         #region public methods
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="randomType"></param>
+        /// <param name="stringLength"></param>
+        /// <param name="seed"></param>
+        /// <returns></returns>
         public static string GetRandomString(RandomStringType randomType, int stringLength,int seed)
         {
             string[] sCaptions = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
