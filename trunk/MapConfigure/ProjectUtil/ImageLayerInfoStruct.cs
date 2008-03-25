@@ -56,6 +56,19 @@ namespace MapConfigure.ProjectUtil
             }
         }
 
+
+        public string FileName
+        {
+            get
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+            set
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+        }
+
         #endregion
     }
 }
