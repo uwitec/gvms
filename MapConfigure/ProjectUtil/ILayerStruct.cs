@@ -8,6 +8,8 @@ namespace MapConfigure.ProjectUtil
     {
         string Name { get;set;}
 
+        string FileName { get;set;}
+
         double MaxLevel { get;set;}
 
         double MinLevel { get;set;}

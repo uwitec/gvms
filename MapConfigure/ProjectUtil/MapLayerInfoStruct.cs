@@ -5,11 +5,12 @@ using System.Text;
 namespace MapConfigure.ProjectUtil
 {
     [Serializable]
-    internal class MapLayerInfoStruct
+    internal class MapLayerInfoStruct : ILayerStruct
     {
         #region fields
 
         private string _name = string.Empty;
+        private string _fileName = string.Empty;
         private short _shapeType = 0;
         private double _minLevel = 0;
         private double _maxLevel = 0;
@@ -67,6 +68,12 @@ namespace MapConfigure.ProjectUtil
         {
             get { return this._maxLevel; }
             set { this._maxLevel = value; }
+        }
+
+        public string FileName
+        {
+            get { return this._fileName; }
+            set { this._fileName = value; }
         }
 
         #endregion

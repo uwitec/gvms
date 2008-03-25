@@ -275,31 +275,157 @@ namespace MapConfigure.ProjectUtil
 
         private void DeconvertSymbol(MapObjects2.Symbol fromSymbol, SymbolStruct toSymbol)
         {
+            toSymbol.CenterOnAscent = fromSymbol.CenterOnAscent;
+            toSymbol.CharacterIndex = fromSymbol.CharacterIndex;
+            toSymbol.FillColor = System.Drawing.ColorTranslator.FromWin32((int)fromSymbol.Color);
+            toSymbol.CustomSymbol = fromSymbol.Custom;
+            toSymbol.FontName = fromSymbol.Font.Name;
+            toSymbol.OutLine = fromSymbol.Outline;
+            toSymbol.OutLineColor = System.Drawing.ColorTranslator.FromWin32((int)fromSymbol.OutlineColor);
+            toSymbol.Rotation = fromSymbol.Rotation;
+            toSymbol.Size = fromSymbol.Size;
+            toSymbol.Style = fromSymbol.Style;
+            toSymbol.SymbolType = (short)fromSymbol.SymbolType;
         }
 
         private void DeconvertTextSymbol(MapObjects2.TextSymbol fromSymbol, TextSymbolStruct toSymbol)
         {
-            throw new NotImplementedException();
+            toSymbol.TextColor = System.Drawing.ColorTranslator.FromWin32((int)fromSymbol.Color);
+            toSymbol.Fitted = fromSymbol.Fitted;
+            toSymbol.TextFont = fromSymbol.Font;
+            toSymbol.Height = fromSymbol.Height;
+            toSymbol.HorizontalAlignment = (short)fromSymbol.HorizontalAlignment;
+            toSymbol.VerticalAlignment = (short)fromSymbol.VerticalAlignment;
+            toSymbol.Rotation = fromSymbol.Rotation;
         }
 
         private ValueRenderStruct ExportValueRender(MapObjects2.ValueMapRenderer render)
         {
-            throw new NotImplementedException();
+            ValueRenderStruct oValueRender = new ValueRenderStruct();
+
+            this.DeconvertSymbol(render.DefaultSymbol, oValueRender.DefaultSymbol);
+
+            oValueRender.Field = render.Field;
+            oValueRender.RotationField = render.RotationField;
+            oValueRender.ScaleField = render.ScalingField;
+            oValueRender.SymbolType = (short)render.SymbolType;
+            oValueRender.Tag = render.Tag;
+            oValueRender.UseDefault = render.UseDefault;
+            oValueRender.ValueCount = render.ValueCount;
+
+            short iIndex = 0;
+            MapObjects2.Symbol oMapSymbol = render.get_Symbol(iIndex);
+
+            while (oMapSymbol != null)
+            {
+                SymbolStruct oSymbol = new SymbolStruct();
+                this.DeconvertSymbol(oMapSymbol, oSymbol);
+                oValueRender.SymbolList.Add(oSymbol);
+
+                iIndex++;
+                oMapSymbol = render.get_Symbol(iIndex);
+            }
+
+            return oValueRender;
         }
 
         private ClassBreakRenderStruct ExportClassBreakRender(MapObjects2.ClassBreaksRenderer render)
         {
-            throw new NotImplementedException();
+            ClassBreakRenderStruct oClassBreakRender = new ClassBreakRenderStruct();
+            short iIndex = 0;
+
+            oClassBreakRender.BreakCount = render.BreakCount;
+            oClassBreakRender.DrawBackground = render.DrawBackground;
+            oClassBreakRender.Field = render.Field;
+            oClassBreakRender.SymbolType = (short)render.SymbolType;
+            oClassBreakRender.Tag = render.Tag;
+
+            double dBreak = render.get_Break(iIndex);
+
+            while (dBreak != double.NaN)
+            {
+                oClassBreakRender.BreakList.Add(dBreak);
+
+                iIndex++;
+                dBreak = render.get_Break(iIndex);
+            }
+
+            oClassBreakRender.StartColor = System.Drawing.ColorTranslator.FromWin32((int)render.get_Symbol((short)0).Color);
+            oClassBreakRender.EndColor = System.Drawing.ColorTranslator.FromWin32((int)render.get_Symbol((short)(render.BreakCount - 1)).Color);
+
+            return oClassBreakRender;
         }
 
         private LabelRenderStruct ExportLabelRender(MapObjects2.LabelRenderer render)
         {
-            throw new NotImplementedException();
+            LabelRenderStruct oLabelRender = new LabelRenderStruct();
+
+            oLabelRender.AllowDuplicates = render.AllowDuplicates;
+            oLabelRender.DrawBackground = render.DrawBackground;
+            oLabelRender.Field = render.Field;
+            oLabelRender.FittedField = render.FittedField;
+            oLabelRender.Flip = render.Flip;
+            oLabelRender.HeightField = render.HeightField;
+            oLabelRender.LevelField = render.LevelField;
+            oLabelRender.MaxLevel = render.MaxLevel;
+            oLabelRender.MinLevel = render.MinLevel;
+            oLabelRender.RotationField = render.RotationField;
+            oLabelRender.SplinedText = render.SplinedText;
+            oLabelRender.SymbolCount = render.SymbolCount;
+            oLabelRender.SymbolField = render.SymbolField;
+            oLabelRender.Tag = render.Tag;
+            oLabelRender.XOffsetField = render.XOffsetField;
+            oLabelRender.YOffsetField = render.YOffsetField;
+
+            short iIndex = 0;
+            MapObjects2.TextSymbol oMapTextSymbol = render.get_Symbol(iIndex);
+
+            while (oMapTextSymbol != null)
+            {
+                TextSymbolStruct oTextSymbol = new TextSymbolStruct();
+                this.DeconvertTextSymbol(oMapTextSymbol, oTextSymbol);
+                oLabelRender.SymbolList.Add(oTextSymbol);
+
+                iIndex++;
+                oMapTextSymbol = render.get_Symbol(iIndex);
+            }          
+
+            return oLabelRender;
         }
 
         private GroupRenderStruct ExportGroupRender(MapObjects2.GroupRenderer render)
         {
-            throw new NotImplementedException();
+            GroupRenderStruct oGroupRender = new GroupRenderStruct();
+            short iIndex = 0;
+
+            oGroupRender.DrawBackground = render.DrawBackground;
+            oGroupRender.Tag = render.Tag;
+            
+            object oMapSubRender = render.get_Renderer(iIndex);
+            while (oMapSubRender != null)
+            {
+                if (oMapSubRender is MapObjects2.ValueMapRenderer)
+                {
+                    ValueRenderStruct oValueRender = this.ExportValueRender(oMapSubRender as MapObjects2.ValueMapRenderer);
+                    oGroupRender.RenderList.Add(oValueRender);
+                }
+                else if (oMapSubRender is MapObjects2.ClassBreaksRenderer)
+                {
+                    ClassBreakRenderStruct oClassBreakRender = this.ExportClassBreakRender(oMapSubRender as MapObjects2.ClassBreaksRenderer);
+                    oGroupRender.RenderList.Add(oClassBreakRender);
+                }
+                else if (oMapSubRender is MapObjects2.LabelRenderer)
+                {
+                    LabelRenderStruct oLabelRender = this.ExportLabelRender(oMapSubRender as MapObjects2.LabelRenderer);
+                    oGroupRender.RenderList.Add(oLabelRender);
+                }
+
+                iIndex++;
+                oMapSubRender = render.get_Renderer(iIndex);
+            }
+
+
+            return oGroupRender;
         }
 
         #endregion
