@@ -6,7 +6,7 @@ using System.Drawing;
 namespace MapConfigure.ProjectUtil
 {
     [Serializable]
-    internal class SymbolStruct
+    public class SymbolStruct
     {
         #region fields
 

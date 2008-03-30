@@ -14,10 +14,11 @@ namespace MapConfigure.MapUtil
         /// </summary>
         /// <param name="layerPaths">图层路径集合</param>
         /// <param name="map">地图对象</param>
-        public List<LayerInformations> LoadLayers(List<string> layerPaths, ref AxMapObjects2.AxMap mapControl)
+        public void LoadLayers(List<string> layerPaths,ProjectUtil.MapStruct mapInfoCollection, AxMapObjects2.AxMap mapControl)
         {
             BaseHandler.MapManager oMapManager = new BaseHandler.MapManager();
-            List<LayerInformations> oLayerfosCollection = new List<LayerInformations>();
+           // List<LayerInformations> oLayerfosCollection = new List<LayerInformations>();
+            ProjectUtil.ProjectSerialization oProjectSerilization = new MapConfigure.ProjectUtil.ProjectSerialization();
 
             foreach (string sLayerPath in layerPaths)
             {
@@ -29,28 +30,42 @@ namespace MapConfigure.MapUtil
                     MapLayer oMapLayer = oMapManager.GetSingleVectorLayer(sLayerPath);
                     mapControl.Layers.Add(oMapLayer);
 
-                    oLayerfosCollection.Add(new LayerInformations(oMapLayer, oMapLayer.Name, oLayerType, oMapLayer.shapeType));
+                    ProjectUtil.MapLayerInfoStruct oMapLayerStruct = oProjectSerilization.LoadLayerInfos(oMapLayer, sLayerPath, -1, -1);
+                    mapInfoCollection.Layers.Insert(0,oMapLayerStruct);
+                    
+                    //oLayerfosCollection.Add(new LayerInformations(oMapLayer, oMapLayer.Name, oLayerType, oMapLayer.shapeType));
                 }
                 else if (oLayerType == LayerTypeConstants.moImageLayer)
                 {
                     ImageLayer oImageLayer = oMapManager.GetSingleImageLayer(sLayerPath);
                     mapControl.Layers.Add(oImageLayer);
 
-                    oLayerfosCollection.Add(new LayerInformations(oImageLayer, oImageLayer.Name, oLayerType, (ShapeTypeConstants)(-1)));
+                    ProjectUtil.ImageLayerInfoStruct oImageLayerStruct = oProjectSerilization.LoadLayerInfos(oImageLayer, sLayerPath, -1, -1);
+                    mapInfoCollection.Layers.Insert(0,oImageLayerStruct);
+
+                    //oLayerfosCollection.Add(new LayerInformations(oImageLayer, oImageLayer.Name, oLayerType, (ShapeTypeConstants)(-1)));
                 }
             }
-
-            return oLayerfosCollection;
         }
         
-        public void LoadLayersToLegendControl(List<LayerInformations> layersInfoSet,System.Windows.Forms.ImageList imageList, ref System.Windows.Forms.TreeView legendControl)
+        public void LoadLayersToLegendControl(ProjectUtil.MapStruct mapInfosCollection,System.Windows.Forms.ImageList imageList, ref System.Windows.Forms.TreeView legendControl)
         {
             if (legendControl.Nodes.Count == 0)
                 legendControl.Nodes.Add("layergroup", "图层", imageList.Images.IndexOfKey("layergroup"));
 
-            foreach (LayerInformations item in layersInfoSet)
+            string sShapeType = string.Empty;
+
+            foreach (ProjectUtil.ILayerStruct item in mapInfosCollection.Layers)
             {
-                legendControl.Nodes[0].Nodes.Add(item.MoShapeType.ToString(), item.LayerName, imageList.Images.IndexOfKey(item.MoShapeType.ToString()));
+                if (item is ProjectUtil.MapLayerInfoStruct)
+                {
+                    sShapeType = ((MapObjects2.ShapeTypeConstants)(item as ProjectUtil.MapLayerInfoStruct).ShapeType).ToString();
+                    legendControl.Nodes[0].Nodes.Add(sShapeType,item.Name, imageList.Images.IndexOfKey(sShapeType));
+                }
+                else if (item is ProjectUtil.ImageLayerInfoStruct)
+                {
+                    legendControl.Nodes[0].Nodes.Add("ImageLayer", item.Name, imageList.Images.IndexOfKey("ImageLayer"));
+                }
             }
         }
 
@@ -58,12 +73,18 @@ namespace MapConfigure.MapUtil
         {
             FeatureInformations oFeatureInfos = null;
 
-            foreach (LayerInformations oLayerInfos in GlobeVariables.LayersInformationSet)
+            foreach (ProjectUtil.ILayerStruct oLayerInfos in GlobeVariables.MapInfosCollection.Layers)
             {
-                if (oLayerInfos.MoLayerType != LayerTypeConstants.moMapLayer)
+                if (oLayerInfos.LayerType != (short)LayerTypeConstants.moMapLayer)
                     continue;
 
-                Recordset oSelectedRecords = (oLayerInfos.MoLayer as MapLayer).SearchByDistance(mousePosition, mapControl.ToMapDistance(4f), "");
+                MapUtil.MapOperation oMapOper = new MapOperation();
+                MapObjects2.MapLayer oMapLayer = oMapOper.GetLayerByName(mapControl, oLayerInfos.Name) as MapObjects2.MapLayer;
+
+                if (oMapLayer.Visible == false)
+                    continue;
+
+                Recordset oSelectedRecords = oMapLayer.SearchShape(mousePosition,SearchMethodConstants.moAreaIntersect, "");
 
                 if (oSelectedRecords.EOF)
                     continue;
@@ -221,7 +242,22 @@ namespace MapConfigure.MapUtil
 
             return dLen1 / dLen2;
         }
-        
+
+        public object GetLayerByName(AxMapObjects2.AxMap mapControl, string layerName)
+        {
+            short iLayersCount = mapControl.Layers.Count;
+
+            for (short i = 0; i < iLayersCount; i++)
+            {
+                object oLayer = mapControl.Layers.Item(i);
+
+                if (oLayer is MapObjects2.MapLayer && (oLayer as MapObjects2.MapLayer).Name.Equals(layerName))return oLayer;
+                else if(oLayer is MapObjects2.ImageLayer && (oLayer as MapObjects2.ImageLayer).Name.Equals(layerName))return oLayer;
+            }
+
+            return null;
+        }
+
 
         #region distroied code
 

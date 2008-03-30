@@ -5,7 +5,7 @@ using System.Text;
 namespace MapConfigure.ProjectUtil
 {
     [Serializable]
-    internal class MapLayerInfoStruct : ILayerStruct
+    public class MapLayerInfoStruct : ILayerStruct
     {
         #region fields
 
@@ -21,7 +21,6 @@ namespace MapConfigure.ProjectUtil
         #endregion
 
         #region properties
-
     
         public SymbolStruct Symbol
         {

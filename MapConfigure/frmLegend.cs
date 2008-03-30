@@ -31,7 +31,7 @@ namespace MapConfigure
 
         private AxMapObjects2.AxMap _mapObject;
         private string _selectedLayerName;
-        private MapUtil.LayerInformations _selectedLayerInfos;
+        private ProjectUtil.ILayerStruct _selectedLayerInfos;
         private CheckBox _selectedCheckBox;
 
         public void LoadLayersToLegend(AxMapObjects2.AxMap mapObject)
@@ -111,16 +111,17 @@ namespace MapConfigure
                 return;
 
             Utilities.LayerProperty oLayerProperty = new MapConfigure.Utilities.LayerProperty();
-            this._selectedLayerInfos = oLayerProperty.GetLayerInformationByName(this._selectedLayerName, GlobeVariables.LayersInformationSet);
+            MapUtil.MapOperation oMapOper = new MapConfigure.MapUtil.MapOperation();
+            this._selectedLayerInfos = oLayerProperty.GetLayerInformationByName(this._selectedLayerName, GlobeVariables.MapInfosCollection.Layers);
 
-            if (this._selectedLayerInfos.MoLayerType == MapObjects2.LayerTypeConstants.moImageLayer)
+            if (this._selectedLayerInfos.LayerType == (short)MapObjects2.LayerTypeConstants.moImageLayer)
             {
-                this.mnuIsLayerVisible.Checked = (this._selectedLayerInfos.MoLayer as MapObjects2.ImageLayer).Visible;
+                this.mnuIsLayerVisible.Checked = (oMapOper.GetLayerByName(GlobeVariables.MapControl,this._selectedLayerInfos.Name) as MapObjects2.ImageLayer).Visible;
                 this.mnuViewAttributes.Visible = false;
             }
-            else if (this._selectedLayerInfos.MoLayerType == MapObjects2.LayerTypeConstants.moMapLayer)
+            else if (this._selectedLayerInfos.LayerType == (short)MapObjects2.LayerTypeConstants.moMapLayer)
             {
-                this.mnuIsLayerVisible.Checked = (this._selectedLayerInfos.MoLayer as MapObjects2.MapLayer).Visible;
+                this.mnuIsLayerVisible.Checked = (oMapOper.GetLayerByName(GlobeVariables.MapControl, this._selectedLayerInfos.Name) as MapObjects2.MapLayer).Visible;
                 this.mnuViewAttributes.Visible = true;
             }            
         }
@@ -186,24 +187,26 @@ namespace MapConfigure
 
         private void mnuViewAttributes_Click(object sender, EventArgs e)
         {
-            if (this._selectedLayerInfos == null || this._selectedLayerInfos.MoLayerType == MapObjects2.LayerTypeConstants.moImageLayer)
+            if (this._selectedLayerInfos == null || this._selectedLayerInfos.LayerType == (short)MapObjects2.LayerTypeConstants.moImageLayer)
                 return;
 
-            frmAttributesData oFrmAttributeData = new frmAttributesData(this._selectedLayerInfos.MoLayer as MapObjects2.MapLayer);
+            MapUtil.MapOperation oMapOper = new MapConfigure.MapUtil.MapOperation();
+            frmAttributesData oFrmAttributeData = new frmAttributesData(oMapOper.GetLayerByName(GlobeVariables.MapControl,this._selectedLayerInfos.Name) as MapObjects2.MapLayer);
             oFrmAttributeData.ShowDialog();
         }
 
         private void mnuIsLayerVisible_Click(object sender, EventArgs e)
         {
-            if (this._selectedLayerInfos == null || this._selectedLayerInfos.MoLayerType == MapObjects2.LayerTypeConstants.moImageLayer)
+            if (this._selectedLayerInfos == null || this._selectedLayerInfos.LayerType == (short)MapObjects2.LayerTypeConstants.moImageLayer)
                 return;
 
             mnuIsLayerVisible.Checked = !mnuIsLayerVisible.Checked;
+            MapUtil.MapOperation oMapOper = new MapConfigure.MapUtil.MapOperation();
 
-            if (this._selectedLayerInfos.MoLayerType == MapObjects2.LayerTypeConstants.moImageLayer)
-                (this._selectedLayerInfos.MoLayer as MapObjects2.ImageLayer).Visible = mnuIsLayerVisible.Checked;
-            else if (this._selectedLayerInfos.MoLayerType == MapObjects2.LayerTypeConstants.moMapLayer)
-                (this._selectedLayerInfos.MoLayer as MapObjects2.MapLayer).Visible = mnuIsLayerVisible.Checked;
+            if (this._selectedLayerInfos.LayerType == (short)MapObjects2.LayerTypeConstants.moImageLayer)
+                (oMapOper.GetLayerByName(GlobeVariables.MapControl, this._selectedLayerInfos.Name) as MapObjects2.ImageLayer).Visible = mnuIsLayerVisible.Checked;
+            else if (this._selectedLayerInfos.LayerType == (short)MapObjects2.LayerTypeConstants.moMapLayer)
+                (oMapOper.GetLayerByName(GlobeVariables.MapControl, this._selectedLayerInfos.Name) as MapObjects2.MapLayer).Visible = mnuIsLayerVisible.Checked;
 
             this._selectedCheckBox.Checked = mnuIsLayerVisible.Checked;
 
@@ -212,18 +215,29 @@ namespace MapConfigure
 
         private void mnuZoomToLayer_Click(object sender, EventArgs e)
         {
-            if (this._selectedLayerInfos == null || this._selectedLayerInfos.MoLayerType == MapObjects2.LayerTypeConstants.moImageLayer)
+            if (this._selectedLayerInfos == null || this._selectedLayerInfos.LayerType == (short)MapObjects2.LayerTypeConstants.moImageLayer)
                 return;
 
-            if (this._selectedLayerInfos.MoLayerType == MapObjects2.LayerTypeConstants.moImageLayer)
-                this._mapObject.Extent = (this._selectedLayerInfos.MoLayer as MapObjects2.ImageLayer).Extent;
-            else if (this._selectedLayerInfos.MoLayerType == MapObjects2.LayerTypeConstants.moMapLayer)
-                this._mapObject.Extent = (this._selectedLayerInfos.MoLayer as MapObjects2.MapLayer).Extent;
+            MapUtil.MapOperation oMapOper = new MapConfigure.MapUtil.MapOperation();
+
+            if (this._selectedLayerInfos.LayerType == (short)MapObjects2.LayerTypeConstants.moImageLayer)
+                this._mapObject.Extent = (oMapOper.GetLayerByName(GlobeVariables.MapControl, this._selectedLayerInfos.Name) as MapObjects2.ImageLayer).Extent;
+            else if (this._selectedLayerInfos.LayerType == (short)MapObjects2.LayerTypeConstants.moMapLayer)
+                this._mapObject.Extent = (oMapOper.GetLayerByName(GlobeVariables.MapControl, this._selectedLayerInfos.Name) as MapObjects2.MapLayer).Extent;
 
             this._mapObject.Refresh();
         }
 
         private void mnuSetProperty_Click(object sender, EventArgs e)
+        {
+            MapUtil.MapOperation oMapOper = new MapConfigure.MapUtil.MapOperation();
+            object oLayer = oMapOper.GetLayerByName(GlobeVariables.MapControl,this._selectedLayerInfos.Name);
+            frmLayerProperties oFrmLayerProperties = new frmLayerProperties(this._mapObject,oLayer);
+
+            oFrmLayerProperties.ShowDialog();
+        }
+
+        private void frmLegend_Load(object sender, EventArgs e)
         {
 
         }

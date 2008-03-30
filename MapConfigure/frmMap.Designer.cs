@@ -49,6 +49,7 @@
             this.labCoordinates = new System.Windows.Forms.Label();
             this.labMeasure = new System.Windows.Forms.Label();
             this.mapControl = new AxMapObjects2.AxMap();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolMapOperation.SuspendLayout();
             this.pnlStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mapControl)).BeginInit();
@@ -73,7 +74,8 @@
             this.tlsMeasure,
             this.tlsIdentify,
             this.tlsClear,
-            this.tlsLoadData});
+            this.tlsLoadData,
+            this.toolStripButton1});
             this.toolMapOperation.Location = new System.Drawing.Point(501, 0);
             this.toolMapOperation.Name = "toolMapOperation";
             this.toolMapOperation.Size = new System.Drawing.Size(40, 519);
@@ -266,6 +268,16 @@
             this.mapControl.MouseMoveEvent += new AxMapObjects2._DMapEvents_MouseMoveEventHandler(this.mapControl_MouseMoveEvent);
             this.mapControl.AfterTrackingLayerDraw += new AxMapObjects2._DMapEvents_AfterTrackingLayerDrawEventHandler(this.mapControl_AfterTrackingLayerDraw);
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(38, 20);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
             // frmMap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -309,5 +321,6 @@
         private System.Windows.Forms.Label labCoordinates;
         private System.Windows.Forms.Label labMeasure;
         private AxMapObjects2.AxMap mapControl;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MapConfigure.ProjectUtil
 {
-    interface ILayerStruct
+    public interface ILayerStruct
     {
         string Name { get;set;}
 

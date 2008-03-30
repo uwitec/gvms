@@ -5,7 +5,7 @@ using System.Runtime;
 
 namespace MapConfigure.ProjectUtil
 {
-    class ProjectSerialization
+    public class ProjectSerialization
     {
         #region public methods
 
@@ -108,6 +108,33 @@ namespace MapConfigure.ProjectUtil
             return oMapStruct;
         }
 
+        public MapLayerInfoStruct LoadLayerInfos(MapObjects2.MapLayer layer,string fileName,double minScale,double maxScale)
+        {
+            MapLayerInfoStruct oMapLayerStruct = new MapLayerInfoStruct();
+
+            oMapLayerStruct.Name = layer.Name;
+            oMapLayerStruct.FileName = fileName;
+            oMapLayerStruct.ShapeType = (short)layer.shapeType;
+            oMapLayerStruct.MinLevel = minScale;
+            oMapLayerStruct.MaxLevel = maxScale;
+
+            this.DeconvertSymbol(layer.Symbol, oMapLayerStruct.Symbol);
+            oMapLayerStruct.Render = this.ExportLayerRender(layer);
+
+            return oMapLayerStruct;
+        }
+
+        public ImageLayerInfoStruct LoadLayerInfos(MapObjects2.ImageLayer layer,string fileName,double minScale,double maxScale)
+        {
+            ImageLayerInfoStruct oImageLayerStruct = new ImageLayerInfoStruct();
+
+            oImageLayerStruct.FileName = fileName;
+            oImageLayerStruct.MinLevel = minScale;
+            oImageLayerStruct.MaxLevel = maxScale;
+            oImageLayerStruct.Name = layer.Name;
+
+            return oImageLayerStruct;
+        }
         #endregion
 
         #region private methods
@@ -122,7 +149,7 @@ namespace MapConfigure.ProjectUtil
             else if (render.LayerRenderType == RenderType.GroupRender) layer.Renderer = this.GetGroupRender(render as GroupRenderStruct);
         }
 
-        private void ConvertSymbol(SymbolStruct fromSymbol,MapObjects2.Symbol toSymbol)
+        public void ConvertSymbol(SymbolStruct fromSymbol,MapObjects2.Symbol toSymbol)
         {
             toSymbol.CenterOnAscent = fromSymbol.CenterOnAscent;
             toSymbol.CharacterIndex = fromSymbol.CharacterIndex;
@@ -137,7 +164,7 @@ namespace MapConfigure.ProjectUtil
             toSymbol.SymbolType = (MapObjects2.SymbolTypeConstants)fromSymbol.SymbolType;
         }
 
-        private void ConvertTextSymbol(TextSymbolStruct fromSymbol, MapObjects2.TextSymbol toSymbol)
+        public void ConvertTextSymbol(TextSymbolStruct fromSymbol, MapObjects2.TextSymbol toSymbol)
         {
             toSymbol.Color = (uint)fromSymbol.TextColor.ToArgb();
             toSymbol.Fitted = fromSymbol.Fitted;
@@ -148,7 +175,7 @@ namespace MapConfigure.ProjectUtil
             toSymbol.Rotation = fromSymbol.Rotation;
         }
 
-        private MapObjects2.ValueMapRenderer GetValueRender(ValueRenderStruct render)
+        public MapObjects2.ValueMapRenderer GetValueRender(ValueRenderStruct render)
         {
             MapObjects2.ValueMapRenderer oMapRender = new MapObjects2.ValueMapRendererClass();
 
@@ -173,7 +200,7 @@ namespace MapConfigure.ProjectUtil
             return oMapRender;
         }
 
-        private MapObjects2.ClassBreaksRenderer GetClassBreakRender(ClassBreakRenderStruct render)
+        public MapObjects2.ClassBreaksRenderer GetClassBreakRender(ClassBreakRenderStruct render)
         {
             MapObjects2.ClassBreaksRenderer oMapRender = new MapObjects2.ClassBreaksRendererClass();
             short iIndex = 0;
@@ -196,7 +223,7 @@ namespace MapConfigure.ProjectUtil
             return oMapRender;
         }
 
-        private MapObjects2.LabelRenderer GetLabelRender(LabelRenderStruct render)
+        public MapObjects2.LabelRenderer GetLabelRender(LabelRenderStruct render)
         {
             MapObjects2.LabelRenderer oMapRender = new MapObjects2.LabelRendererClass();
 
@@ -229,7 +256,7 @@ namespace MapConfigure.ProjectUtil
             return oMapRender;
         }
 
-        private MapObjects2.GroupRenderer GetGroupRender(GroupRenderStruct render)
+        public MapObjects2.GroupRenderer GetGroupRender(GroupRenderStruct render)
         {
             MapObjects2.GroupRenderer oMapRender = new MapObjects2.GroupRendererClass();
 

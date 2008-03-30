@@ -10,7 +10,8 @@ namespace MapConfigure
 {
     public partial class frmMain : Form
     {
-        private frmLegend _frmLegend;
+        //private frmLegend _frmLegend;
+        private frmLegend1 _frmLegend;
         private frmMap _frmMap ;
         private frmNavigation _frmNavigation;
        // private frmCarData _frmCarData;
@@ -30,11 +31,26 @@ namespace MapConfigure
             //this._frmTrackingReplay = new frmTackingReplay();
             //this._frmTrackingReplay.Show(this._frmCarData.Pane, this._frmCarData); 
 
-            this._frmLegend = frmLegend.Instance;
+            this._frmLegend = frmLegend1.Instance;
             this._frmLegend.Show(this.dockPanel, WeifenLuo.WinFormsUI.Docking.DockState.DockLeft);
 
             this._frmNavigation = frmNavigation.Instance;
             this._frmNavigation.Show(this._frmLegend.Pane,WeifenLuo.WinFormsUI.Docking.DockAlignment.Bottom,0.3);
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            this._frmLegend.Show();
+        }
+
+        private void toolStripButton1_ButtonClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 另存为ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

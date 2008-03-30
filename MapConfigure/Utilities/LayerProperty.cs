@@ -7,16 +7,14 @@ namespace MapConfigure.Utilities
 {
     class LayerProperty
     {
-        public MapUtil.LayerInformations GetLayerInformationByName(string layerName, List<MapUtil.LayerInformations> layerInfosCollection)
+        public ProjectUtil.ILayerStruct GetLayerInformationByName(string layerName, List<ProjectUtil.ILayerStruct> layerInfosCollection)
         {
             if (string.IsNullOrEmpty(layerName) || layerInfosCollection == null)
                 return null;
 
-            MapUtil.LayerInformations oLayerInfos = new MapConfigure.MapUtil.LayerInformations();
-
-            foreach (MapUtil.LayerInformations item in layerInfosCollection)
+            foreach (ProjectUtil.ILayerStruct item in layerInfosCollection)
             {
-                if (item.LayerName == layerName)
+                if (item.Name == layerName)
                     return item;
             }
 
@@ -60,12 +58,12 @@ namespace MapConfigure.Utilities
             return dtLayerAttribute;
         }
 
-        public void SetLayerVisibility(string layerName, bool visible, List<MapUtil.LayerInformations> layerInfosCollection)
+        public void SetLayerVisibility(string layerName, bool visible)
         {
-            MapUtil.LayerInformations oLayerInfos = this.GetLayerInformationByName(layerName, layerInfosCollection);
+            MapUtil.MapOperation oMapOper = new MapConfigure.MapUtil.MapOperation();
+            object oLayer = oMapOper.GetLayerByName(GlobeVariables.MapControl, layerName);
 
-            if (oLayerInfos.MoLayerType == MapObjects2.LayerTypeConstants.moImageLayer) (oLayerInfos.MoLayer as MapObjects2.ImageLayer).Visible = visible;
-            else if(oLayerInfos.MoLayerType == MapObjects2.LayerTypeConstants.moMapLayer) (oLayerInfos.MoLayer as MapObjects2.MapLayer).Visible = visible;
+            this.SetLayerVisibility(oLayer, visible);
         }
 
         public void SetLayerVisibility(object layer, bool visible)
@@ -73,8 +71,5 @@ namespace MapConfigure.Utilities
             if (layer is MapObjects2.ImageLayer) (layer as MapObjects2.ImageLayer).Visible = visible;
             else if (layer is MapObjects2.MapLayer) (layer as MapObjects2.MapLayer).Visible = visible;
         }
-
-
-
     }
 }

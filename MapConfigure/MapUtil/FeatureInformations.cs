@@ -9,7 +9,7 @@ namespace MapConfigure.MapUtil
         #region fields
 
         private Dictionary<string, string> _fieldsAndValuesCollection;
-        private LayerInformations _layerInfos;
+        private ProjectUtil.ILayerStruct _layerInfos;
         private object _geometry;
         
         #endregion
@@ -28,7 +28,7 @@ namespace MapConfigure.MapUtil
             set { this._geometry = value; }
         }
 
-        public LayerInformations CurrentLayerInfos
+        public ProjectUtil.ILayerStruct CurrentLayerInfos
         {
             get { return this._layerInfos; }
             set { this._layerInfos = value; }

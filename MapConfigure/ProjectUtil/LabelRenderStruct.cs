@@ -5,7 +5,7 @@ using System.Text;
 namespace MapConfigure.ProjectUtil
 {
     [Serializable]
-    internal class LabelRenderStruct : IRenderStruct
+    public class LabelRenderStruct : IRenderStruct
     {
         #region fields
 
