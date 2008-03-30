@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MapConfigure.ProjectUtil
 {
-    class ProjectStruct
+    public class ProjectStruct
     {
         
         

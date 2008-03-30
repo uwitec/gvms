@@ -47,15 +47,17 @@ namespace MapConfigure
 
         #region public methods
 
-        public void LoadBackgroudlayer(List<MapUtil.LayerInformations> layerInfosCollection)
+        public void LoadBackgroudlayer(List<ProjectUtil.ILayerStruct> layerInfosCollection)
         {
             this.mapControl.Layers.Clear();
+            MapUtil.MapOperation oMapOper = new MapConfigure.MapUtil.MapOperation();
 
-            foreach (MapUtil.LayerInformations layerInfos in layerInfosCollection)
+            foreach (ProjectUtil.ILayerStruct layerInfos in layerInfosCollection)
             {
-                if (layerInfos.MoLayerType == MapObjects2.LayerTypeConstants.moMapLayer && layerInfos.MoShapeType == MapObjects2.ShapeTypeConstants.moShapeTypePolygon)
+                if (layerInfos.LayerType == (short)MapObjects2.LayerTypeConstants.moMapLayer &&
+                    (layerInfos as ProjectUtil.MapLayerInfoStruct).ShapeType == (short)MapObjects2.ShapeTypeConstants.moShapeTypePolygon)
                 {
-                    this.mapControl.Layers.Add(layerInfos.MoLayer);
+                    this.mapControl.Layers.Add(oMapOper.GetLayerByName(GlobeVariables.MapControl,(layerInfos as ProjectUtil.MapLayerInfoStruct).Name));
                 }
             }
         }
@@ -84,7 +86,7 @@ namespace MapConfigure
             if (e.CloseReason == CloseReason.UserClosing)
             {
                 e.Cancel = true;
-                this.Visible = false;
+                this.Hide();
             }
             base.OnFormClosing(e);
         }

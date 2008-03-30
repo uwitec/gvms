@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MapConfigure.ProjectUtil
 {
-    class TextSymbolStruct
+    public class TextSymbolStruct
     {
         private System.Drawing.Color _textColor = System.Drawing.Color.Black;
         private bool _fitted = false;

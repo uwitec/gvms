@@ -5,7 +5,7 @@ using System.Text;
 namespace MapConfigure.ProjectUtil
 {
     [Serializable]
-    internal class ViewExtent
+    public class ViewExtent
     {
         #region fields
 

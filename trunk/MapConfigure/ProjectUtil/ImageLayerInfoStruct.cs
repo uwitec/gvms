@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MapConfigure.ProjectUtil
 {
-    class ImageLayerInfoStruct : ILayerStruct
+    public class ImageLayerInfoStruct : ILayerStruct
     {
         #region ILayerStruct ≥…‘±
 

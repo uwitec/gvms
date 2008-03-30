@@ -5,7 +5,7 @@ using System.Text;
 namespace MapConfigure.ProjectUtil
 {
     [Serializable]
-    internal class ClassBreakRenderStruct :IRenderStruct
+    public class ClassBreakRenderStruct :IRenderStruct
     {
         #region fields
 

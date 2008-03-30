@@ -36,7 +36,7 @@ namespace MapConfigure
                     this.lsvFeatureProperties.Items[this.lsvFeatureProperties.Items.Count - 1].SubItems.Add(sValue);
                 }
 
-                this.labLayerInfos.Text = string.Format("Í¼²ã : {0}", featureInfos.CurrentLayerInfos.LayerName);
+                this.labLayerInfos.Text = string.Format("Í¼²ã : {0}", featureInfos.CurrentLayerInfos.Name);
 
                 if (!this.Visible)
                     this.Show();

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MapConfigure.ProjectUtil
 {
-    class MapStruct
+    public class MapStruct
     {
         private List<ILayerStruct> _layers = new List<ILayerStruct>();
         private object _coordinateSystem = null;
@@ -33,6 +33,15 @@ namespace MapConfigure.ProjectUtil
         {
             get { return this._geoDataSetPath; }
             set { this._geoDataSetPath = value; }
+        }
+
+        public ILayerStruct FindLayer(string layerName)
+        {
+           return  this.Layers.Find
+               (new Predicate<ILayerStruct>
+               (delegate (ILayerStruct layerStrcut) 
+               { return layerStrcut.Name == layerName; }
+               ));
         }
     }
 }

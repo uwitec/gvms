@@ -185,10 +185,10 @@ namespace MapConfigure
                 MapUtil.MapOperation oMapOper = new MapUtil.MapOperation();
                 List<string> oLayerPaths = new List<string>(oFileDialog.FileNames);
 
-                List<MapUtil.LayerInformations> oLayerInfosCollection = oMapOper.LoadLayers(oLayerPaths, ref mapControl);
-                GlobeVariables.LayersInformationSet.AddRange(oLayerInfosCollection);
-                frmLegend.Instance.LoadLayersToLegend(this.mapControl);
-                frmNavigation.Instance.LoadBackgroudlayer(GlobeVariables.LayersInformationSet);
+                oMapOper.LoadLayers(oLayerPaths,GlobeVariables.MapInfosCollection, mapControl);
+                //frmLegend.Instance.LoadLayersToLegend(this.mapControl);
+                frmLegend1.Instance.LoadLayer();
+                frmNavigation.Instance.LoadBackgroudlayer(GlobeVariables.MapInfosCollection.Layers);
             }
         }
 
@@ -228,6 +228,12 @@ namespace MapConfigure
         }
 
         #endregion
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            this.mapControl.Layers.Clear();
+            this.mapControl.Refresh();
+        }
 
         
     }

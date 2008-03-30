@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MapConfigure.ProjectUtil
 {
-    interface IRenderStruct
+    public interface IRenderStruct
     {
         RenderType LayerRenderType { get;}
     }
