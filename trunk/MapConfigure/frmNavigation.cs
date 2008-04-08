@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using MapProject;
 
 namespace MapConfigure
 {
@@ -47,17 +48,17 @@ namespace MapConfigure
 
         #region public methods
 
-        public void LoadBackgroudlayer(List<ProjectUtil.ILayerStruct> layerInfosCollection)
+        public void LoadBackgroudLayer(List<ILayerStruct> layerInfosCollection)
         {
             this.mapControl.Layers.Clear();
             MapUtil.MapOperation oMapOper = new MapConfigure.MapUtil.MapOperation();
 
-            foreach (ProjectUtil.ILayerStruct layerInfos in layerInfosCollection)
+            foreach (ILayerStruct layerInfos in layerInfosCollection)
             {
                 if (layerInfos.LayerType == (short)MapObjects2.LayerTypeConstants.moMapLayer &&
-                    (layerInfos as ProjectUtil.MapLayerInfoStruct).ShapeType == (short)MapObjects2.ShapeTypeConstants.moShapeTypePolygon)
+                    (layerInfos as MapLayerInfoStruct).ShapeType == (short)MapObjects2.ShapeTypeConstants.moShapeTypePolygon)
                 {
-                    this.mapControl.Layers.Add(oMapOper.GetLayerByName(GlobeVariables.MapControl,(layerInfos as ProjectUtil.MapLayerInfoStruct).Name));
+                    this.mapControl.Layers.Add(oMapOper.GetLayerByName(GlobeVariables.MapControl, (layerInfos as MapLayerInfoStruct).AliasName));
                 }
             }
         }

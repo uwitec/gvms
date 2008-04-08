@@ -34,12 +34,10 @@
             this.tbpLayerRender = new System.Windows.Forms.TabPage();
             this.tabLayerRenderType = new System.Windows.Forms.TabControl();
             this.tbpRenderByUniqueValue = new System.Windows.Forms.TabPage();
-            this.styleListControl1 = new MapConfigure.CustomControl.StyleListControl();
             this.btnUniqueValueRender = new System.Windows.Forms.Button();
             this.cbbFields_UniqueValue = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tbpRenderByClassValue = new System.Windows.Forms.TabPage();
-            this.styleListControl2 = new MapConfigure.CustomControl.StyleListControl();
             this.btnClassBreakRender = new System.Windows.Forms.Button();
             this.pnlEndColor = new System.Windows.Forms.Panel();
             this.label19 = new System.Windows.Forms.Label();
@@ -112,12 +110,15 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label35 = new System.Windows.Forms.Label();
+            this.lblLayerAliasName = new System.Windows.Forms.Label();
+            this.txtLayerAliasName = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.styleListControl1 = new MapConfigure.CustomControl.StyleListControl();
+            this.styleListControl2 = new MapConfigure.CustomControl.StyleListControl();
             this.tbpLayerRender.SuspendLayout();
             this.tabLayerRenderType.SuspendLayout();
             this.tbpRenderByUniqueValue.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.styleListControl1)).BeginInit();
             this.tbpRenderByClassValue.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.styleListControl2)).BeginInit();
             this.tabLabelRender.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numLabelRotation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLabelSize)).BeginInit();
@@ -134,6 +135,8 @@
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleListControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleListControl2)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -207,16 +210,6 @@
             this.tbpRenderByUniqueValue.Text = "唯一值渲染";
             this.tbpRenderByUniqueValue.UseVisualStyleBackColor = true;
             // 
-            // styleListControl1
-            // 
-            this.styleListControl1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.styleListControl1.LayerInfos = null;
-            this.styleListControl1.Location = new System.Drawing.Point(17, 42);
-            this.styleListControl1.Name = "styleListControl1";
-            this.styleListControl1.RowTemplate.Height = 23;
-            this.styleListControl1.Size = new System.Drawing.Size(309, 284);
-            this.styleListControl1.TabIndex = 5;
-            // 
             // btnUniqueValueRender
             // 
             this.btnUniqueValueRender.Location = new System.Drawing.Point(249, 332);
@@ -263,16 +256,6 @@
             this.tbpRenderByClassValue.TabIndex = 4;
             this.tbpRenderByClassValue.Text = "分级渲染";
             this.tbpRenderByClassValue.UseVisualStyleBackColor = true;
-            // 
-            // styleListControl2
-            // 
-            this.styleListControl2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.styleListControl2.LayerInfos = null;
-            this.styleListControl2.Location = new System.Drawing.Point(19, 116);
-            this.styleListControl2.Name = "styleListControl2";
-            this.styleListControl2.RowTemplate.Height = 23;
-            this.styleListControl2.Size = new System.Drawing.Size(299, 193);
-            this.styleListControl2.TabIndex = 10;
             // 
             // btnClassBreakRender
             // 
@@ -407,6 +390,11 @@
             // numLabelRotation
             // 
             this.numLabelRotation.Location = new System.Drawing.Point(101, 231);
+            this.numLabelRotation.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
             this.numLabelRotation.Name = "numLabelRotation";
             this.numLabelRotation.Size = new System.Drawing.Size(181, 21);
             this.numLabelRotation.TabIndex = 32;
@@ -599,6 +587,8 @@
             // tbpLayerDescription
             // 
             this.tbpLayerDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbpLayerDescription.Controls.Add(this.txtLayerAliasName);
+            this.tbpLayerDescription.Controls.Add(this.lblLayerAliasName);
             this.tbpLayerDescription.Controls.Add(this.numMaxScale);
             this.tbpLayerDescription.Controls.Add(this.numMinScale);
             this.tbpLayerDescription.Controls.Add(this.lblMaxScale);
@@ -611,6 +601,7 @@
             this.tbpLayerDescription.Controls.Add(this.dgvFieldsStruct);
             this.tbpLayerDescription.Controls.Add(this.lblGeometryType);
             this.tbpLayerDescription.Controls.Add(this.groupBox5);
+            this.tbpLayerDescription.Controls.Add(this.groupBox1);
             this.tbpLayerDescription.Location = new System.Drawing.Point(4, 24);
             this.tbpLayerDescription.Name = "tbpLayerDescription";
             this.tbpLayerDescription.Padding = new System.Windows.Forms.Padding(3);
@@ -622,6 +613,11 @@
             // numMaxScale
             // 
             this.numMaxScale.Location = new System.Drawing.Point(120, 100);
+            this.numMaxScale.Maximum = new decimal(new int[] {
+            1410065408,
+            2,
+            0,
+            0});
             this.numMaxScale.Name = "numMaxScale";
             this.numMaxScale.Size = new System.Drawing.Size(125, 21);
             this.numMaxScale.TabIndex = 12;
@@ -629,6 +625,11 @@
             // numMinScale
             // 
             this.numMinScale.Location = new System.Drawing.Point(120, 77);
+            this.numMinScale.Maximum = new decimal(new int[] {
+            1410065408,
+            2,
+            0,
+            0});
             this.numMinScale.Name = "numMinScale";
             this.numMinScale.Size = new System.Drawing.Size(125, 21);
             this.numMinScale.TabIndex = 11;
@@ -636,20 +637,20 @@
             // lblMaxScale
             // 
             this.lblMaxScale.AutoSize = true;
-            this.lblMaxScale.Location = new System.Drawing.Point(16, 106);
+            this.lblMaxScale.Location = new System.Drawing.Point(21, 105);
             this.lblMaxScale.Name = "lblMaxScale";
-            this.lblMaxScale.Size = new System.Drawing.Size(89, 12);
+            this.lblMaxScale.Size = new System.Drawing.Size(83, 12);
             this.lblMaxScale.TabIndex = 10;
-            this.lblMaxScale.Text = "最大比例尺　：";
+            this.lblMaxScale.Text = "最大比例尺 ：";
             // 
             // lblMinScale
             // 
             this.lblMinScale.AutoSize = true;
-            this.lblMinScale.Location = new System.Drawing.Point(15, 83);
+            this.lblMinScale.Location = new System.Drawing.Point(20, 83);
             this.lblMinScale.Name = "lblMinScale";
-            this.lblMinScale.Size = new System.Drawing.Size(89, 12);
+            this.lblMinScale.Size = new System.Drawing.Size(83, 12);
             this.lblMinScale.TabIndex = 9;
-            this.lblMinScale.Text = "最小比例尺　：";
+            this.lblMinScale.Text = "最小比例尺 ：";
             // 
             // lblCoordinateSystemValue
             // 
@@ -698,11 +699,14 @@
             // 
             // dgvFieldsStruct
             // 
+            this.dgvFieldsStruct.AllowUserToAddRows = false;
+            this.dgvFieldsStruct.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFieldsStruct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFieldsStruct.Location = new System.Drawing.Point(13, 152);
+            this.dgvFieldsStruct.Location = new System.Drawing.Point(13, 187);
             this.dgvFieldsStruct.Name = "dgvFieldsStruct";
+            this.dgvFieldsStruct.ReadOnly = true;
             this.dgvFieldsStruct.RowTemplate.Height = 23;
-            this.dgvFieldsStruct.Size = new System.Drawing.Size(315, 238);
+            this.dgvFieldsStruct.Size = new System.Drawing.Size(315, 203);
             this.dgvFieldsStruct.TabIndex = 1;
             // 
             // lblGeometryType
@@ -716,9 +720,9 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Location = new System.Drawing.Point(3, 132);
+            this.groupBox5.Location = new System.Drawing.Point(3, 167);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(335, 270);
+            this.groupBox5.Size = new System.Drawing.Size(335, 235);
             this.groupBox5.TabIndex = 8;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "字段结构";
@@ -762,6 +766,7 @@
             this.ckbIsViewOutline.TabIndex = 19;
             this.ckbIsViewOutline.Text = "显示边线";
             this.ckbIsViewOutline.UseVisualStyleBackColor = true;
+            this.ckbIsViewOutline.CheckedChanged += new System.EventHandler(this.ckbIsViewOutline_CheckedChanged);
             // 
             // grpSymbolOutlineProperties
             // 
@@ -973,6 +978,50 @@
             this.label35.TabIndex = 0;
             this.label35.Text = "类型";
             // 
+            // lblLayerAliasName
+            // 
+            this.lblLayerAliasName.AutoSize = true;
+            this.lblLayerAliasName.Location = new System.Drawing.Point(33, 130);
+            this.lblLayerAliasName.Name = "lblLayerAliasName";
+            this.lblLayerAliasName.Size = new System.Drawing.Size(77, 12);
+            this.lblLayerAliasName.TabIndex = 13;
+            this.lblLayerAliasName.Text = "图层别名 ： ";
+            // 
+            // txtLayerAliasName
+            // 
+            this.txtLayerAliasName.Location = new System.Drawing.Point(120, 127);
+            this.txtLayerAliasName.Name = "txtLayerAliasName";
+            this.txtLayerAliasName.Size = new System.Drawing.Size(125, 21);
+            this.txtLayerAliasName.TabIndex = 15;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(3, 2);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(335, 159);
+            this.groupBox1.TabIndex = 16;
+            this.groupBox1.TabStop = false;
+            // 
+            // styleListControl1
+            // 
+            this.styleListControl1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.styleListControl1.LayerInfos = null;
+            this.styleListControl1.Location = new System.Drawing.Point(17, 42);
+            this.styleListControl1.Name = "styleListControl1";
+            this.styleListControl1.RowTemplate.Height = 23;
+            this.styleListControl1.Size = new System.Drawing.Size(309, 284);
+            this.styleListControl1.TabIndex = 5;
+            // 
+            // styleListControl2
+            // 
+            this.styleListControl2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.styleListControl2.LayerInfos = null;
+            this.styleListControl2.Location = new System.Drawing.Point(19, 116);
+            this.styleListControl2.Name = "styleListControl2";
+            this.styleListControl2.RowTemplate.Height = 23;
+            this.styleListControl2.Size = new System.Drawing.Size(299, 193);
+            this.styleListControl2.TabIndex = 10;
+            // 
             // frmLayerProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -989,10 +1038,8 @@
             this.tabLayerRenderType.ResumeLayout(false);
             this.tbpRenderByUniqueValue.ResumeLayout(false);
             this.tbpRenderByUniqueValue.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.styleListControl1)).EndInit();
             this.tbpRenderByClassValue.ResumeLayout(false);
             this.tbpRenderByClassValue.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.styleListControl2)).EndInit();
             this.tabLabelRender.ResumeLayout(false);
             this.tabLabelRender.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numLabelRotation)).EndInit();
@@ -1015,6 +1062,8 @@
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleListControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleListControl2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1105,5 +1154,8 @@
         private System.Windows.Forms.NumericUpDown numMinScale;
         private System.Windows.Forms.Label lblMaxScale;
         private System.Windows.Forms.Label lblMinScale;
+        private System.Windows.Forms.TextBox txtLayerAliasName;
+        private System.Windows.Forms.Label lblLayerAliasName;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

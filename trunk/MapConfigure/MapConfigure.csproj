@@ -49,6 +49,7 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="UtilityLibrary, Version=1.0.3.0, Culture=neutral">
@@ -74,6 +75,12 @@
     </Compile>
     <Compile Include="CustomControl\StyleListTableTemplate.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="frmAboutUS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAboutUS.Designer.cs">
+      <DependentUpon>frmAboutUS.cs</DependentUpon>
     </Compile>
     <Compile Include="frmAttributesData.cs">
       <SubType>Form</SubType>
@@ -105,17 +112,23 @@
     <Compile Include="frmLayerProperties.Designer.cs">
       <DependentUpon>frmLayerProperties.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLegend~1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLegend~1.Designer.cs">
+      <DependentUpon>frmLegend~1.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLegend.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmLegend.Designer.cs">
       <DependentUpon>frmLegend.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLegend1.cs">
+    <Compile Include="frmLicense.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLegend1.Designer.cs">
-      <DependentUpon>frmLegend1.cs</DependentUpon>
+    <Compile Include="frmLicense.Designer.cs">
+      <DependentUpon>frmLicense.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -157,22 +170,11 @@
     <Compile Include="MapUtil\MapOperation.cs" />
     <Compile Include="MapUtil\MapOperationType.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="ProjectUtil\ClassBreakRenderStruct.cs" />
-    <Compile Include="ProjectUtil\GroupRenderStruct.cs" />
-    <Compile Include="ProjectUtil\ILayerStruct.cs" />
-    <Compile Include="ProjectUtil\ImageLayerInfoStruct.cs" />
-    <Compile Include="ProjectUtil\IRenderStruct.cs" />
-    <Compile Include="ProjectUtil\LabelRenderStruct.cs" />
-    <Compile Include="ProjectUtil\MapLayerInfoStruct.cs" />
-    <Compile Include="ProjectUtil\MapStruct.cs" />
-    <Compile Include="ProjectUtil\ProjectSerialization.cs" />
-    <Compile Include="ProjectUtil\ProjectStruct.cs" />
-    <Compile Include="ProjectUtil\RenderStruct.cs" />
-    <Compile Include="ProjectUtil\SymbolStruct.cs" />
-    <Compile Include="ProjectUtil\TextSymbolStruct.cs" />
-    <Compile Include="ProjectUtil\ValueRenderStruct.cs" />
-    <Compile Include="ProjectUtil\ViewExtent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAboutUS.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmAboutUS.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAttributesData.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmAttributesData.cs</DependentUpon>
@@ -185,13 +187,17 @@
       <SubType>Designer</SubType>
       <DependentUpon>frmLayerProperties.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLegend.resx">
-      <DependentUpon>frmLegend.cs</DependentUpon>
+    <EmbeddedResource Include="frmLegend~1.resx">
+      <DependentUpon>frmLegend~1.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLegend1.resx">
+    <EmbeddedResource Include="frmLegend.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>frmLegend1.cs</DependentUpon>
+      <DependentUpon>frmLegend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLicense.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -228,12 +234,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ProjectUtil\RenderType.cs" />
     <Compile Include="Utilities\Converter.cs" />
     <Compile Include="Utilities\LayerProperty.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="readme.txt" />
+    <None Include="Resources\layers_3.bmp" />
+    <None Include="Resources\234.bmp" />
+    <None Include="Resources\123.bmp" />
     <None Include="Resources\ZoomIn.bmp" />
     <None Include="Resources\undo.bmp" />
     <None Include="Resources\Refresh.bmp" />
@@ -298,6 +306,12 @@
       <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MapProject\MapProject.csproj">
+      <Project>{6236E35A-4A3B-4B02-93CC-999FA1123957}</Project>
+      <Name>MapProject</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Database\" />

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using MapProject;
 
 namespace MapConfigure
 {
@@ -16,7 +17,7 @@ namespace MapConfigure
         private MapObjects2.ImageLayer _imageLayer = null;
         private List<string> _numFieldsList = new List<string>();
         private List<string> _fieldsList = new List<string>();
-        private ProjectUtil.ILayerStruct _layerStruct = null;
+        private ILayerStruct _layerStruct = null;
         private Font _selectedFont = new Font("Arial",12f);
         private int _selectedCharactorIndex = 0;
 
@@ -27,6 +28,7 @@ namespace MapConfigure
         public frmLayerProperties(AxMapObjects2.AxMap mapControl, object layer)
         {
             InitializeComponent();
+
             this._mapControl = mapControl;
 
             if (layer == null)
@@ -36,6 +38,7 @@ namespace MapConfigure
                 this._imageLayer = layer as MapObjects2.ImageLayer;
             else if (layer is MapObjects2.MapLayer)
                 this._mapLayer = layer as MapObjects2.MapLayer;
+
 
             if (this._mapLayer != null)
             {
@@ -54,12 +57,11 @@ namespace MapConfigure
                         this._numFieldsList.Add(oField.Name);
                 }
             }
+
         }
 
         private void frmLayerProperties_Load(object sender, EventArgs e)
-        {
-            this.styleListControl1.LayerInfos = GlobeVariables.MapInfosCollection.Layers.Find(new Predicate<MapConfigure.ProjectUtil.ILayerStruct>
-                (delegate(MapConfigure.ProjectUtil.ILayerStruct layerInfos) { return layerInfos.Name == this._mapLayer.Name; })) as ProjectUtil.MapLayerInfoStruct;
+        {   
             this.InitPars();
         }
 
@@ -116,6 +118,8 @@ namespace MapConfigure
 
         private void btnApplicateSets_Click(object sender, EventArgs e)
         {
+            this._mapLayer.Tag = string.Format("{0}-{1}", this.numMinScale.Value, this.numMaxScale.Value);
+            this._mapLayer.Name = this.txtLayerAliasName.Text;
             this.ApplicateSymbolSetToLayer();
         }
 
@@ -170,14 +174,15 @@ namespace MapConfigure
             this.lblGeometryTypeValue.Text = this._mapLayer.shapeType.ToString();
             this.lblCoordinateSystemValue.Text = this._mapLayer.CoordinateSystem.ToString();
             this.lblFeaturesCountValue.Text = this._mapLayer.Records.Count.ToString();
-            //this.numMinScale.Value = decimal.Parse(this._mapLayer.Tag.Split('-')[0]);
-            //this.numMaxScale.Value = decimal.Parse(this._mapLayer.Tag.Split('-')[1]);
+            this.numMinScale.Value = decimal.Parse(this._mapLayer.Tag.Split('-')[0]);
+            this.numMaxScale.Value = decimal.Parse(this._mapLayer.Tag.Split('-')[1]);
+            this.txtLayerAliasName.Text = this._mapLayer.Name;
 
             LayerProperties.FieldsStructTableTemplate oDataSource = new MapConfigure.LayerProperties.FieldsStructTableTemplate();
             this.dgvFieldsStruct.DataSource = oDataSource;
 
             foreach (DataColumn col in oDataSource.Columns)
-            {
+            {   
                 DataGridViewColumn oViewCol = dgvFieldsStruct.Columns[col.ColumnName];
                 oViewCol.HeaderText = col.Caption;
             }
@@ -201,7 +206,6 @@ namespace MapConfigure
             if (this._mapLayer.LayerType == MapObjects2.LayerTypeConstants.moMapLayer)
             {
                 //ProjectUtil.MapLayerInfoStruct oMapLayerStruct = this._layerStruct as ProjectUtil.MapLayerInfoStruct;
-
                 this.cbbSymbolStyle.Items.Clear();
                 this.ckbIsViewOutline.Visible = false;
                 this.grpSymbolOutlineProperties.Visible = false;
@@ -254,14 +258,13 @@ namespace MapConfigure
 
         private void InitLayerRenderTab()
         {
-            foreach (string sField in this._numFieldsList)
+            for (int i = 0; i < 20; i++) this.cbbNumber_ClassBreakRender.Items.Add(i);
+            foreach (string sField in this._numFieldsList) this.cbbFields_ClassBreakRender.Items.Add(sField);
+            foreach (string sField in this._fieldsList)
             {
-                this.cbbFields_ClassBreakRender.Items.Add(sField);
+                this.cbbLabelField.Items.Add(sField);
                 this.cbbFields_UniqueValue.Items.Add(sField);
             }
-
-            for (int i = 0; i < 20; i++) this.cbbNumber_ClassBreakRender.Items.Add(i);
-            foreach (string sField in this._fieldsList) this.cbbLabelField.Items.Add(sField);
 
             this.cbbLabelHorizonalAligment.Items.Add(MapObjects2.AlignmentConstants.moAlignBaseline);
            // this.cbbLabelHorizonalAligment.Items.Add(MapObjects2.AlignmentConstants.moAlignBottom);
@@ -327,27 +330,32 @@ namespace MapConfigure
         {
             if ((render).Count > 0)
             {
-                object oClassBreaksRender = this.GetRenderFromGroup(render, MapConfigure.ProjectUtil.RenderType.ClassBreakRender);
+                object oClassBreaksRender = this.GetRenderFromGroup(render, RenderType.ClassBreakRender);
                 if (oClassBreaksRender != null)
                 {
                     this.ckbIsAddClassBreakRender.Checked = true;
                     InitClassBreaksRenderLab(oClassBreaksRender as MapObjects2.ClassBreaksRenderer);
                 }
 
-                object oLabelRender = this.GetRenderFromGroup(render, MapConfigure.ProjectUtil.RenderType.LabelRender);
+                object oLabelRender = this.GetRenderFromGroup(render, RenderType.LabelRender);
                 if (oLabelRender != null)
                 {
                     this.ckbIsAddLabelRender.Checked = true;
                     InitLabelRenderLab(oLabelRender as MapObjects2.LabelRenderer);
                 }
 
-                object oValueRender = this.GetRenderFromGroup(render, MapConfigure.ProjectUtil.RenderType.ValueRender);
+                object oValueRender = this.GetRenderFromGroup(render, RenderType.ValueRender);
                 if (oValueRender != null)
                 {
                     this.ckbIsAddUniqueValueRender.Checked = true;
                     InitUniqueValueRenderLab(oValueRender as MapObjects2.ValueMapRenderer);
                 }
             }
+        }
+
+        private void ApplicationDecriptionToLayer()
+        {
+            this._mapLayer.Name = this.txtLayerAliasName.Text;
         }
 
         private void ApplicateSymbolSetToLayer()
@@ -398,8 +406,9 @@ namespace MapConfigure
         {
             MapUtil.LayerStyles oLayerStyles = new MapConfigure.MapUtil.LayerStyles();
 
-            this._mapLayer.Renderer = oLayerStyles.GetLabelRender(this.cbbLabelField.SelectedItem.ToString(), this.ckbAllowOverwrite.Checked,
-                this.ckbLabelScale.Checked, 0, 0, this.pnlLabelColor.BackColor, this.txtFont.Text, (double)this.numLabelRotation.Value,
+            this._mapLayer.Renderer = oLayerStyles.GetLabelRender
+                (this.cbbLabelField.SelectedItem.ToString(), this.ckbAllowOverwrite.Checked,this.ckbLabelScale.Checked,
+                0, 0, this.pnlLabelColor.BackColor, this.txtFont.Text,(double)this.numLabelSize.Value, (double)this.numLabelRotation.Value,
                 oLayerStyles.GetLabelAlignmentByName(this.cbbLabelHorizonalAligment.SelectedItem.ToString()),
                 oLayerStyles.GetLabelAlignmentByName(this.cbbLabelVerticalAligment.SelectedItem.ToString()));
 
@@ -427,7 +436,7 @@ namespace MapConfigure
             if (ckbIsAddLabelRender.Checked)
             {
                 object oLabelRender = oLayerStyles.GetLabelRender(this.cbbLabelField.SelectedItem.ToString(), this.ckbAllowOverwrite.Checked,
-                   this.ckbLabelScale.Checked, 0, 0, this.pnlLabelColor.BackColor, this.txtFont.Text, (double)this.numLabelRotation.Value,
+                   this.ckbLabelScale.Checked, 0, 0, this.pnlLabelColor.BackColor, this.txtFont.Text,(double)this.numLabelSize.Value, (double)this.numLabelRotation.Value,
                    oLayerStyles.GetLabelAlignmentByName(this.cbbLabelHorizonalAligment.SelectedItem.ToString()),
                    oLayerStyles.GetLabelAlignmentByName(this.cbbLabelVerticalAligment.SelectedItem.ToString()));
 
@@ -445,15 +454,15 @@ namespace MapConfigure
             }
         }
 
-        private object GetRenderFromGroup(MapObjects2.GroupRenderer groupRender, ProjectUtil.RenderType renderType)
+        private object GetRenderFromGroup(MapObjects2.GroupRenderer groupRender, RenderType renderType)
         {
             short iRendererCount = groupRender.Count;
 
             for (short i = 0; i < iRendererCount; i++)
             {
-                if ((groupRender.get_Renderer(i) is MapObjects2.ValueMapRenderer && renderType == MapConfigure.ProjectUtil.RenderType.ValueRender)
-                    || (groupRender.get_Renderer(i) is MapObjects2.ClassBreaksRenderer && renderType == MapConfigure.ProjectUtil.RenderType.ClassBreakRender)
-                    || (groupRender.get_Renderer(i) is MapObjects2.LabelRenderer && renderType == MapConfigure.ProjectUtil.RenderType.LabelRender)
+                if ((groupRender.get_Renderer(i) is MapObjects2.ValueMapRenderer && renderType == RenderType.ValueRender)
+                    || (groupRender.get_Renderer(i) is MapObjects2.ClassBreaksRenderer && renderType == RenderType.ClassBreakRender)
+                    || (groupRender.get_Renderer(i) is MapObjects2.LabelRenderer && renderType == RenderType.LabelRender)
                     )
                     return groupRender.get_Renderer(i);
             }
@@ -475,6 +484,22 @@ namespace MapConfigure
         }
 
         #endregion
+
+        private void ckbIsViewOutline_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.ckbIsViewOutline.Checked == true)
+            {
+                this.grpSymbolOutlineProperties.Visible = true;
+                this.numSymbolOutlineSize.Visible = true;
+                this.pnlSymbolOutlineColor.Visible = true;
+            }
+            else if (this.ckbIsViewOutline.Checked == false)
+            {
+                this.grpSymbolOutlineProperties.Visible = false;
+                this.numSymbolOutlineSize.Visible = false;
+                this.pnlSymbolOutlineColor.Visible = false;
+            }
+        }
 
        
         #region old coder

@@ -14,9 +14,11 @@ namespace MapConfigure
         #region fields
 
         private MapObjects2.Rectangle _mapFullExtent;
+        private double _mapScale = 0;
         private MapObjects2.Line _measureLine = new LineClass();
         private frmIdentify _frmIdentify = new frmIdentify();
         private static frmMap _instance;
+        
         #endregion
 
         #region constructor
@@ -24,8 +26,12 @@ namespace MapConfigure
         public frmMap()
         {
             InitializeComponent();
-
             this._frmIdentify.Hide();
+
+            this._mapFullExtent = mapControl.FullExtent;
+
+            GlobeVariables.MapControl = this.mapControl;
+            this.mapControl.FullRedrawOnPan = false;
         }
 
         #endregion
@@ -51,14 +57,6 @@ namespace MapConfigure
         #endregion
 
         #region events
-
-        private void frmMap_Load(object sender, EventArgs e)
-        {
-            this._mapFullExtent = mapControl.FullExtent;
-
-            GlobeVariables.MapControl = this.mapControl;
-            this.mapControl.FullRedrawOnPan = false;
-        }
 
         private void tlsZoomIn_Click(object sender, EventArgs e)
         {
@@ -118,13 +116,7 @@ namespace MapConfigure
             this.mapControl.MousePointer = MapObjects2.MousePointerConstants.moIdentify;
             GlobeVariables.CurrentOperation = MapUtil.MapOperationType.Identify;
         }
-
-        private void tlsClear_Click(object sender, EventArgs e)
-        {
-            this.mapControl.TrackingLayer.ClearEvents();
-            //GlobeVariables.CurrentOperation = MapUtil.MapOperationType.Clear;
-        }
-
+      
         private void mapControl_MouseDownEvent(object sender, AxMapObjects2._DMapEvents_MouseDownEvent e)
         {
             MapObjects2.Point oMousePosition = mapControl.ToMapPoint(e.x, e.y);
@@ -163,22 +155,11 @@ namespace MapConfigure
             this.labCoordinates.Text = string.Format("坐标 ： X = {0}, Y = {1}", oMousePosition.X.ToString(), oMousePosition.Y.ToString());
         }
 
-        private void mapControl_AfterTrackingLayerDraw(object sender, AxMapObjects2._DMapEvents_AfterTrackingLayerDrawEvent e)
-        {
-            //绘制导航地图中的视图范围框线
-            frmNavigation.Instance.DrawMainMapViewExtent(this.mapControl.Extent);
-
-            //更新比例尺
-            MapUtil.MapOperation oMapOper = new MapUtil.MapOperation();
-            this.lblScale.Text = string.Format("比例尺 ： 1 : {0}", Convert.ToInt32(oMapOper.ComputeMapScale(this.mapControl)).ToString());
-        }
-
         private void tlsLoadData_Click(object sender, EventArgs e)
         {
             OpenFileDialog oFileDialog = new OpenFileDialog();
             oFileDialog.Filter = "ESRI Shapefile(*.shp) | *.shp| All Support Format(*.*) | *.*";
             oFileDialog.Multiselect = true;
-            oFileDialog.InitialDirectory = @"D:\项目\SIOGR项目\GPSTracking\trunk\mapdata";
 
             if (oFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -187,8 +168,8 @@ namespace MapConfigure
 
                 oMapOper.LoadLayers(oLayerPaths,GlobeVariables.MapInfosCollection, mapControl);
                 //frmLegend.Instance.LoadLayersToLegend(this.mapControl);
-                frmLegend1.Instance.LoadLayer();
-                frmNavigation.Instance.LoadBackgroudlayer(GlobeVariables.MapInfosCollection.Layers);
+                frmLegend.Instance.LoadLayer();
+                frmNavigation.Instance.LoadBackgroudLayer(GlobeVariables.MapInfosCollection.Layers);
             }
         }
 
@@ -222,19 +203,73 @@ namespace MapConfigure
             //this.Owner = null;
         }
 
-        private void frmMap_FormClosing(object sender, FormClosingEventArgs e)
-        {
-           
-        }
-
         #endregion
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void mapControl_BeforeLayerDraw(object sender, AxMapObjects2._DMapEvents_BeforeLayerDrawEvent e)
+        {
+            if (e.index == this.mapControl.Layers.Count - 1)
+            {
+                //绘制导航地图中的视图范围框线
+                frmNavigation.Instance.DrawMainMapViewExtent(this.mapControl.Extent);
+
+                //更新比例尺
+                MapUtil.MapOperation oMapOper = new MapUtil.MapOperation();
+                this._mapScale = oMapOper.ComputeMapScale(this.mapControl);
+                this.lblScale.Text = string.Format("比例尺 ： 1 : {0}", this._mapScale.ToString());
+            }
+
+            object oLayer = this.mapControl.Layers.Item(e.index);
+            int iMinScale = 0;
+            int iMaxScale = 0;
+            string[] sScales = new string[2];
+
+            if (oLayer is MapObjects2.MapLayer)
+            {
+                sScales = (oLayer as MapLayer).Tag.Split('-');
+                iMinScale = int.Parse(sScales[0]);
+                iMaxScale = int.Parse(sScales[1]);
+
+                if (iMinScale == 0 && iMaxScale == 0) return;
+
+                if (this._mapScale >= iMinScale && this._mapScale <= iMaxScale)
+                {
+                    (oLayer as MapLayer).Visible = true;
+                }
+                else
+                {
+                    (oLayer as MapLayer).Visible = false;
+                }
+            }
+            else if (oLayer is MapObjects2.ImageLayer)
+            {
+                sScales = (oLayer as ImageLayer).Tag.Split('-');
+                iMinScale = int.Parse(sScales[0]);
+                iMaxScale = int.Parse(sScales[1]);
+
+                if (iMinScale == 0 && iMaxScale == 0) return;
+
+                if (this._mapScale >= iMinScale && this._mapScale <= iMaxScale)
+                {
+                    (oLayer as ImageLayer).Visible = true;
+                }
+                else
+                {
+                    (oLayer as ImageLayer).Visible = false;
+                }
+            }
+        }
+
+        private void tlsClearAllLayers_Click(object sender, EventArgs e)
         {
             this.mapControl.Layers.Clear();
             this.mapControl.Refresh();
+            GlobeVariables.MapLegend.LoadLegend();
         }
 
-        
+        private void mapControl_AfterTrackingLayerDraw(object sender, AxMapObjects2._DMapEvents_AfterTrackingLayerDrawEvent e)
+        {
+
+        }
+
     }
 }

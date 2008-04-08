@@ -10,220 +10,93 @@ namespace MapConfigure
 {
     public partial class frmLegend : WeifenLuo.WinFormsUI.Docking.DockContent
     {
+        private AxMapObjects2.AxMap _mapObject = null;
+        private object _selectedLayer = null;
         public frmLegend()
         {
             InitializeComponent();
 
-            this.pnlLegend.AutoScroll = true;
+            this._mapObject = GlobeVariables.MapControl;
+            object oMapControl = GlobeVariables.MapControl as object;
+            this.mapLegend.setMapSource(ref oMapControl);
+            GlobeVariables.MapLegend = this.mapLegend;
         }
 
-        private static frmLegend _instance;
+        private static frmLegend _instance = null;
         public static frmLegend Instance
         {
             get
             {
                 if (_instance == null)
                     _instance = new frmLegend();
-
                 return _instance;
             }
         }
 
-        private AxMapObjects2.AxMap _mapObject;
-        private string _selectedLayerName;
-        private ProjectUtil.ILayerStruct _selectedLayerInfos;
-        private CheckBox _selectedCheckBox;
-
-        public void LoadLayersToLegend(AxMapObjects2.AxMap mapObject)
+        public void LoadLayer()
         {
-             if (mapObject == null)
-                return;
+            this.mapLegend.LoadLegend();
 
-            this._mapObject = mapObject;
-
-            int iLayersCount = 0;
-            iLayersCount = mapObject.Layers.Count;
-            pnlLegend.Controls.Clear();
-
-            int iCtrlsCounter = 0;
-            for (int i = 0; i < iLayersCount; i++)
+            if (this._selectedLayer == null && this._mapObject.Layers.Count > 0)
             {
-                CheckBox oCkbLayer = new CheckBox();
-               object oLayer = mapObject.Layers.Item(i);
-                if(oLayer is MapObjects2.MapLayer)
-                {
-                    MapObjects2.MapLayer oMapLayer = oLayer as MapObjects2.MapLayer;
-                    oCkbLayer.Text = oMapLayer.Name;
-                    oCkbLayer.Checked = oMapLayer.Visible;
-
-                    if(oMapLayer.shapeType == MapObjects2.ShapeTypeConstants.moShapeTypePoint || oMapLayer.shapeType == MapObjects2.ShapeTypeConstants.moShapeTypeMultipoint)
-                        oCkbLayer.Image = Properties.Resources.pointShape;
-                    else if(oMapLayer.shapeType == MapObjects2.ShapeTypeConstants.moShapeTypeEllipse || oMapLayer.shapeType == MapObjects2.ShapeTypeConstants.moShapeTypeLine || oMapLayer.shapeType == MapObjects2.ShapeTypeConstants.moShapeTypeRectangle)
-                        oCkbLayer.Image = Properties.Resources.lineShape;
-                    else if (oMapLayer.shapeType == MapObjects2.ShapeTypeConstants.moShapeTypePolygon)
-                        oCkbLayer.Image = Properties.Resources.polygonShape; 
-                }
-                else if (oLayer is MapObjects2.ImageLayer)
-                {
-                    MapObjects2.ImageLayer oImageLayer = oLayer as MapObjects2.ImageLayer;
-
-                    oCkbLayer.Image = Properties.Resources.image;
-                    oCkbLayer.Text = oImageLayer.Name;
-                    oCkbLayer.Checked = oImageLayer.Visible;
-                }
-
-                oCkbLayer.Visible = true;
-                oCkbLayer.AutoSize = true;
-                oCkbLayer.FlatStyle = FlatStyle.Flat;
-                 oCkbLayer.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Left);
-                oCkbLayer.ImageAlign = ContentAlignment.MiddleLeft;
-                oCkbLayer.TextAlign = ContentAlignment.MiddleRight;
-                oCkbLayer.TextImageRelation = TextImageRelation.ImageBeforeText;
-                oCkbLayer.ContextMenuStrip = mnuLayerProperty;
-
-                oCkbLayer.CheckedChanged += new EventHandler(CkbLayer_CheckedChanged);
-                oCkbLayer.MouseDown += new MouseEventHandler(oCkbLayer_MouseDown);
-               
-                this.pnlLegend.Controls.Add(oCkbLayer);
-                oCkbLayer.Location = new System.Drawing.Point(30, iCtrlsCounter * (oCkbLayer.Height + 12) + 20);
-                iCtrlsCounter++;
+                short iLayerIndex = 0;
+                this._selectedLayer = this._mapObject.Layers.Item(iLayerIndex);
+                this.mapLegend.set_Active(ref iLayerIndex, true);
             }
-
-            this.pnlLegend.Refresh();
         }
 
-        private void oCkbLayer_MouseDown(object sender, MouseEventArgs e)
+        private void mapLegend_LayerDblClick(object sender, AxSampleLegendControl.__legend_LayerDblClickEvent e)
         {
-            if (e.Button == MouseButtons.Right)
+            this.mnuSetProperty_Click(sender, null);
+        }
+
+        private void mapLegend_MouseDownEvent(object sender, AxSampleLegendControl.__legend_MouseDownEvent e)
+        {
+            if (e.button == 2)
             {
-                (sender as CheckBox).Select();
-                this._selectedCheckBox = sender as CheckBox;
-                this._selectedLayerName = this._selectedCheckBox.Text;
+                this._selectedLayer = this._mapObject.Layers.Item(this.mapLegend.getActiveLayer());
+                this.mnuLayerProperty.Show(this.mapLegend, this.PointToClient(MousePosition));
+            }
                 
-                this.SetConextMenuState();
-                mnuLayerProperty.Show(sender as Control, e.Location);
-            }
-        }
-
-        private void SetConextMenuState()
-        {
-            if (string.IsNullOrEmpty(this._selectedLayerName))
-                return;
-
-            Utilities.LayerProperty oLayerProperty = new MapConfigure.Utilities.LayerProperty();
-            MapUtil.MapOperation oMapOper = new MapConfigure.MapUtil.MapOperation();
-            this._selectedLayerInfos = oLayerProperty.GetLayerInformationByName(this._selectedLayerName, GlobeVariables.MapInfosCollection.Layers);
-
-            if (this._selectedLayerInfos.LayerType == (short)MapObjects2.LayerTypeConstants.moImageLayer)
-            {
-                this.mnuIsLayerVisible.Checked = (oMapOper.GetLayerByName(GlobeVariables.MapControl,this._selectedLayerInfos.Name) as MapObjects2.ImageLayer).Visible;
-                this.mnuViewAttributes.Visible = false;
-            }
-            else if (this._selectedLayerInfos.LayerType == (short)MapObjects2.LayerTypeConstants.moMapLayer)
-            {
-                this.mnuIsLayerVisible.Checked = (oMapOper.GetLayerByName(GlobeVariables.MapControl, this._selectedLayerInfos.Name) as MapObjects2.MapLayer).Visible;
-                this.mnuViewAttributes.Visible = true;
-            }            
-        }
-
-        protected override void OnFormClosing(System.Windows.Forms.FormClosingEventArgs e)
-        {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                e.Cancel = true;
-                this.Hide();
-            }
-            base.OnFormClosing(e);
-        }
-
-        private void SetLayersVisibility(bool isVisible)
-        {
-             int iLayersCount = this.pnlLegend.Controls.Count;
-
-            for(int i =0;i< iLayersCount;i++)
-            {
-                object oLayer = this._mapObject.Layers.Item(i);
-
-                if(oLayer is MapObjects2.MapLayer)
-                {
-                    (oLayer as MapObjects2.MapLayer).Visible = isVisible;
-                }
-                else if (oLayer is MapObjects2.ImageLayer)
-                {
-                    (oLayer as MapObjects2.ImageLayer).Visible = isVisible;
-                }
-
-                (pnlLegend.Controls[i] as CheckBox).Checked = isVisible;
-            }
-
-            this._mapObject.Refresh();
-        }
-
-        private void CkbLayer_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this._mapObject == null)
-                return;
-
-            CheckBox oCkbLayer = (CheckBox)sender;
-            object oLayer = this._mapObject.Layers.Item(pnlLegend.Controls.IndexOf(oCkbLayer));
-
-            if(oLayer is MapObjects2.ImageLayer)
-                (oLayer as MapObjects2.ImageLayer).Visible = oCkbLayer.Checked;
-            else if (oLayer is MapObjects2.MapLayer)
-                (oLayer as MapObjects2.MapLayer).Visible = oCkbLayer.Checked;
-            
-            this._mapObject.RefreshRect(this._mapObject.Extent);
-        }
-
-        private void mnuAllLayerVisible_Click(object sender, EventArgs e)
-        {
-            this.SetLayersVisibility(true);
-        }
-
-        private void mnuAllLayersUnvisible_Click(object sender, EventArgs e)
-        {
-            this.SetLayersVisibility(false);
         }
 
         private void mnuViewAttributes_Click(object sender, EventArgs e)
         {
-            if (this._selectedLayerInfos == null || this._selectedLayerInfos.LayerType == (short)MapObjects2.LayerTypeConstants.moImageLayer)
+            if (this._selectedLayer == null || this._selectedLayer is MapObjects2.ImageLayer)
                 return;
 
             MapUtil.MapOperation oMapOper = new MapConfigure.MapUtil.MapOperation();
-            frmAttributesData oFrmAttributeData = new frmAttributesData(oMapOper.GetLayerByName(GlobeVariables.MapControl,this._selectedLayerInfos.Name) as MapObjects2.MapLayer);
+            frmAttributesData oFrmAttributeData = new frmAttributesData(this._selectedLayer as MapObjects2.MapLayer);
             oFrmAttributeData.ShowDialog();
         }
 
         private void mnuIsLayerVisible_Click(object sender, EventArgs e)
         {
-            if (this._selectedLayerInfos == null || this._selectedLayerInfos.LayerType == (short)MapObjects2.LayerTypeConstants.moImageLayer)
+            if (this._selectedLayer == null || this._selectedLayer is MapObjects2.ImageLayer)
                 return;
 
             mnuIsLayerVisible.Checked = !mnuIsLayerVisible.Checked;
             MapUtil.MapOperation oMapOper = new MapConfigure.MapUtil.MapOperation();
 
-            if (this._selectedLayerInfos.LayerType == (short)MapObjects2.LayerTypeConstants.moImageLayer)
-                (oMapOper.GetLayerByName(GlobeVariables.MapControl, this._selectedLayerInfos.Name) as MapObjects2.ImageLayer).Visible = mnuIsLayerVisible.Checked;
-            else if (this._selectedLayerInfos.LayerType == (short)MapObjects2.LayerTypeConstants.moMapLayer)
-                (oMapOper.GetLayerByName(GlobeVariables.MapControl, this._selectedLayerInfos.Name) as MapObjects2.MapLayer).Visible = mnuIsLayerVisible.Checked;
-
-            this._selectedCheckBox.Checked = mnuIsLayerVisible.Checked;
+            if (this._selectedLayer is MapObjects2.ImageLayer)
+                (this._selectedLayer as MapObjects2.ImageLayer).Visible = mnuIsLayerVisible.Checked;
+            else if (this._selectedLayer is MapObjects2.MapLayer)
+                (this._selectedLayer as MapObjects2.MapLayer).Visible = mnuIsLayerVisible.Checked;
 
             this._mapObject.Refresh();
         }
 
         private void mnuZoomToLayer_Click(object sender, EventArgs e)
         {
-            if (this._selectedLayerInfos == null || this._selectedLayerInfos.LayerType == (short)MapObjects2.LayerTypeConstants.moImageLayer)
+            if (this._selectedLayer == null)
                 return;
 
             MapUtil.MapOperation oMapOper = new MapConfigure.MapUtil.MapOperation();
 
-            if (this._selectedLayerInfos.LayerType == (short)MapObjects2.LayerTypeConstants.moImageLayer)
-                this._mapObject.Extent = (oMapOper.GetLayerByName(GlobeVariables.MapControl, this._selectedLayerInfos.Name) as MapObjects2.ImageLayer).Extent;
-            else if (this._selectedLayerInfos.LayerType == (short)MapObjects2.LayerTypeConstants.moMapLayer)
-                this._mapObject.Extent = (oMapOper.GetLayerByName(GlobeVariables.MapControl, this._selectedLayerInfos.Name) as MapObjects2.MapLayer).Extent;
+            if (this._selectedLayer is MapObjects2.ImageLayer)
+                this._mapObject.Extent = (this._selectedLayer as MapObjects2.ImageLayer).Extent;
+            else if (this._selectedLayer is MapObjects2.MapLayer)
+                this._mapObject.Extent = (this._selectedLayer as MapObjects2.MapLayer).Extent;
 
             this._mapObject.Refresh();
         }
@@ -231,16 +104,75 @@ namespace MapConfigure
         private void mnuSetProperty_Click(object sender, EventArgs e)
         {
             MapUtil.MapOperation oMapOper = new MapConfigure.MapUtil.MapOperation();
-            object oLayer = oMapOper.GetLayerByName(GlobeVariables.MapControl,this._selectedLayerInfos.Name);
-            frmLayerProperties oFrmLayerProperties = new frmLayerProperties(this._mapObject,oLayer);
+            object oLayer = this._mapObject.Layers.Item(this.mapLegend.getActiveLayer());
+            frmLayerProperties oFrmLayerProperties = new frmLayerProperties(this._mapObject, oLayer);
 
-            oFrmLayerProperties.ShowDialog();
+            if (oFrmLayerProperties.ShowDialog() == DialogResult.OK)
+                this.mapLegend.LoadLegend();
         }
 
-        private void frmLegend_Load(object sender, EventArgs e)
+        private void SetConextMenuState()
         {
-
+            if (this._selectedLayer is MapObjects2.ImageLayer)
+            {
+                this.mnuIsLayerVisible.Checked = (this._selectedLayer as MapObjects2.ImageLayer).Visible;
+                this.mnuViewAttributes.Visible = false;
+            }
+            else if (this._selectedLayer is MapObjects2.MapLayer)
+            {
+                this.mnuIsLayerVisible.Checked = (this._selectedLayer as MapObjects2.MapLayer).Visible;
+                this.mnuViewAttributes.Visible = true;
+            }
         }
-            
+
+        private void SetLayersVisibility(bool isVisible)
+        {
+            short iLayersCount = this._mapObject.Layers.Count;
+
+            for (short i = 0; i < iLayersCount; i++)
+            {
+                this.mapLegend.set_LayerVisible(ref i, isVisible);
+            }
+
+            this._mapObject.Refresh();
+        }
+
+        private void frmLegend_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //if (e.CloseReason == CloseReason.UserClosing)
+            //{
+            //    e.Cancel = true;
+            //    this.Hide();
+            //}
+            //base.OnFormClosing(e);
+        }
+
+        private void tlsSetAllLayersVisible_Click(object sender, EventArgs e)
+        {
+            this.SetLayersVisibility(true);
+        }
+
+        private void tlsSetAllLayerHidden_Click(object sender, EventArgs e)
+        {
+            this.SetLayersVisibility(false);
+        }
+
+        private void mapLegend_AfterReorder(object sender, EventArgs e)
+        {
+            //this.mapLegend.ShowAllLegend();
+        }
+
+        private void mapLegend_AfterSetLayerVisible(object sender, AxSampleLegendControl.__legend_AfterSetLayerVisibleEvent e)
+        {
+            this._mapObject.RefreshLayer(e.index);
+        }
+
+        private void mnuDeleteLayer_Click(object sender, EventArgs e)
+        {
+            MapUtil.MapOperation oMapOper = new MapConfigure.MapUtil.MapOperation();
+
+            oMapOper.DeleteLayer(this._selectedLayer, this._mapObject);
+            this.mapLegend.LoadLegend();
+        }
     }
 }

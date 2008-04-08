@@ -2,19 +2,20 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
+using MapProject;
 
 namespace MapConfigure.Utilities
 {
     class LayerProperty
     {
-        public ProjectUtil.ILayerStruct GetLayerInformationByName(string layerName, List<ProjectUtil.ILayerStruct> layerInfosCollection)
+        public ILayerStruct GetLayerInformationByName(string layerName, List<ILayerStruct> layerInfosCollection)
         {
             if (string.IsNullOrEmpty(layerName) || layerInfosCollection == null)
                 return null;
 
-            foreach (ProjectUtil.ILayerStruct item in layerInfosCollection)
+            foreach (ILayerStruct item in layerInfosCollection)
             {
-                if (item.Name == layerName)
+                if (item.DataSetName == layerName)
                     return item;
             }
 
