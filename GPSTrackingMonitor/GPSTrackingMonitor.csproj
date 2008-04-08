@@ -302,6 +302,7 @@
     <Compile Include="Utilities\CarSearchType.cs" />
     <Compile Include="Utilities\DataFilter.cs" />
     <Compile Include="Utilities\CustomFormatProvider.cs" />
+    <Compile Include="Utilities\GDIPlus.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="readme.txt" />
@@ -360,6 +361,10 @@
     <ProjectReference Include="..\CommunicationMessage\CommnicationMessage.csproj">
       <Project>{39DFF12D-2100-4D2F-907A-F30C0E93A9B2}</Project>
       <Name>CommnicationMessage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MapProject\MapProject.csproj">
+      <Project>{6236E35A-4A3B-4B02-93CC-999FA1123957}</Project>
+      <Name>MapProject</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

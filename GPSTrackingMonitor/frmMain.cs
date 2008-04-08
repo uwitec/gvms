@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using MapProject;
 
 namespace GPSTrackingMonitor
 {
@@ -150,6 +151,24 @@ namespace GPSTrackingMonitor
         private void mnuAbout_Click(object sender, EventArgs e)
         {
            
+        }
+
+        private void mnuOpenProject_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog oOpenFileDialog = new OpenFileDialog();
+
+            oOpenFileDialog.Filter = "GVMS Project File(*.gvp) | *.gvp";
+            if (oOpenFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                ProjectSerialization oProjectSerilization = new ProjectSerialization();
+
+                GlobeVariables.MapControl.Layers.Clear();
+                GlobeVariables.MapInfosCollection = oProjectSerilization.LoadProjectByMapInfos(oOpenFileDialog.FileName, GlobeVariables.MapControl);
+
+                GlobeVariables.MapControl.RefreshRect(GlobeVariables.MapControl.Extent);
+                frmLegend.Instance.LoadLayersToLegend(GlobeVariables.MapControl);
+               
+            }
         }
     }
 }

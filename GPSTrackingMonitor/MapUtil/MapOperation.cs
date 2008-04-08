@@ -29,7 +29,7 @@ namespace GPSTrackingMonitor.MapUtil
                     MapLayer oMapLayer = oMapManager.GetSingleVectorLayer(sLayerPath);
                     mapControl.Layers.Add(oMapLayer);
 
-                    oLayerfosCollection.Add(new LayerInformations(oMapLayer, oMapLayer.Name, oLayerType, oMapLayer.shapeType));
+                    oLayerfosCollection.Add(new LayerInformations(oMapLayer, oMapLayer.GeoDataset.Name, oLayerType, oMapLayer.shapeType));
                 }
                 else if (oLayerType == LayerTypeConstants.moImageLayer)
                 {

@@ -81,13 +81,14 @@
             // mnuOpenProject
             // 
             this.mnuOpenProject.Name = "mnuOpenProject";
-            this.mnuOpenProject.Size = new System.Drawing.Size(131, 22);
+            this.mnuOpenProject.Size = new System.Drawing.Size(152, 22);
             this.mnuOpenProject.Text = "打开工程...";
+            this.mnuOpenProject.Click += new System.EventHandler(this.mnuOpenProject_Click);
             // 
             // mnuExitSystem
             // 
             this.mnuExitSystem.Name = "mnuExitSystem";
-            this.mnuExitSystem.Size = new System.Drawing.Size(131, 22);
+            this.mnuExitSystem.Size = new System.Drawing.Size(152, 22);
             this.mnuExitSystem.Text = "退出系统";
             this.mnuExitSystem.Click += new System.EventHandler(this.mnuExitSystem_Click);
             // 
