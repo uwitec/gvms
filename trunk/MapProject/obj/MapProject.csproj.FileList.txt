@@ -1,0 +1,9 @@
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Interop.MapObjects2.dll
+obj\Debug\MapProject.csproj.ResolveComReference.cache
+bin\Debug\MapProject.dll
+bin\Debug\MapProject.pdb
+bin\Debug\AxInterop.MapObjects2.dll
+bin\Debug\Interop.MapObjects2.dll
+obj\Debug\MapProject.dll
+obj\Debug\MapProject.pdb
