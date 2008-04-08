@@ -40,7 +40,7 @@ namespace GPSTrackingMonitor.CustomControl
         {
             this.DrawSelectionRetangle(e.Location);
             this._selectedSymbolIndex = (e.X / this._fontSize) + (e.Y / this._fontSize) * 16;
-            this.OnSymbolSelected(sender, new SymbolSelectedEventArgs(this.GetSymbolOutlineByIndex(this._selectedSymbolIndex), this._selectedSymbolIndex));
+            this.OnSymbolSelected(sender, new SymbolSelectedEventArgs(this.GetSymbolOutlineByIndex(this._selectedSymbolIndex), this._selectedSymbolIndex,this._curFont));
         }
 
         public delegate void SymbolSelectedEventHandler(object sender, SymbolSelectedEventArgs e);
@@ -143,7 +143,6 @@ namespace GPSTrackingMonitor.CustomControl
             this.DrawGridLines(ref this._graphics);
             this.DrawCharactorsOutLines(ref this._graphics);
 
-         
             this._graphics.Dispose();
         }
 
@@ -157,6 +156,7 @@ namespace GPSTrackingMonitor.CustomControl
 
         private System.Drawing.Drawing2D.GraphicsPath _symbolOutline;
         private int _symbolIndex;
+        private Font _currentFont;
 
         #endregion
 
@@ -166,10 +166,11 @@ namespace GPSTrackingMonitor.CustomControl
         {
         }
 
-        public SymbolSelectedEventArgs(System.Drawing.Drawing2D.GraphicsPath symbolOutline,int symbolIndex)
+        public SymbolSelectedEventArgs(System.Drawing.Drawing2D.GraphicsPath symbolOutline,int symbolIndex,Font currentFont)
         {
             this._symbolIndex = symbolIndex;
             this._symbolOutline = symbolOutline;
+            this._currentFont = currentFont;
         }
 
         #endregion
@@ -186,6 +187,12 @@ namespace GPSTrackingMonitor.CustomControl
         {
             get { return this._symbolIndex; }
             internal set { this._symbolIndex = value; }
+        }
+
+        public Font CurrentFont
+        {
+            get { return this._currentFont; }
+            set { this._currentFont = value; }
         }
 
         #endregion

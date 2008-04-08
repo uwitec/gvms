@@ -41,6 +41,8 @@ namespace GPSTrackingMonitor
         public static GPSTrackingMonitor.Communications.MessagePool MessagesCache = new GPSTrackingMonitor.Communications.MessagePool();
 
         public static int IntervalUpdate = 5000;//µ•Œª£∫∫¡√Î
+
+        public static MapProject.MapStruct MapInfosCollection = new MapProject.MapStruct();
         
     }
 }

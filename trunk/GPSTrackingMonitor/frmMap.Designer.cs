@@ -312,9 +312,9 @@
             this.mapControl.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("mapControl.OcxState")));
             this.mapControl.Size = new System.Drawing.Size(797, 473);
             this.mapControl.TabIndex = 7;
-            this.mapControl.BeforeTrackingLayerDraw += new AxMapObjects2._DMapEvents_BeforeTrackingLayerDrawEventHandler(this.mapControl_BeforeTrackingLayerDraw);
             this.mapControl.MouseDownEvent += new AxMapObjects2._DMapEvents_MouseDownEventHandler(this.mapControl_MouseDownEvent);
             this.mapControl.MouseMoveEvent += new AxMapObjects2._DMapEvents_MouseMoveEventHandler(this.mapControl_MouseMoveEvent);
+            this.mapControl.BeforeLayerDraw += new AxMapObjects2._DMapEvents_BeforeLayerDrawEventHandler(this.mapControl_BeforeLayerDraw);
             this.mapControl.AfterTrackingLayerDraw += new AxMapObjects2._DMapEvents_AfterTrackingLayerDrawEventHandler(this.mapControl_AfterTrackingLayerDraw);
             // 
             // frmMap

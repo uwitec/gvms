@@ -15,10 +15,12 @@ namespace GPSTrackingMonitor
 
         private MapObjects2.Rectangle _mapFullExtent;
         private MapObjects2.Line _measureLine = new LineClass();
+        private double _mapScale = 0;
         private frmIdentify _frmIdentify = new frmIdentify();
         private RealtimeMonite.GeoeventUpdate _geoeventUpdate;
         private GPSTrackingMonitor.Communications.MessagePool _currentMessageCollection;
         private static frmMap _instance;
+        
         #endregion
 
         #region constructor
@@ -244,9 +246,60 @@ namespace GPSTrackingMonitor
 
         #endregion
 
-        private void mapControl_BeforeTrackingLayerDraw(object sender, AxMapObjects2._DMapEvents_BeforeTrackingLayerDrawEvent e)
+       
+
+        private void mapControl_BeforeLayerDraw(object sender, AxMapObjects2._DMapEvents_BeforeLayerDrawEvent e)
         {
-            
+            if (e.index == this.mapControl.Layers.Count - 1)
+            {
+                //绘制导航地图中的视图范围框线
+                frmNavigation.Instance.DrawMainMapViewExtent(this.mapControl.Extent);
+
+                //更新比例尺
+                MapUtil.MapOperation oMapOper = new MapUtil.MapOperation();
+                this._mapScale = oMapOper.ComputeMapScale(this.mapControl);
+                this.lblScale.Text = string.Format("比例尺 ： 1 : {0}", this._mapScale.ToString());
+            }
+
+            object oLayer = this.mapControl.Layers.Item(e.index);
+            int iMinScale = 0;
+            int iMaxScale = 0;
+            string[] sScales = new string[2];
+
+            if (oLayer is MapObjects2.MapLayer)
+            {
+                sScales = (oLayer as MapLayer).Tag.Split('-');
+                iMinScale = int.Parse(sScales[0]);
+                iMaxScale = int.Parse(sScales[1]);
+
+                if (iMinScale == 0 && iMaxScale == 0) return;
+
+                if (this._mapScale >= iMinScale && this._mapScale <= iMaxScale)
+                {
+                    (oLayer as MapLayer).Visible = true;
+                }
+                else
+                {
+                    (oLayer as MapLayer).Visible = false;
+                }
+            }
+            else if (oLayer is MapObjects2.ImageLayer)
+            {
+                sScales = (oLayer as ImageLayer).Tag.Split('-');
+                iMinScale = int.Parse(sScales[0]);
+                iMaxScale = int.Parse(sScales[1]);
+
+                if (iMinScale == 0 && iMaxScale == 0) return;
+
+                if (this._mapScale >= iMinScale && this._mapScale <= iMaxScale)
+                {
+                    (oLayer as ImageLayer).Visible = true;
+                }
+                else
+                {
+                    (oLayer as ImageLayer).Visible = false;
+                }
+            }
         }
     }
 }
