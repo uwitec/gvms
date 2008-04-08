@@ -5,12 +5,13 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using MapProject;
 
 namespace MapConfigure.CustomControl
 {
     public partial class StyleListControl : DataGridView
     {
-        private ProjectUtil.MapLayerInfoStruct _layerStruct = null;
+        private MapLayerInfoStruct _layerStruct = null;
         private DataTable _dataSource = null;
 
         public StyleListControl()
@@ -18,7 +19,7 @@ namespace MapConfigure.CustomControl
             InitializeComponent();
         }
 
-        public StyleListControl(ProjectUtil.MapLayerInfoStruct layerInfos)
+        public StyleListControl(MapLayerInfoStruct layerInfos)
         {
             InitializeComponent();
 
@@ -34,7 +35,7 @@ namespace MapConfigure.CustomControl
             base.OnPaint(pe);
         }
 
-        public ProjectUtil.MapLayerInfoStruct LayerInfos
+        public MapLayerInfoStruct LayerInfos
         {
             get { return this._layerStruct; }
             set { this._layerStruct = value; }
@@ -64,14 +65,14 @@ namespace MapConfigure.CustomControl
                 }
             }
 
-            List<ProjectUtil.SymbolStruct> oSymbolList = null;
-            if (this._layerStruct.Render.LayerRenderType == MapConfigure.ProjectUtil.RenderType.ClassBreakRender)
-                oSymbolList = (this._layerStruct.Render as ProjectUtil.ClassBreakRenderStruct).SymbolList;
-            else if (this._layerStruct.Render.LayerRenderType == MapConfigure.ProjectUtil.RenderType.ValueRender)
-                oSymbolList = (this._layerStruct.Render as ProjectUtil.ValueRenderStruct).SymbolList;
+            List<SymbolStruct> oSymbolList = null;
+            if (this._layerStruct.Render.LayerRenderType == RenderType.ClassBreakRender)
+                oSymbolList = (this._layerStruct.Render as ClassBreakRenderStruct).SymbolList;
+            else if (this._layerStruct.Render.LayerRenderType == RenderType.ValueRender)
+                oSymbolList = (this._layerStruct.Render as ValueRenderStruct).SymbolList;
 
             
-            foreach (ProjectUtil.SymbolStruct oSymbol in oSymbolList)
+            foreach (SymbolStruct oSymbol in oSymbolList)
             {
                 DataRow drNew = this._dataSource.NewRow();
 

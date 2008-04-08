@@ -48,6 +48,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(338, 271);
             this.Controls.Add(this.mapControl);
+            this.HideOnClose = true;
             this.Name = "frmNavigation";
             this.TabText = "地图导航";
             this.Text = "地图导航";

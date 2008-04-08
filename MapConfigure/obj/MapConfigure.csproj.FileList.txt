@@ -1,5 +1,4 @@
 obj\Debug\ResolveAssemblyReference.cache
-obj\Debug\MapConfigure.frmLegend.resources
 obj\Debug\MapConfigure.frmMain.resources
 obj\Debug\MapConfigure.frmMap.resources
 obj\Debug\MapConfigure.Properties.Resources.resources
@@ -34,3 +33,16 @@ obj\Debug\MapConfigure.frmNavigation.resources
 bin\Debug\IrisSkin2.dll
 obj\Debug\MapConfigure.frmAttributesData.resources
 obj\Debug\MapConfigure.frmLayerProperties.resources
+obj\Debug\MapConfigure.frmTruetypeSymbolSelection.resources
+bin\Debug\SymbolSelector_Com.dll
+bin\Debug\SymbolSelector_Com.pdb
+bin\Debug\Interop.SampleLegendControl.dll
+bin\Debug\AxInterop.SampleLegendControl.dll
+obj\Debug\Interop.SampleLegendControl.dll
+obj\Debug\AxInterop.SampleLegendControl.dll
+obj\Debug\MapConfigure.frmLegend.resources
+obj\Debug\MapConfigure.frmLegendbk.resources
+obj\Debug\MapConfigure.frmAboutUS.resources
+obj\Debug\MapConfigure.frmLicense.resources
+bin\Debug\MapProject.dll
+bin\Debug\MapProject.pdb

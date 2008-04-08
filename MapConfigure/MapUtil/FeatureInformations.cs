@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using MapProject;
 
 namespace MapConfigure.MapUtil
 {
@@ -9,7 +10,7 @@ namespace MapConfigure.MapUtil
         #region fields
 
         private Dictionary<string, string> _fieldsAndValuesCollection;
-        private ProjectUtil.ILayerStruct _layerInfos;
+        private ILayerStruct _layerInfos;
         private object _geometry;
         
         #endregion
@@ -28,7 +29,7 @@ namespace MapConfigure.MapUtil
             set { this._geometry = value; }
         }
 
-        public ProjectUtil.ILayerStruct CurrentLayerInfos
+        public ILayerStruct CurrentLayerInfos
         {
             get { return this._layerInfos; }
             set { this._layerInfos = value; }

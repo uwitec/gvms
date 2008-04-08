@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using MapProject;
 
 namespace MapConfigure
 {
@@ -12,7 +13,8 @@ namespace MapConfigure
 
         public static AxMapObjects2.AxMap MapControl = null;
 
-        public static ProjectUtil.MapStruct MapInfosCollection = new MapConfigure.ProjectUtil.MapStruct();
+        public static AxSampleLegendControl.Axlegend MapLegend = null;
 
+        public static MapStruct MapInfosCollection = new MapStruct();
     }
 }

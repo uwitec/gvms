@@ -76,7 +76,7 @@ namespace MapConfigure.MapUtil
 
 
         public MapObjects2.LabelRenderer GetLabelRender(string labelFieldName,bool allowDuplicates, bool flip,
-            double minLevel, double maxLevel, System.Drawing.Color labelColor, string labelFontName, double rotation,
+            double minLevel, double maxLevel, System.Drawing.Color labelColor, string labelFontName,double labelSize, double rotation,
             MapObjects2.AlignmentConstants horizontalAlignment, MapObjects2.AlignmentConstants verticalAlignment)
         {
             MapObjects2.LabelRenderer oLabelRender = new MapObjects2.LabelRendererClass();
@@ -89,6 +89,7 @@ namespace MapConfigure.MapUtil
             oLabelRender.SymbolCount = 1;
             oLabelRender.get_Symbol(0).Color = (uint)Utilities.Converter.ConvertSystemtoIntegerColor(labelColor);
             oLabelRender.get_Symbol(0).Font.Name = labelFontName;
+            oLabelRender.get_Symbol(0).Font.Size = (decimal)labelSize;
             oLabelRender.get_Symbol(0).HorizontalAlignment = horizontalAlignment;
             oLabelRender.get_Symbol(0).VerticalAlignment = verticalAlignment;
             oLabelRender.get_Symbol(0).Rotation = rotation;

@@ -60,6 +60,20 @@ namespace MapConfigure.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap _123 {
+            get {
+                object obj = ResourceManager.GetObject("123", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _234 {
+            get {
+                object obj = ResourceManager.GetObject("234", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap ArcView_switch_selection {
             get {
                 object obj = ResourceManager.GetObject("ArcView_switch_selection", resourceCulture);
@@ -126,6 +140,13 @@ namespace MapConfigure.Properties {
         internal static System.Drawing.Bitmap layergroup {
             get {
                 object obj = ResourceManager.GetObject("layergroup", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap layers_3 {
+            get {
+                object obj = ResourceManager.GetObject("layers_3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
