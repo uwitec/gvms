@@ -13,6 +13,9 @@ namespace GPSTrackingMonitor.Utilities
         {
             GraphicsPath oPath = new GraphicsPath();
             string sSymbol = new String((char)symbolIndex,1);
+
+            symbolSize = symbolSize < 1 ? 1 : symbolSize;
+
             oPath.AddString(sSymbol, symbolFont.FontFamily, (int)FontStyle.Regular, symbolSize, new PointF(0f, 0f), StringFormat.GenericDefault);
 
             Image oImage = new Bitmap(canvalControl.Width, canvalControl.Height);
@@ -23,6 +26,7 @@ namespace GPSTrackingMonitor.Utilities
             g.FillPath(new SolidBrush(symbolColor), oPath);
 
             canvalControl.BackgroundImage = oImage;
+            canvalControl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
         }
     }
 }

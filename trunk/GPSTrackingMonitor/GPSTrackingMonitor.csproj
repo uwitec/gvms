@@ -74,9 +74,12 @@
     <Compile Include="Communications\MessageArguments.cs" />
     <Compile Include="Communications\MessagePool.cs" />
     <Compile Include="Communications\SocketClient.cs" />
-    <Compile Include="Configures\CommunicationConfigureInfos.cs" />
-    <Compile Include="Configures\ConfigureInfos.cs" />
-    <Compile Include="Configures\ConfigureOperation.cs" />
+    <Compile Include="Configures\CarSymbolConfigureStrcut.cs" />
+    <Compile Include="Configures\CommunicationConfigureStruct.cs" />
+    <Compile Include="Configures\ConfigureInfosStrcut.cs" />
+    <Compile Include="Configures\DatabaseTypeEnum.cs" />
+    <Compile Include="Configures\SystemConfigureStrcut.cs" />
+    <Compile Include="Configures\TrackingReplayConfigureStruct.cs" />
     <Compile Include="CustomControl\LegendControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -89,11 +92,11 @@
     <Compile Include="CustomControl\SymbolSelector.Designer.cs">
       <DependentUpon>SymbolSelector.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAbout.cs">
+    <Compile Include="frmAboutUS.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAbout.Designer.cs">
-      <DependentUpon>frmAbout.cs</DependentUpon>
+    <Compile Include="frmAboutUS.Designer.cs">
+      <DependentUpon>frmAboutUS.cs</DependentUpon>
     </Compile>
     <Compile Include="frmAdvanceFilter.cs">
       <SubType>Form</SubType>
@@ -106,6 +109,12 @@
     </Compile>
     <Compile Include="frmCarDetailInfos.Designer.cs">
       <DependentUpon>frmCarDetailInfos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLicense.Designer.cs">
+      <DependentUpon>frmLicense.cs</DependentUpon>
     </Compile>
     <Compile Include="frmRealtimeCarInfos.cs">
       <SubType>Form</SubType>
@@ -167,6 +176,12 @@
     <Compile Include="frmReport.Designer.cs">
       <DependentUpon>frmReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSenderExceptionInfos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSenderExceptionInfos.Designer.cs">
+      <DependentUpon>frmSenderExceptionInfos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmShortestPath.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,9 +227,9 @@
       <DependentUpon>SymbolSelector.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAbout.resx">
+    <EmbeddedResource Include="frmAboutUS.resx">
+      <DependentUpon>frmAboutUS.cs</DependentUpon>
       <SubType>Designer</SubType>
-      <DependentUpon>frmAbout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAdvanceFilter.resx">
       <SubType>Designer</SubType>
@@ -240,6 +255,10 @@
       <SubType>Designer</SubType>
       <DependentUpon>frmLegend.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLicense.resx">
+      <DependentUpon>frmLicense.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -255,6 +274,10 @@
     <EmbeddedResource Include="frmRealtimeCarInfos.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmRealtimeCarInfos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSenderExceptionInfos.resx">
+      <DependentUpon>frmSenderExceptionInfos.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmStartup.resx">
       <SubType>Designer</SubType>
@@ -306,7 +329,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="readme.txt" />
+    <None Include="Resources\123.bmp" />
+    <None Include="Resources\folder_closed.bmp" />
+    <None Include="Resources\bex.bmp" />
+    <None Include="Resources\information.bmp" />
+    <None Include="Resources\flowchart_2.bmp" />
+    <None Include="Resources\application_Arcplot.bmp" />
+    <None Include="Resources\234.bmp" />
     <Content Include="Resources\layergroup.ico" />
+    <None Include="Resources\wrench.bmp" />
     <None Include="app.config" />
     <None Include="Resources\Export.bmp" />
     <None Include="Resources\Image1.bmp" />

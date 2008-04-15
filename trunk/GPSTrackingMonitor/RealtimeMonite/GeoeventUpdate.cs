@@ -120,7 +120,7 @@ namespace GPSTrackingMonitor.RealtimeMonite
             this._carSymbolIndex = this._trackingLayer.SymbolCount - 1;
 
             this._trackingLayer.get_Symbol(this._carSymbolIndex).CenterOnAscent = true;
-            RealtimeMonite.CustomSymbol oCustomSymbol =  new RealtimeMonite.CustomSymbol("ESRI Transportation & Civic","Arial", 35,9,106,carNumber);
+            RealtimeMonite.CustomSymbol oCustomSymbol =  new RealtimeMonite.CustomSymbol("ESRI Transportation & Civic","Arial",35,9,106,carNumber);
             oCustomSymbol.SymbolColor = System.Drawing.Color.Red;
 
             this._trackingLayer.get_Symbol(this._carSymbolIndex).Custom = oCustomSymbol;

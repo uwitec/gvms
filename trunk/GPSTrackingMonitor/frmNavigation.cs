@@ -47,15 +47,30 @@ namespace GPSTrackingMonitor
 
         #region public methods
 
-        public void LoadBackgroudlayer(List<MapUtil.LayerInformations> layerInfosCollection)
+        public void LoadLayersToNavigation(AxMapObjects2.AxMap mapControl)
         {
-            foreach (MapUtil.LayerInformations layerInfos in layerInfosCollection)
+            if (mapControl == null || mapControl.Layers.Count == 0) return;
+
+            object oLayer = null;
+            object oBackLayer = null;
+
+            short iLayersCount = mapControl.Layers.Count;
+
+            for (short i = 0; i < iLayersCount; i++)
             {
-                if (layerInfos.MoLayerType == MapObjects2.LayerTypeConstants.moMapLayer && layerInfos.MoShapeType == MapObjects2.ShapeTypeConstants.moShapeTypePolygon)
-                {
-                    this.mapControl.Layers.Add(layerInfos.MoLayer);
-                }
+                oLayer = mapControl.Layers.Item(i);
+
+                if (oLayer is MapObjects2.MapLayer &&  (oLayer as MapObjects2.MapLayer).shapeType == MapObjects2.ShapeTypeConstants.moShapeTypePolygon)
+                    oBackLayer = oLayer;
             }
+
+            
+            if (oBackLayer == null && iLayersCount > 0)
+                oBackLayer = mapControl.Layers.Item(iLayersCount - 1);
+
+            this.mapControl.Layers.Clear();
+            this.mapControl.Layers.Add(oBackLayer);
+            this.mapControl.Refresh();
         }
 
         public void DrawMainMapViewExtent(MapObjects2.Rectangle viewExtent)

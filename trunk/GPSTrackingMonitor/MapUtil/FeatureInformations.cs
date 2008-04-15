@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using MapProject;
 
 namespace GPSTrackingMonitor.MapUtil
 {
@@ -9,7 +10,7 @@ namespace GPSTrackingMonitor.MapUtil
         #region fields
 
         private Dictionary<string, string> _fieldsAndValuesCollection;
-        private LayerInformations _layerInfos;
+        private ILayerStruct _layerInfos;
         private object _geometry;
 
         #endregion
@@ -28,7 +29,7 @@ namespace GPSTrackingMonitor.MapUtil
             set { this._geometry = value; }
         }
 
-        public LayerInformations CurrentLayerInfos
+        public ILayerStruct CurrentLayerInfos
         {
             get { return this._layerInfos; }
             set { this._layerInfos = value; }

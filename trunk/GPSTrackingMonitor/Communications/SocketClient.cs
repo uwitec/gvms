@@ -86,7 +86,7 @@ namespace GPSTrackingMonitor.Communications
                 if (this._timer == null || this._timer.Enabled == false)
                 {
                     this._timer = new System.Windows.Forms.Timer();
-                    this._timer.Interval = GlobeVariables.IntervalUpdate;
+                    this._timer.Interval = GlobeVariables.ConfigureInfos.SystemConfigureInfos.IntervalCarUpdate;
                     this._timer.Tick += new EventHandler(_timer_Tick);
 
                     this._timer.Start();
