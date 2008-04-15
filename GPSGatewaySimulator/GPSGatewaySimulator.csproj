@@ -48,6 +48,18 @@
     <Compile Include="Communications\SocketClient.cs" />
     <Compile Include="Communications\MessageArguments.cs" />
     <Compile Include="Communications\SocketServer.cs" />
+    <Compile Include="frmAboutUS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAboutUS.Designer.cs">
+      <DependentUpon>frmAboutUS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLicense.Designer.cs">
+      <DependentUpon>frmLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLoadRandomLocation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +71,12 @@
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSenderExceptionInfos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSenderExceptionInfos.Designer.cs">
+      <DependentUpon>frmSenderExceptionInfos.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSendMessage.cs">
       <SubType>Form</SubType>
@@ -82,6 +100,14 @@
     <Compile Include="GlobeVariables.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAboutUS.resx">
+      <DependentUpon>frmAboutUS.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLicense.resx">
+      <DependentUpon>frmLicense.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLoadRandomLocation.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmLoadRandomLocation.cs</DependentUpon>
@@ -89,6 +115,10 @@
     <EmbeddedResource Include="frmMain.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSenderExceptionInfos.resx">
+      <DependentUpon>frmSenderExceptionInfos.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSendMessage.resx">
       <DependentUpon>frmSendMessage.cs</DependentUpon>
@@ -122,6 +152,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="readme.txt" />
+    <None Include="Resources\234.bmp" />
+    <None Include="Resources\information.bmp" />
+    <None Include="Resources\flag_white.bmp" />
+    <None Include="Resources\stop.bmp" />
+    <None Include="Resources\flag_yellow.bmp" />
+    <None Include="Resources\database_with_x.bmp" />
+    <None Include="Resources\database_small_with_sparkle.bmp" />
+    <None Include="Resources\database_small_with_arrow.bmp" />
+    <None Include="Resources\x.bmp" />
+    <None Include="Resources\123.bmp" />
     <None Include="Resources\blue_velvet_001[1].png" />
     <None Include="Resources\2007718101835228[1].gif" />
   </ItemGroup>

@@ -213,5 +213,17 @@ namespace GPSGatewaySimulator
             this.WindowState = FormWindowState.Normal;
             this.Activate();
         }
+
+        private void mnuSoftLicense_Click(object sender, EventArgs e)
+        {
+            frmLicense oFrmLicense = new frmLicense();
+            oFrmLicense.ShowDialog();
+        }
+
+        private void mnuAboutUS_Click(object sender, EventArgs e)
+        {
+            frmAboutUS oFrmAboutUS = new frmAboutUS();
+            oFrmAboutUS.ShowDialog();
+        }
     }
 }
