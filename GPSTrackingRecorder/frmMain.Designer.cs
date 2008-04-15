@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.dgvRealtimeDataView = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -36,13 +35,20 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.tlsLabel = new System.Windows.Forms.ToolStripLabel();
-            this.tlsStartRecorder = new System.Windows.Forms.ToolStripButton();
-            this.tlsStopRecorder = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tlsClearRealtimeData = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.tlsStartRecorder = new System.Windows.Forms.ToolStripButton();
+            this.tlsStopRecorder = new System.Windows.Forms.ToolStripButton();
+            this.tlsClearRealtimeData = new System.Windows.Forms.ToolStripButton();
+            this.tlsAbout = new System.Windows.Forms.ToolStripDropDownButton();
+            this.mnuSoftLicense = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAboutUS = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsExit = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRealtimeDataView)).BeginInit();
@@ -89,12 +95,17 @@
             this.toolStripSeparator6,
             this.tlsLabel,
             this.tlsStartRecorder,
+            this.toolStripSeparator7,
+            this.toolStripSeparator8,
             this.tlsStopRecorder,
             this.toolStripSeparator4,
             this.toolStripSeparator3,
             this.tlsClearRealtimeData,
             this.toolStripSeparator9,
+            this.toolStripSeparator1,
+            this.tlsAbout,
             this.toolStripSeparator10,
+            this.toolStripSeparator2,
             this.tlsExit});
             this.toolStrip1.Location = new System.Drawing.Point(0, 68);
             this.toolStrip1.Name = "toolStrip1";
@@ -117,24 +128,6 @@
             this.tlsLabel.Name = "tlsLabel";
             this.tlsLabel.Size = new System.Drawing.Size(0, 22);
             // 
-            // tlsStartRecorder
-            // 
-            this.tlsStartRecorder.Image = ((System.Drawing.Image)(resources.GetObject("tlsStartRecorder.Image")));
-            this.tlsStartRecorder.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsStartRecorder.Name = "tlsStartRecorder";
-            this.tlsStartRecorder.Size = new System.Drawing.Size(97, 22);
-            this.tlsStartRecorder.Text = "启动轨迹记录";
-            this.tlsStartRecorder.Click += new System.EventHandler(this.tslStartRecorder_Click);
-            // 
-            // tlsStopRecorder
-            // 
-            this.tlsStopRecorder.Image = ((System.Drawing.Image)(resources.GetObject("tlsStopRecorder.Image")));
-            this.tlsStopRecorder.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsStopRecorder.Name = "tlsStopRecorder";
-            this.tlsStopRecorder.Size = new System.Drawing.Size(97, 22);
-            this.tlsStopRecorder.Text = "停止轨迹记录";
-            this.tlsStopRecorder.Click += new System.EventHandler(this.tlsStopRecorder_Click);
-            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
@@ -144,15 +137,6 @@
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tlsClearRealtimeData
-            // 
-            this.tlsClearRealtimeData.Image = ((System.Drawing.Image)(resources.GetObject("tlsClearRealtimeData.Image")));
-            this.tlsClearRealtimeData.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsClearRealtimeData.Name = "tlsClearRealtimeData";
-            this.tlsClearRealtimeData.Size = new System.Drawing.Size(97, 22);
-            this.tlsClearRealtimeData.Text = "清除实时消息";
-            this.tlsClearRealtimeData.Click += new System.EventHandler(this.tlsClearRealtimeData_Click);
             // 
             // toolStripSeparator9
             // 
@@ -164,9 +148,81 @@
             this.toolStripSeparator10.Name = "toolStripSeparator10";
             this.toolStripSeparator10.Size = new System.Drawing.Size(6, 25);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tlsStartRecorder
+            // 
+            this.tlsStartRecorder.Image = global::GPSTrackingRecorder.Properties.Resources.database_connection_small_with_sparkle;
+            this.tlsStartRecorder.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsStartRecorder.Name = "tlsStartRecorder";
+            this.tlsStartRecorder.Size = new System.Drawing.Size(97, 22);
+            this.tlsStartRecorder.Text = "启动轨迹记录";
+            this.tlsStartRecorder.Click += new System.EventHandler(this.tslStartRecorder_Click);
+            // 
+            // tlsStopRecorder
+            // 
+            this.tlsStopRecorder.Image = global::GPSTrackingRecorder.Properties.Resources.database_connection_with_x;
+            this.tlsStopRecorder.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsStopRecorder.Name = "tlsStopRecorder";
+            this.tlsStopRecorder.Size = new System.Drawing.Size(97, 22);
+            this.tlsStopRecorder.Text = "停止轨迹记录";
+            this.tlsStopRecorder.Click += new System.EventHandler(this.tlsStopRecorder_Click);
+            // 
+            // tlsClearRealtimeData
+            // 
+            this.tlsClearRealtimeData.Image = global::GPSTrackingRecorder.Properties.Resources.feature_point_move_3;
+            this.tlsClearRealtimeData.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsClearRealtimeData.Name = "tlsClearRealtimeData";
+            this.tlsClearRealtimeData.Size = new System.Drawing.Size(97, 22);
+            this.tlsClearRealtimeData.Text = "清除实时消息";
+            this.tlsClearRealtimeData.Click += new System.EventHandler(this.tlsClearRealtimeData_Click);
+            // 
+            // tlsAbout
+            // 
+            this.tlsAbout.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuSoftLicense,
+            this.mnuAboutUS});
+            this.tlsAbout.Image = global::GPSTrackingRecorder.Properties.Resources.information;
+            this.tlsAbout.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsAbout.Name = "tlsAbout";
+            this.tlsAbout.Size = new System.Drawing.Size(70, 22);
+            this.tlsAbout.Text = "关  于";
+            // 
+            // mnuSoftLicense
+            // 
+            this.mnuSoftLicense.Name = "mnuSoftLicense";
+            this.mnuSoftLicense.Size = new System.Drawing.Size(152, 22);
+            this.mnuSoftLicense.Text = "共享协议";
+            this.mnuSoftLicense.Click += new System.EventHandler(this.mnuSoftLicense_Click);
+            // 
+            // mnuAboutUS
+            // 
+            this.mnuAboutUS.Name = "mnuAboutUS";
+            this.mnuAboutUS.Size = new System.Drawing.Size(152, 22);
+            this.mnuAboutUS.Text = "关于我们";
+            this.mnuAboutUS.Click += new System.EventHandler(this.mnuAboutUS_Click);
+            // 
             // tlsExit
             // 
-            this.tlsExit.Image = ((System.Drawing.Image)(resources.GetObject("tlsExit.Image")));
+            this.tlsExit.Image = global::GPSTrackingRecorder.Properties.Resources.stop;
             this.tlsExit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlsExit.Name = "tlsExit";
             this.tlsExit.Size = new System.Drawing.Size(73, 22);
@@ -222,6 +278,13 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private System.Windows.Forms.ToolStripButton tlsExit;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripDropDownButton tlsAbout;
+        private System.Windows.Forms.ToolStripMenuItem mnuSoftLicense;
+        private System.Windows.Forms.ToolStripMenuItem mnuAboutUS;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
     }
 }
 

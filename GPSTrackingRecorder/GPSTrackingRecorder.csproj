@@ -41,11 +41,29 @@
     <Compile Include="BaseHandler\ExceptionHandler.cs" />
     <Compile Include="Communications\MessageArguments.cs" />
     <Compile Include="Communications\SocketClient.cs" />
+    <Compile Include="frmAboutUS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAboutUS.Designer.cs">
+      <DependentUpon>frmAboutUS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLicense.Designer.cs">
+      <DependentUpon>frmLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSenderExceptionInfos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSenderExceptionInfos.Designer.cs">
+      <DependentUpon>frmSenderExceptionInfos.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSocketConfig.cs">
       <SubType>Form</SubType>
@@ -63,9 +81,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAboutUS.resx">
+      <DependentUpon>frmAboutUS.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLicense.resx">
+      <DependentUpon>frmLicense.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSenderExceptionInfos.resx">
+      <DependentUpon>frmSenderExceptionInfos.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSocketConfig.resx">
       <SubType>Designer</SubType>
@@ -99,6 +129,27 @@
       <Project>{39DFF12D-2100-4D2F-907A-F30C0E93A9B2}</Project>
       <Name>CommnicationMessage</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\123.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\information.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stop.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_connection_small_with_sparkle.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_connection_with_x.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\feature_point_move_3.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\234.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
