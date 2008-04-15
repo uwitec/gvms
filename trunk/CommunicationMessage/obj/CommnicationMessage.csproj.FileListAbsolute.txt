@@ -3,3 +3,8 @@ D:\项目\SIOGR项目\GPSTracking\trunk\CommunicationMessage\bin\Debug\SocketCom
 D:\项目\SIOGR项目\GPSTracking\trunk\CommunicationMessage\obj\Debug\ResolveAssemblyReference.cache
 D:\项目\SIOGR项目\GPSTracking\trunk\CommunicationMessage\obj\Debug\SocketCommnication.dll
 D:\项目\SIOGR项目\GPSTracking\trunk\CommunicationMessage\obj\Debug\SocketCommnication.pdb
+Q:\项目\SIOGR项目\GVMS\trunk\CommunicationMessage\bin\Debug\CommnicationMessage.dll
+Q:\项目\SIOGR项目\GVMS\trunk\CommunicationMessage\bin\Debug\CommnicationMessage.pdb
+Q:\项目\SIOGR项目\GVMS\trunk\CommunicationMessage\obj\Debug\ResolveAssemblyReference.cache
+Q:\项目\SIOGR项目\GVMS\trunk\CommunicationMessage\obj\Debug\CommnicationMessage.dll
+Q:\项目\SIOGR项目\GVMS\trunk\CommunicationMessage\obj\Debug\CommnicationMessage.pdb
