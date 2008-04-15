@@ -20,11 +20,11 @@ namespace GPSTrackingMonitor
 {
     class GlobeVariables
     {
-        public static List<MapUtil.LayerInformations> LayersInformationSet = new List<GPSTrackingMonitor.MapUtil.LayerInformations>();
+       public static List<MapUtil.LayerInformations> LayersInformationSet = new List<GPSTrackingMonitor.MapUtil.LayerInformations>();
 
         public static MapUtil.MapOperationType CurrentOperation = new GPSTrackingMonitor.MapUtil.MapOperationType();
 
-        public static AxMapObjects2.AxMap MapControl = new AxMapObjects2.AxMap();
+        public static AxMapObjects2.AxMap MainMapControl = new AxMapObjects2.AxMap();
 
         public static string ConfigureFileName = System.Windows.Forms.Application.StartupPath + "\\" + "configure.xml";
 
@@ -32,17 +32,21 @@ namespace GPSTrackingMonitor
 
         public static Communications.SocketClient CarInfosReceiver = new GPSTrackingMonitor.Communications.SocketClient();
 
-        public static string HistToryTrackingRecorderDatabase = @"Q:\项目\SIOGR项目\GPSTracking\trunk\GPSTrackingRecorder\bin\Debug\data\HistoryPoints.mdb";
+        //public static string HistToryTrackingRecorderDatabase = @"Q:\项目\SIOGR项目\GPSTracking\trunk\GPSTrackingRecorder\bin\Debug\data\HistoryPoints.mdb";
 
-        public static string HistoryTrackingRecorderDatatableName = "HistoryTracking";
+        //public static string HistoryTrackingRecorderDatatableName = "HistoryTracking";
 
-        public static int MaxMessagesCacheCount = 1000;
+        //public static int MaxMessagesCacheCount = 1000;
 
         public static GPSTrackingMonitor.Communications.MessagePool MessagesCache = new GPSTrackingMonitor.Communications.MessagePool();
 
-        public static int IntervalUpdate = 5000;//单位：毫秒
+        //public static int IntervalUpdate = 5000;//单位：毫秒
 
         public static MapProject.MapStruct MapInfosCollection = new MapProject.MapStruct();
-        
+
+        public static Configures.ConfigureInfosStrcut ConfigureInfos = new GPSTrackingMonitor.Configures.ConfigureInfosStrcut();
+
+        public static string MapConfigureProgramPath = System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "MapConfigure.exe");
+
     }
 }

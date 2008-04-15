@@ -30,10 +30,22 @@
         {
             this.tabConfigure = new System.Windows.Forms.TabControl();
             this.tbpSystemConfig = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.numIntervalCarUpdate = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.numMaxOfMessageCache = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
             this.txtProjectFilePath = new System.Windows.Forms.TextBox();
             this.lblProjectFilePath = new System.Windows.Forms.Label();
             this.btnProjectFileBrowser = new System.Windows.Forms.Button();
             this.tbpCarConfig = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.pnlCarLabelColor = new System.Windows.Forms.Panel();
+            this.btnCarLabelFont = new System.Windows.Forms.Button();
+            this.lblCarLabelColor = new System.Windows.Forms.Label();
+            this.lblCarLabelFont = new System.Windows.Forms.Label();
+            this.picPreviewSymbol = new System.Windows.Forms.PictureBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblSymbolIndex = new System.Windows.Forms.Label();
             this.txtSymbolIndex = new System.Windows.Forms.TextBox();
             this.numSymbolRotation = new System.Windows.Forms.NumericUpDown();
@@ -42,52 +54,47 @@
             this.lblSymbolColor = new System.Windows.Forms.Label();
             this.pnlSymbolColor = new System.Windows.Forms.Panel();
             this.numSymbolSize = new System.Windows.Forms.NumericUpDown();
-            this.lblTrueTypeFonts = new System.Windows.Forms.Label();
             this.cbbFontNames = new System.Windows.Forms.ComboBox();
-            this.picPreviewSymbol = new System.Windows.Forms.PictureBox();
             this.tbpSocketCommunicationConfig = new System.Windows.Forms.TabPage();
             this.txtLocalLisentingPort = new System.Windows.Forms.TextBox();
-            this.txtServerIP = new System.Windows.Forms.MaskedTextBox();
             this.lblServerIP = new System.Windows.Forms.Label();
             this.lblLocalLisentingPort = new System.Windows.Forms.Label();
             this.tbpTrackingReplayConfig = new System.Windows.Forms.TabPage();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.cbbDatabaseTypes = new System.Windows.Forms.ComboBox();
+            this.btnBrowseLocalDatabase = new System.Windows.Forms.Button();
+            this.txtLocalDatabaseLocation = new System.Windows.Forms.TextBox();
+            this.cbbTrackingTableName = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.lblUserName = new System.Windows.Forms.Label();
-            this.lblPassword = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnTestDatabaseConnection = new System.Windows.Forms.Button();
+            this.txtDatabasePort = new System.Windows.Forms.TextBox();
+            this.txtDatabaseServerAdress = new System.Windows.Forms.TextBox();
+            this.txtDatabasePassword = new System.Windows.Forms.TextBox();
+            this.txtDatabaseUserName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbbDatabaseTypes = new System.Windows.Forms.ComboBox();
+            this.lblUserName = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnApplication = new System.Windows.Forms.Button();
+            this.txtCommunicationServerIP = new System.Windows.Forms.TextBox();
             this.symSelector = new GPSTrackingMonitor.CustomControl.SymbolSelector();
-            this.label3 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabConfigure.SuspendLayout();
             this.tbpSystemConfig.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numIntervalCarUpdate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMaxOfMessageCache)).BeginInit();
             this.tbpCarConfig.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPreviewSymbol)).BeginInit();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSymbolRotation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSymbolSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picPreviewSymbol)).BeginInit();
             this.tbpSocketCommunicationConfig.SuspendLayout();
             this.tbpTrackingReplayConfig.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,9 +115,9 @@
             // 
             this.tbpSystemConfig.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbpSystemConfig.Controls.Add(this.label5);
-            this.tbpSystemConfig.Controls.Add(this.numericUpDown2);
+            this.tbpSystemConfig.Controls.Add(this.numIntervalCarUpdate);
             this.tbpSystemConfig.Controls.Add(this.label4);
-            this.tbpSystemConfig.Controls.Add(this.numericUpDown1);
+            this.tbpSystemConfig.Controls.Add(this.numMaxOfMessageCache);
             this.tbpSystemConfig.Controls.Add(this.label3);
             this.tbpSystemConfig.Controls.Add(this.txtProjectFilePath);
             this.tbpSystemConfig.Controls.Add(this.lblProjectFilePath);
@@ -123,6 +130,47 @@
             this.tbpSystemConfig.Text = "系统配置";
             this.tbpSystemConfig.UseVisualStyleBackColor = true;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(293, 142);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 12);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "(毫秒)";
+            // 
+            // numIntervalCarUpdate
+            // 
+            this.numIntervalCarUpdate.Location = new System.Drawing.Point(138, 136);
+            this.numIntervalCarUpdate.Name = "numIntervalCarUpdate";
+            this.numIntervalCarUpdate.Size = new System.Drawing.Size(153, 21);
+            this.numIntervalCarUpdate.TabIndex = 6;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(25, 140);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(107, 12);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "车辆更新时间间隔:";
+            // 
+            // numMaxOfMessageCache
+            // 
+            this.numMaxOfMessageCache.Location = new System.Drawing.Point(137, 70);
+            this.numMaxOfMessageCache.Name = "numMaxOfMessageCache";
+            this.numMaxOfMessageCache.Size = new System.Drawing.Size(153, 21);
+            this.numMaxOfMessageCache.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(25, 72);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(107, 12);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "消息最大缓存数目:";
+            // 
             // txtProjectFilePath
             // 
             this.txtProjectFilePath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -134,7 +182,7 @@
             // lblProjectFilePath
             // 
             this.lblProjectFilePath.AutoSize = true;
-            this.lblProjectFilePath.Location = new System.Drawing.Point(15, 23);
+            this.lblProjectFilePath.Location = new System.Drawing.Point(49, 23);
             this.lblProjectFilePath.Name = "lblProjectFilePath";
             this.lblProjectFilePath.Size = new System.Drawing.Size(83, 12);
             this.lblProjectFilePath.TabIndex = 1;
@@ -153,18 +201,9 @@
             // tbpCarConfig
             // 
             this.tbpCarConfig.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbpCarConfig.Controls.Add(this.lblSymbolIndex);
-            this.tbpCarConfig.Controls.Add(this.txtSymbolIndex);
-            this.tbpCarConfig.Controls.Add(this.numSymbolRotation);
-            this.tbpCarConfig.Controls.Add(this.lblSymbolRotation);
-            this.tbpCarConfig.Controls.Add(this.lblSymbolSize);
-            this.tbpCarConfig.Controls.Add(this.lblSymbolColor);
-            this.tbpCarConfig.Controls.Add(this.pnlSymbolColor);
-            this.tbpCarConfig.Controls.Add(this.numSymbolSize);
-            this.tbpCarConfig.Controls.Add(this.lblTrueTypeFonts);
-            this.tbpCarConfig.Controls.Add(this.cbbFontNames);
+            this.tbpCarConfig.Controls.Add(this.groupBox3);
             this.tbpCarConfig.Controls.Add(this.picPreviewSymbol);
-            this.tbpCarConfig.Controls.Add(this.symSelector);
+            this.tbpCarConfig.Controls.Add(this.groupBox2);
             this.tbpCarConfig.Location = new System.Drawing.Point(4, 24);
             this.tbpCarConfig.Name = "tbpCarConfig";
             this.tbpCarConfig.Padding = new System.Windows.Forms.Padding(3);
@@ -173,10 +212,91 @@
             this.tbpCarConfig.Text = "车辆配置";
             this.tbpCarConfig.UseVisualStyleBackColor = true;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.pnlCarLabelColor);
+            this.groupBox3.Controls.Add(this.btnCarLabelFont);
+            this.groupBox3.Controls.Add(this.lblCarLabelColor);
+            this.groupBox3.Controls.Add(this.lblCarLabelFont);
+            this.groupBox3.Location = new System.Drawing.Point(4, 308);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(472, 49);
+            this.groupBox3.TabIndex = 15;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "车辆标注设置";
+            // 
+            // pnlCarLabelColor
+            // 
+            this.pnlCarLabelColor.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.pnlCarLabelColor.BackColor = System.Drawing.Color.Yellow;
+            this.pnlCarLabelColor.Location = new System.Drawing.Point(330, 18);
+            this.pnlCarLabelColor.Name = "pnlCarLabelColor";
+            this.pnlCarLabelColor.Size = new System.Drawing.Size(116, 20);
+            this.pnlCarLabelColor.TabIndex = 3;
+            this.pnlCarLabelColor.Click += new System.EventHandler(this.pnlCarLabelColor_Click);
+            // 
+            // btnCarLabelFont
+            // 
+            this.btnCarLabelFont.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCarLabelFont.Location = new System.Drawing.Point(57, 14);
+            this.btnCarLabelFont.Name = "btnCarLabelFont";
+            this.btnCarLabelFont.Size = new System.Drawing.Size(138, 28);
+            this.btnCarLabelFont.TabIndex = 2;
+            this.btnCarLabelFont.Text = "标 注 字 体";
+            this.btnCarLabelFont.UseVisualStyleBackColor = true;
+            this.btnCarLabelFont.Click += new System.EventHandler(this.btnCarLabelFont_Click);
+            // 
+            // lblCarLabelColor
+            // 
+            this.lblCarLabelColor.AutoSize = true;
+            this.lblCarLabelColor.Location = new System.Drawing.Point(262, 22);
+            this.lblCarLabelColor.Name = "lblCarLabelColor";
+            this.lblCarLabelColor.Size = new System.Drawing.Size(65, 12);
+            this.lblCarLabelColor.TabIndex = 1;
+            this.lblCarLabelColor.Text = "标注颜色：";
+            // 
+            // lblCarLabelFont
+            // 
+            this.lblCarLabelFont.AutoSize = true;
+            this.lblCarLabelFont.Location = new System.Drawing.Point(11, 22);
+            this.lblCarLabelFont.Name = "lblCarLabelFont";
+            this.lblCarLabelFont.Size = new System.Drawing.Size(41, 12);
+            this.lblCarLabelFont.TabIndex = 0;
+            this.lblCarLabelFont.Text = "字体：";
+            // 
+            // picPreviewSymbol
+            // 
+            this.picPreviewSymbol.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.picPreviewSymbol.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picPreviewSymbol.Location = new System.Drawing.Point(355, 37);
+            this.picPreviewSymbol.Name = "picPreviewSymbol";
+            this.picPreviewSymbol.Size = new System.Drawing.Size(117, 104);
+            this.picPreviewSymbol.TabIndex = 3;
+            this.picPreviewSymbol.TabStop = false;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lblSymbolIndex);
+            this.groupBox2.Controls.Add(this.txtSymbolIndex);
+            this.groupBox2.Controls.Add(this.numSymbolRotation);
+            this.groupBox2.Controls.Add(this.lblSymbolRotation);
+            this.groupBox2.Controls.Add(this.lblSymbolSize);
+            this.groupBox2.Controls.Add(this.lblSymbolColor);
+            this.groupBox2.Controls.Add(this.pnlSymbolColor);
+            this.groupBox2.Controls.Add(this.numSymbolSize);
+            this.groupBox2.Controls.Add(this.cbbFontNames);
+            this.groupBox2.Controls.Add(this.symSelector);
+            this.groupBox2.Location = new System.Drawing.Point(5, 2);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(471, 306);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "车辆图形设置";
+            // 
             // lblSymbolIndex
             // 
             this.lblSymbolIndex.AutoSize = true;
-            this.lblSymbolIndex.Location = new System.Drawing.Point(355, 196);
+            this.lblSymbolIndex.Location = new System.Drawing.Point(356, 164);
             this.lblSymbolIndex.Name = "lblSymbolIndex";
             this.lblSymbolIndex.Size = new System.Drawing.Size(47, 12);
             this.lblSymbolIndex.TabIndex = 13;
@@ -187,15 +307,15 @@
             this.txtSymbolIndex.AllowDrop = true;
             this.txtSymbolIndex.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSymbolIndex.Enabled = false;
-            this.txtSymbolIndex.Location = new System.Drawing.Point(411, 191);
+            this.txtSymbolIndex.Location = new System.Drawing.Point(407, 159);
             this.txtSymbolIndex.Name = "txtSymbolIndex";
-            this.txtSymbolIndex.Size = new System.Drawing.Size(56, 21);
+            this.txtSymbolIndex.Size = new System.Drawing.Size(55, 21);
             this.txtSymbolIndex.TabIndex = 12;
             // 
             // numSymbolRotation
             // 
             this.numSymbolRotation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numSymbolRotation.Location = new System.Drawing.Point(412, 322);
+            this.numSymbolRotation.Location = new System.Drawing.Point(407, 275);
             this.numSymbolRotation.Maximum = new decimal(new int[] {
             360,
             0,
@@ -209,7 +329,7 @@
             // lblSymbolRotation
             // 
             this.lblSymbolRotation.AutoSize = true;
-            this.lblSymbolRotation.Location = new System.Drawing.Point(368, 326);
+            this.lblSymbolRotation.Location = new System.Drawing.Point(368, 278);
             this.lblSymbolRotation.Name = "lblSymbolRotation";
             this.lblSymbolRotation.Size = new System.Drawing.Size(35, 12);
             this.lblSymbolRotation.TabIndex = 10;
@@ -218,7 +338,7 @@
             // lblSymbolSize
             // 
             this.lblSymbolSize.AutoSize = true;
-            this.lblSymbolSize.Location = new System.Drawing.Point(367, 285);
+            this.lblSymbolSize.Location = new System.Drawing.Point(368, 240);
             this.lblSymbolSize.Name = "lblSymbolSize";
             this.lblSymbolSize.Size = new System.Drawing.Size(35, 12);
             this.lblSymbolSize.TabIndex = 9;
@@ -227,7 +347,7 @@
             // lblSymbolColor
             // 
             this.lblSymbolColor.AutoSize = true;
-            this.lblSymbolColor.Location = new System.Drawing.Point(367, 238);
+            this.lblSymbolColor.Location = new System.Drawing.Point(368, 199);
             this.lblSymbolColor.Name = "lblSymbolColor";
             this.lblSymbolColor.Size = new System.Drawing.Size(35, 12);
             this.lblSymbolColor.TabIndex = 8;
@@ -237,7 +357,7 @@
             // 
             this.pnlSymbolColor.BackColor = System.Drawing.Color.Red;
             this.pnlSymbolColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlSymbolColor.Location = new System.Drawing.Point(412, 234);
+            this.pnlSymbolColor.Location = new System.Drawing.Point(407, 193);
             this.pnlSymbolColor.Name = "pnlSymbolColor";
             this.pnlSymbolColor.Size = new System.Drawing.Size(55, 21);
             this.pnlSymbolColor.TabIndex = 7;
@@ -251,47 +371,28 @@
             0,
             0,
             65536});
-            this.numSymbolSize.Location = new System.Drawing.Point(412, 280);
+            this.numSymbolSize.Location = new System.Drawing.Point(407, 234);
             this.numSymbolSize.Name = "numSymbolSize";
             this.numSymbolSize.Size = new System.Drawing.Size(55, 21);
             this.numSymbolSize.TabIndex = 6;
             this.numSymbolSize.ValueChanged += new System.EventHandler(this.numSymbolSize_ValueChanged);
-            // 
-            // lblTrueTypeFonts
-            // 
-            this.lblTrueTypeFonts.AutoSize = true;
-            this.lblTrueTypeFonts.Location = new System.Drawing.Point(27, 14);
-            this.lblTrueTypeFonts.Name = "lblTrueTypeFonts";
-            this.lblTrueTypeFonts.Size = new System.Drawing.Size(95, 12);
-            this.lblTrueTypeFonts.TabIndex = 5;
-            this.lblTrueTypeFonts.Text = "请选择一个字体:";
             // 
             // cbbFontNames
             // 
             this.cbbFontNames.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbbFontNames.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbbFontNames.FormattingEnabled = true;
-            this.cbbFontNames.Location = new System.Drawing.Point(137, 11);
+            this.cbbFontNames.Location = new System.Drawing.Point(119, 11);
             this.cbbFontNames.Name = "cbbFontNames";
-            this.cbbFontNames.Size = new System.Drawing.Size(165, 20);
+            this.cbbFontNames.Size = new System.Drawing.Size(225, 20);
             this.cbbFontNames.TabIndex = 2;
             this.cbbFontNames.SelectedIndexChanged += new System.EventHandler(this.cbbFontNames_SelectedIndexChanged);
-            // 
-            // picPreviewSymbol
-            // 
-            this.picPreviewSymbol.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.picPreviewSymbol.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picPreviewSymbol.Location = new System.Drawing.Point(359, 37);
-            this.picPreviewSymbol.Name = "picPreviewSymbol";
-            this.picPreviewSymbol.Size = new System.Drawing.Size(117, 138);
-            this.picPreviewSymbol.TabIndex = 3;
-            this.picPreviewSymbol.TabStop = false;
             // 
             // tbpSocketCommunicationConfig
             // 
             this.tbpSocketCommunicationConfig.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbpSocketCommunicationConfig.Controls.Add(this.txtCommunicationServerIP);
             this.tbpSocketCommunicationConfig.Controls.Add(this.txtLocalLisentingPort);
-            this.tbpSocketCommunicationConfig.Controls.Add(this.txtServerIP);
             this.tbpSocketCommunicationConfig.Controls.Add(this.lblServerIP);
             this.tbpSocketCommunicationConfig.Controls.Add(this.lblLocalLisentingPort);
             this.tbpSocketCommunicationConfig.Location = new System.Drawing.Point(4, 24);
@@ -307,20 +408,9 @@
             this.txtLocalLisentingPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLocalLisentingPort.Location = new System.Drawing.Point(119, 62);
             this.txtLocalLisentingPort.Name = "txtLocalLisentingPort";
-            this.txtLocalLisentingPort.Size = new System.Drawing.Size(105, 21);
+            this.txtLocalLisentingPort.Size = new System.Drawing.Size(162, 21);
             this.txtLocalLisentingPort.TabIndex = 3;
             this.txtLocalLisentingPort.Text = "8205";
-            // 
-            // txtServerIP
-            // 
-            this.txtServerIP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtServerIP.Location = new System.Drawing.Point(119, 23);
-            this.txtServerIP.Mask = "000.000.000.000";
-            this.txtServerIP.Name = "txtServerIP";
-            this.txtServerIP.RejectInputOnFirstFailure = true;
-            this.txtServerIP.Size = new System.Drawing.Size(105, 21);
-            this.txtServerIP.TabIndex = 2;
-            this.txtServerIP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblServerIP
             // 
@@ -343,9 +433,9 @@
             // tbpTrackingReplayConfig
             // 
             this.tbpTrackingReplayConfig.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbpTrackingReplayConfig.Controls.Add(this.button1);
-            this.tbpTrackingReplayConfig.Controls.Add(this.textBox1);
-            this.tbpTrackingReplayConfig.Controls.Add(this.comboBox1);
+            this.tbpTrackingReplayConfig.Controls.Add(this.btnBrowseLocalDatabase);
+            this.tbpTrackingReplayConfig.Controls.Add(this.txtLocalDatabaseLocation);
+            this.tbpTrackingReplayConfig.Controls.Add(this.cbbTrackingTableName);
             this.tbpTrackingReplayConfig.Controls.Add(this.label11);
             this.tbpTrackingReplayConfig.Controls.Add(this.label8);
             this.tbpTrackingReplayConfig.Controls.Add(this.label7);
@@ -357,42 +447,126 @@
             this.tbpTrackingReplayConfig.Text = "轨迹回放配置";
             this.tbpTrackingReplayConfig.UseVisualStyleBackColor = true;
             // 
-            // textBox5
+            // btnBrowseLocalDatabase
             // 
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox5.Location = new System.Drawing.Point(309, 96);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(108, 21);
-            this.textBox5.TabIndex = 18;
+            this.btnBrowseLocalDatabase.Location = new System.Drawing.Point(422, 204);
+            this.btnBrowseLocalDatabase.Name = "btnBrowseLocalDatabase";
+            this.btnBrowseLocalDatabase.Size = new System.Drawing.Size(31, 21);
+            this.btnBrowseLocalDatabase.TabIndex = 6;
+            this.btnBrowseLocalDatabase.Text = "...";
+            this.btnBrowseLocalDatabase.UseVisualStyleBackColor = true;
+            this.btnBrowseLocalDatabase.Click += new System.EventHandler(this.btnBrowseLocalDatabase_Click);
             // 
-            // textBox4
+            // txtLocalDatabaseLocation
             // 
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox4.Location = new System.Drawing.Point(98, 98);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(110, 21);
-            this.textBox4.TabIndex = 17;
+            this.txtLocalDatabaseLocation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtLocalDatabaseLocation.Location = new System.Drawing.Point(102, 204);
+            this.txtLocalDatabaseLocation.Name = "txtLocalDatabaseLocation";
+            this.txtLocalDatabaseLocation.Size = new System.Drawing.Size(319, 21);
+            this.txtLocalDatabaseLocation.TabIndex = 12;
             // 
-            // textBox3
+            // cbbTrackingTableName
             // 
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.Location = new System.Drawing.Point(308, 44);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(109, 21);
-            this.textBox3.TabIndex = 16;
+            this.cbbTrackingTableName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbTrackingTableName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbbTrackingTableName.FormattingEnabled = true;
+            this.cbbTrackingTableName.Location = new System.Drawing.Point(102, 248);
+            this.cbbTrackingTableName.Name = "cbbTrackingTableName";
+            this.cbbTrackingTableName.Size = new System.Drawing.Size(202, 20);
+            this.cbbTrackingTableName.TabIndex = 11;
             // 
-            // textBox2
+            // label11
             // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Location = new System.Drawing.Point(98, 53);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(109, 21);
-            this.textBox2.TabIndex = 15;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(228, 383);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(29, 12);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "端口";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(15, 207);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(65, 12);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "数据库位置";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(15, 251);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 12);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "轨迹表表名";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnTestDatabaseConnection);
+            this.groupBox1.Controls.Add(this.txtDatabasePort);
+            this.groupBox1.Controls.Add(this.txtDatabaseServerAdress);
+            this.groupBox1.Controls.Add(this.txtDatabasePassword);
+            this.groupBox1.Controls.Add(this.txtDatabaseUserName);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.cbbDatabaseTypes);
+            this.groupBox1.Controls.Add(this.lblUserName);
+            this.groupBox1.Controls.Add(this.lblPassword);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Location = new System.Drawing.Point(4, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(475, 178);
+            this.groupBox1.TabIndex = 20;
+            this.groupBox1.TabStop = false;
+            // 
+            // btnTestDatabaseConnection
+            // 
+            this.btnTestDatabaseConnection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTestDatabaseConnection.Location = new System.Drawing.Point(350, 142);
+            this.btnTestDatabaseConnection.Name = "btnTestDatabaseConnection";
+            this.btnTestDatabaseConnection.Size = new System.Drawing.Size(71, 30);
+            this.btnTestDatabaseConnection.TabIndex = 19;
+            this.btnTestDatabaseConnection.Text = "测试连接";
+            this.btnTestDatabaseConnection.UseVisualStyleBackColor = true;
+            // 
+            // txtDatabasePort
+            // 
+            this.txtDatabasePort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDatabasePort.Location = new System.Drawing.Point(309, 96);
+            this.txtDatabasePort.Name = "txtDatabasePort";
+            this.txtDatabasePort.Size = new System.Drawing.Size(108, 21);
+            this.txtDatabasePort.TabIndex = 18;
+            // 
+            // txtDatabaseServerAdress
+            // 
+            this.txtDatabaseServerAdress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDatabaseServerAdress.Location = new System.Drawing.Point(98, 98);
+            this.txtDatabaseServerAdress.Name = "txtDatabaseServerAdress";
+            this.txtDatabaseServerAdress.Size = new System.Drawing.Size(110, 21);
+            this.txtDatabaseServerAdress.TabIndex = 17;
+            // 
+            // txtDatabasePassword
+            // 
+            this.txtDatabasePassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDatabasePassword.Location = new System.Drawing.Point(308, 51);
+            this.txtDatabasePassword.Name = "txtDatabasePassword";
+            this.txtDatabasePassword.Size = new System.Drawing.Size(109, 21);
+            this.txtDatabasePassword.TabIndex = 16;
+            // 
+            // txtDatabaseUserName
+            // 
+            this.txtDatabaseUserName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDatabaseUserName.Location = new System.Drawing.Point(98, 51);
+            this.txtDatabaseUserName.Name = "txtDatabaseUserName";
+            this.txtDatabaseUserName.Size = new System.Drawing.Size(109, 21);
+            this.txtDatabaseUserName.TabIndex = 15;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(235, 91);
+            this.label2.Location = new System.Drawing.Point(235, 100);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 12);
             this.label2.TabIndex = 14;
@@ -407,33 +581,6 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "服务器地址";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(422, 227);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(31, 21);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(102, 227);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(319, 21);
-            this.textBox1.TabIndex = 12;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(102, 271);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(202, 20);
-            this.comboBox1.TabIndex = 11;
-            // 
             // cbbDatabaseTypes
             // 
             this.cbbDatabaseTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -443,15 +590,6 @@
             this.cbbDatabaseTypes.Name = "cbbDatabaseTypes";
             this.cbbDatabaseTypes.Size = new System.Drawing.Size(202, 20);
             this.cbbDatabaseTypes.TabIndex = 10;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(228, 383);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(29, 12);
-            this.label11.TabIndex = 8;
-            this.label11.Text = "端口";
             // 
             // lblUserName
             // 
@@ -465,29 +603,11 @@
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(258, 62);
+            this.lblPassword.Location = new System.Drawing.Point(271, 60);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(29, 12);
             this.lblPassword.TabIndex = 6;
             this.lblPassword.Text = "密码";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(15, 230);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 12);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "数据库位置";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(15, 274);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 12);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "轨迹表表名";
             // 
             // label6
             // 
@@ -507,6 +627,7 @@
             this.btnOK.TabIndex = 3;
             this.btnOK.Text = "确　定";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
@@ -517,6 +638,7 @@
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "取　消";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnApplication
             // 
@@ -527,6 +649,15 @@
             this.btnApplication.TabIndex = 5;
             this.btnApplication.Text = "应　用";
             this.btnApplication.UseVisualStyleBackColor = true;
+            this.btnApplication.Click += new System.EventHandler(this.btnApplication_Click);
+            // 
+            // txtCommunicationServerIP
+            // 
+            this.txtCommunicationServerIP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCommunicationServerIP.Location = new System.Drawing.Point(119, 24);
+            this.txtCommunicationServerIP.Name = "txtCommunicationServerIP";
+            this.txtCommunicationServerIP.Size = new System.Drawing.Size(162, 21);
+            this.txtCommunicationServerIP.TabIndex = 4;
             // 
             // symSelector
             // 
@@ -534,80 +665,10 @@
             this.symSelector.AutoScroll = true;
             this.symSelector.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.symSelector.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.symSelector.Location = new System.Drawing.Point(6, 37);
+            this.symSelector.Location = new System.Drawing.Point(11, 34);
             this.symSelector.Name = "symSelector";
-            this.symSelector.Size = new System.Drawing.Size(347, 320);
+            this.symSelector.Size = new System.Drawing.Size(333, 266);
             this.symSelector.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 72);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 12);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "消息最大缓存数目";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(137, 70);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(153, 21);
-            this.numericUpDown1.TabIndex = 4;
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Location = new System.Drawing.Point(150, 136);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(153, 21);
-            this.numericUpDown2.TabIndex = 6;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 136);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(101, 12);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "车辆更新时间间隔";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(309, 138);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 12);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "(毫秒)";
-            // 
-            // button2
-            // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(350, 142);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(71, 30);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "测试连接";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.cbbDatabaseTypes);
-            this.groupBox1.Controls.Add(this.lblUserName);
-            this.groupBox1.Controls.Add(this.lblPassword);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Location = new System.Drawing.Point(4, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(475, 178);
-            this.groupBox1.TabIndex = 20;
-            this.groupBox1.TabStop = false;
             // 
             // frmConfigure
             // 
@@ -624,17 +685,20 @@
             this.tabConfigure.ResumeLayout(false);
             this.tbpSystemConfig.ResumeLayout(false);
             this.tbpSystemConfig.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numIntervalCarUpdate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMaxOfMessageCache)).EndInit();
             this.tbpCarConfig.ResumeLayout(false);
-            this.tbpCarConfig.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPreviewSymbol)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSymbolRotation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSymbolSize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picPreviewSymbol)).EndInit();
             this.tbpSocketCommunicationConfig.ResumeLayout(false);
             this.tbpSocketCommunicationConfig.PerformLayout();
             this.tbpTrackingReplayConfig.ResumeLayout(false);
             this.tbpTrackingReplayConfig.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -671,28 +735,33 @@
         private System.Windows.Forms.Label lblSymbolColor;
         private System.Windows.Forms.Panel pnlSymbolColor;
         private System.Windows.Forms.NumericUpDown numSymbolSize;
-        private System.Windows.Forms.Label lblTrueTypeFonts;
         private System.Windows.Forms.TextBox txtSymbolIndex;
         private System.Windows.Forms.Label lblSymbolIndex;
-        private System.Windows.Forms.MaskedTextBox txtServerIP;
         private System.Windows.Forms.TextBox txtLocalLisentingPort;
         private System.Windows.Forms.ComboBox cbbDatabaseTypes;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button btnBrowseLocalDatabase;
+        private System.Windows.Forms.TextBox txtLocalDatabaseLocation;
+        private System.Windows.Forms.ComboBox cbbTrackingTableName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.TextBox txtDatabasePort;
+        private System.Windows.Forms.TextBox txtDatabaseServerAdress;
+        private System.Windows.Forms.TextBox txtDatabasePassword;
+        private System.Windows.Forms.TextBox txtDatabaseUserName;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numMaxOfMessageCache;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnTestDatabaseConnection;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown numIntervalCarUpdate;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label lblCarLabelColor;
+        private System.Windows.Forms.Label lblCarLabelFont;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Panel pnlCarLabelColor;
+        private System.Windows.Forms.Button btnCarLabelFont;
+        private System.Windows.Forms.TextBox txtCommunicationServerIP;
 
 
     }

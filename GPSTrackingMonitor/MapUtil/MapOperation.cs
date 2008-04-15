@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using MapObjects2;
+using MapProject;
+
 
 namespace GPSTrackingMonitor.MapUtil
 {
@@ -42,28 +44,23 @@ namespace GPSTrackingMonitor.MapUtil
 
             return oLayerfosCollection;
         }
-        
-        public void LoadLayersToLegendControl(List<LayerInformations> layersInfoSet,System.Windows.Forms.ImageList imageList, ref System.Windows.Forms.TreeView legendControl)
-        {
-            if (legendControl.Nodes.Count == 0)
-                legendControl.Nodes.Add("layergroup", "Í¼²ã", imageList.Images.IndexOfKey("layergroup"));
 
-            foreach (LayerInformations item in layersInfoSet)
-            {
-                legendControl.Nodes[0].Nodes.Add(item.MoShapeType.ToString(), item.LayerName, imageList.Images.IndexOfKey(item.MoShapeType.ToString()));
-            }
-        }
-
-        public FeatureInformations GetIdentifyFeatureInfos(MapObjects2.Point mousePosition,AxMapObjects2.AxMap mapControl)
+        public FeatureInformations GetIdentifyFeatureInfos(MapObjects2.Point mousePosition, AxMapObjects2.AxMap mapControl,MapProject.MapStruct mapInfosCollection)
         {
             FeatureInformations oFeatureInfos = null;
 
-            foreach (LayerInformations oLayerInfos in GlobeVariables.LayersInformationSet)
+            foreach (ILayerStruct oLayerInfos in mapInfosCollection.Layers)
             {
-                if (oLayerInfos.MoLayerType != LayerTypeConstants.moMapLayer)
+                if (oLayerInfos.LayerType != (short)LayerTypeConstants.moMapLayer)
                     continue;
 
-                Recordset oSelectedRecords = (oLayerInfos.MoLayer as MapLayer).SearchByDistance(mousePosition, mapControl.ToMapDistance(4f), "");
+                MapUtil.MapOperation oMapOper = new MapOperation();
+                MapObjects2.MapLayer oMapLayer = oMapOper.GetLayerByName(mapControl, oLayerInfos.AliasName) as MapObjects2.MapLayer;
+
+                if (oMapLayer.Visible == false)
+                    continue;
+
+                Recordset oSelectedRecords = oMapLayer.SearchShape(mousePosition, SearchMethodConstants.moAreaIntersect, "");
 
                 if (oSelectedRecords.EOF)
                     continue;
@@ -75,7 +72,7 @@ namespace GPSTrackingMonitor.MapUtil
                 oFeatureInfos.Geometry = oSelectedRecords.Fields.Item("shape").Value;
 
                 TableDesc oTableDesc = oSelectedRecords.TableDesc;
-                oFeatureInfos.FieldsAndValuesCollection = new Dictionary<string,string>();
+                oFeatureInfos.FieldsAndValuesCollection = new Dictionary<string, string>();
                 int iFieldsCount = oTableDesc.FieldCount;
                 string sFieldName = "";
                 string sValue = "";
@@ -92,6 +89,7 @@ namespace GPSTrackingMonitor.MapUtil
 
             return oFeatureInfos;
         }
+
 
         public void ZoomInMap(Rectangle mapExtent, ref AxMapObjects2.AxMap mapControl)
         {
@@ -222,6 +220,22 @@ namespace GPSTrackingMonitor.MapUtil
 
             return dLen1 / dLen2;
         }
+
+        public object GetLayerByName(AxMapObjects2.AxMap mapControl, string layerName)
+        {
+            short iLayersCount = mapControl.Layers.Count;
+
+            for (short i = 0; i < iLayersCount; i++)
+            {
+                object oLayer = mapControl.Layers.Item(i);
+
+                if (oLayer is MapObjects2.MapLayer && (oLayer as MapObjects2.MapLayer).Name.Equals(layerName)) return oLayer;
+                else if (oLayer is MapObjects2.ImageLayer && (oLayer as MapObjects2.ImageLayer).Name.Equals(layerName)) return oLayer;
+            }
+
+            return null;
+        }
+
 
         #region distroied code
 

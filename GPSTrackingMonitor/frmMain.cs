@@ -33,8 +33,14 @@ namespace GPSTrackingMonitor
         #region events
 
         private void frmMain_Load(object sender, EventArgs e)
-        {
+        { 
             this.InitWindowLayout();
+
+            if (System.IO.File.Exists(GlobeVariables.ConfigureFileName))
+                GlobeVariables.ConfigureInfos = Configures.ConfigureInfosStrcut.LoadConfigureInfos(GlobeVariables.ConfigureFileName);
+
+            if (System.IO.File.Exists(GlobeVariables.ConfigureInfos.SystemConfigureInfos.ProjectFilePath))
+                this.LoadMapProject(GlobeVariables.ConfigureInfos.SystemConfigureInfos.ProjectFilePath);
 
             this.StartReceiveCarMessages();
         }
@@ -158,17 +164,43 @@ namespace GPSTrackingMonitor
             OpenFileDialog oOpenFileDialog = new OpenFileDialog();
 
             oOpenFileDialog.Filter = "GVMS Project File(*.gvp) | *.gvp";
+
             if (oOpenFileDialog.ShowDialog() == DialogResult.OK)
             {
-                ProjectSerialization oProjectSerilization = new ProjectSerialization();
-
-                GlobeVariables.MapControl.Layers.Clear();
-                GlobeVariables.MapInfosCollection = oProjectSerilization.LoadProjectByMapInfos(oOpenFileDialog.FileName, GlobeVariables.MapControl);
-
-                GlobeVariables.MapControl.RefreshRect(GlobeVariables.MapControl.Extent);
-                frmLegend.Instance.LoadLayersToLegend(GlobeVariables.MapControl);
-               
+                this.LoadMapProject(oOpenFileDialog.FileName);
             }
         }
+
+        private void LoadMapProject(string projectFileName)
+        {
+            ProjectSerialization oProjectSerilization = new ProjectSerialization();
+
+            GlobeVariables.MainMapControl.Layers.Clear();
+            GlobeVariables.MapInfosCollection = oProjectSerilization.LoadProjectByMapInfos(projectFileName, GlobeVariables.MainMapControl);
+
+            GlobeVariables.MainMapControl.RefreshRect(GlobeVariables.MainMapControl.Extent);
+            frmLegend.Instance.LoadLayersToLegend(GlobeVariables.MainMapControl);
+            frmNavigation.Instance.LoadLayersToNavigation(GlobeVariables.MainMapControl);
+        }
+
+        private void mnuMapConfgiure_Click(object sender, EventArgs e)
+        {
+            if (System.IO.File.Exists(GlobeVariables.MapConfigureProgramPath)) System.Diagnostics.Process.Start(GlobeVariables.MapConfigureProgramPath);
+            else MessageBox.Show("地图配置工具未找到，请确定配置信息是正确的。", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                
+        }
+
+        private void mnuSoftLicense_Click(object sender, EventArgs e)
+        {
+            frmLicense oFrmLicense = new frmLicense();
+            oFrmLicense.ShowDialog();
+        }
+
+        private void mnuAboutUS_Click(object sender, EventArgs e)
+        {
+            frmAboutUS oFrmAboutUS = new frmAboutUS();
+            oFrmAboutUS.ShowDialog();
+        }
+
     }
 }

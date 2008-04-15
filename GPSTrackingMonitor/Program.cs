@@ -14,14 +14,26 @@ namespace GPSTrackingMonitor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
+            
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
             Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
-            Application.Run(new frmMain());        
+            Application.Run(new frmMain());
+        }
+
+        static void HandleException(Exception e)
+        {
+            frmSenderExceptionInfos oFrmSendErException = new frmSenderExceptionInfos(e);
+            oFrmSendErException.Show();
+        }
+
+        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            HandleException(e.ExceptionObject as Exception);
         }
 
         static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
-            MessageBox.Show(e.Exception.Message + "/r/n/r/n" + e.Exception.StackTrace);
+            HandleException(e.Exception);
         }
     }
 }

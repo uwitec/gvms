@@ -70,7 +70,7 @@ namespace GPSTrackingMonitor
             
             lblPercent.Text = "1";
 
-            this._replayOperation = new ReplayOperation(GlobeVariables.MapControl);
+            this._replayOperation = new ReplayOperation(GlobeVariables.MainMapControl);
         }
 
         private void btnReplay_Click(object sender, EventArgs e)

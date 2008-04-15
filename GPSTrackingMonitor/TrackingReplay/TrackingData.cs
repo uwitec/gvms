@@ -12,9 +12,9 @@ namespace GPSTrackingMonitor.TrackingReplay
             if (startTime - endTime > new TimeSpan() || string.IsNullOrEmpty(carNumber))
                 return new TrackPoints();
 
-            System.Data.OleDb.OleDbConnection oConn = BaseHandler.DatabaseManager.GetOleDbConnection(GlobeVariables.HistToryTrackingRecorderDatabase);
+            System.Data.OleDb.OleDbConnection oConn = BaseHandler.DatabaseManager.GetOleDbConnection(GlobeVariables.ConfigureInfos.TrackingReplayConfigureInfos.LocalDatabaseLocation);
 
-            string sDataTableName = GlobeVariables.HistoryTrackingRecorderDatatableName;
+            string sDataTableName = GlobeVariables.ConfigureInfos.TrackingReplayConfigureInfos.TrackingTableName;
             string sQueryString = string.Format("select distinct * from {0} where carnumber='{1}'", sDataTableName, carNumber);
             
             DataTable dtTrackings = BaseHandler.DatabaseManager.GetData(oConn, sQueryString);

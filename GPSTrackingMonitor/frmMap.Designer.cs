@@ -37,14 +37,11 @@
             this.tlsZoomOut = new System.Windows.Forms.ToolStripButton();
             this.tlsPan = new System.Windows.Forms.ToolStripButton();
             this.tlsFullExtent = new System.Windows.Forms.ToolStripButton();
-            this.tlsPreview = new System.Windows.Forms.ToolStripButton();
-            this.tlsNextView = new System.Windows.Forms.ToolStripButton();
             this.tlsRefresh = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tlsMeasure = new System.Windows.Forms.ToolStripButton();
             this.tlsIdentify = new System.Windows.Forms.ToolStripButton();
             this.tlsClear = new System.Windows.Forms.ToolStripButton();
-            this.tlsLoadData = new System.Windows.Forms.ToolStripButton();
             this.tlsFullScreen = new System.Windows.Forms.ToolStripButton();
             this.pnlStatus = new System.Windows.Forms.Panel();
             this.lblScale = new System.Windows.Forms.Label();
@@ -72,14 +69,11 @@
             this.tlsZoomOut,
             this.tlsPan,
             this.tlsFullExtent,
-            this.tlsPreview,
-            this.tlsNextView,
             this.tlsRefresh,
             this.toolStripSeparator1,
             this.tlsMeasure,
             this.tlsIdentify,
             this.tlsClear,
-            this.tlsLoadData,
             this.tlsFullScreen});
             this.toolMapOperation.Location = new System.Drawing.Point(797, 0);
             this.toolMapOperation.Name = "toolMapOperation";
@@ -142,26 +136,6 @@
             this.tlsFullExtent.Text = "全图";
             this.tlsFullExtent.Click += new System.EventHandler(this.tlsFullExtent_Click);
             // 
-            // tlsPreview
-            // 
-            this.tlsPreview.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsPreview.Image = global::GPSTrackingMonitor.Properties.Resources.PanLeft;
-            this.tlsPreview.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsPreview.Name = "tlsPreview";
-            this.tlsPreview.Size = new System.Drawing.Size(38, 20);
-            this.tlsPreview.Text = "后一视图";
-            this.tlsPreview.Click += new System.EventHandler(this.tlsPreview_Click);
-            // 
-            // tlsNextView
-            // 
-            this.tlsNextView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsNextView.Image = global::GPSTrackingMonitor.Properties.Resources.PanRight;
-            this.tlsNextView.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsNextView.Name = "tlsNextView";
-            this.tlsNextView.Size = new System.Drawing.Size(38, 20);
-            this.tlsNextView.Text = "前一视图";
-            this.tlsNextView.Click += new System.EventHandler(this.tlsNextView_Click);
-            // 
             // tlsRefresh
             // 
             this.tlsRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -207,16 +181,6 @@
             this.tlsClear.Size = new System.Drawing.Size(38, 20);
             this.tlsClear.Text = "清楚零时图形";
             this.tlsClear.Click += new System.EventHandler(this.tlsClear_Click);
-            // 
-            // tlsLoadData
-            // 
-            this.tlsLoadData.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsLoadData.Image = global::GPSTrackingMonitor.Properties.Resources.folder_open;
-            this.tlsLoadData.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlsLoadData.Name = "tlsLoadData";
-            this.tlsLoadData.Size = new System.Drawing.Size(38, 20);
-            this.tlsLoadData.Text = "toolStripButton4";
-            this.tlsLoadData.Click += new System.EventHandler(this.tlsLoadData_Click);
             // 
             // tlsFullScreen
             // 
@@ -347,8 +311,6 @@
         private System.Windows.Forms.ToolStripButton tlsZoomIn;
         private System.Windows.Forms.ToolStripButton tlsZoomOut;
         private System.Windows.Forms.ToolStripButton tlsFullExtent;
-        private System.Windows.Forms.ToolStripButton tlsPreview;
-        private System.Windows.Forms.ToolStripButton tlsNextView;
         private System.Windows.Forms.ToolStripButton tlsClear;
         private System.Windows.Forms.ToolStripButton tlsMeasure;
         private System.Windows.Forms.ToolStripButton tlsDefault;
@@ -360,7 +322,6 @@
         private System.Windows.Forms.Panel pnlStatus;
         private System.Windows.Forms.Label labMeasure;
         private System.Windows.Forms.Label labCoordinates;
-        private System.Windows.Forms.ToolStripButton tlsLoadData;
         private System.Windows.Forms.ImageList imlShapeTypeImages;
         private System.Windows.Forms.ToolStripButton tlsFullScreen;
         private AxMapObjects2.AxMap mapControl;

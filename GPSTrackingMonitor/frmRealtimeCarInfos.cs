@@ -120,17 +120,17 @@ namespace GPSTrackingMonitor
         private void mnuCarLocate_Click(object sender, EventArgs e)
         {
             string sCarNumber = this.GetSelectedCarNumber();
-            MapObjects2.GeoEvent oGeoEvent = GlobeVariables.MapControl.TrackingLayer.FindEvent(sCarNumber);
+            MapObjects2.GeoEvent oGeoEvent = GlobeVariables.MainMapControl.TrackingLayer.FindEvent(sCarNumber);
             MapObjects2.Point oCarLocation = new MapObjects2.PointClass();
 
             oCarLocation.X = oGeoEvent.X;
             oCarLocation.Y = oGeoEvent.Y;
 
             MapUtil.MapOperation oMapOper = new GPSTrackingMonitor.MapUtil.MapOperation();
-            oMapOper.ZoomAndCenterMap(0.02, oCarLocation, ref GlobeVariables.MapControl);
-            GlobeVariables.MapControl.Refresh();
+            oMapOper.ZoomAndCenterMap(0.02, oCarLocation, ref GlobeVariables.MainMapControl);
+            GlobeVariables.MainMapControl.Refresh();
 
-            GlobeVariables.MapControl.FlashShape(oCarLocation, 5);
+            GlobeVariables.MainMapControl.FlashShape(oCarLocation, 5);
         }
 
         private void mnuStatistic_Click(object sender, EventArgs e)

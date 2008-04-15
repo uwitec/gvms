@@ -60,7 +60,7 @@ namespace GPSTrackingMonitor
         {   
             this._mapFullExtent = mapControl.FullExtent;
 
-            GlobeVariables.MapControl = this.mapControl;
+            GlobeVariables.MainMapControl = this.mapControl;
             this.mapControl.FullRedrawOnPan = false;
             this.mapControl.TrackingLayerDrawing = TrackingLayerDrawConstants.moDrawSmooth;
             
@@ -160,7 +160,7 @@ namespace GPSTrackingMonitor
                     this.labMeasure.Text = string.Format("长度 ： {0} 米", oMapOper.ComputeDistance(this._measureLine).ToString());
                     break;
                 case GPSTrackingMonitor.MapUtil.MapOperationType.Identify:                  
-                    MapUtil.FeatureInformations oFeatureInfos = oMapOper.GetIdentifyFeatureInfos(oMousePosition, this.mapControl);
+                    MapUtil.FeatureInformations oFeatureInfos = oMapOper.GetIdentifyFeatureInfos(oMousePosition, this.mapControl,GlobeVariables.MapInfosCollection);
                     this._frmIdentify.UpdateFeatureInfos(oFeatureInfos, MousePosition);
                     break;
                 case GPSTrackingMonitor.MapUtil.MapOperationType.FetchPoint:
@@ -187,25 +187,6 @@ namespace GPSTrackingMonitor
             this.lblScale.Text = string.Format("比例尺 ： 1 : {0}", Convert.ToInt32(oMapOper.ComputeMapScale(this.mapControl)).ToString());
 
             Invoke((MethodInvoker)delegate{this._geoeventUpdate.UpdateLabelLocation(this._currentMessageCollection);});
-        }
-
-        private void tlsLoadData_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog oFileDialog = new OpenFileDialog();
-            oFileDialog.Filter = "ESRI Shapefile(*.shp) | *.shp| All Support Format(*.*) | *.*";
-            oFileDialog.Multiselect = true;
-            oFileDialog.InitialDirectory = @"D:\项目\SIOGR项目\GPSTracking\trunk\mapdata";
-
-            if (oFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                MapUtil.MapOperation oMapOper = new GPSTrackingMonitor.MapUtil.MapOperation();
-                List<string> oLayerPaths = new List<string>(oFileDialog.FileNames);
-
-                List<MapUtil.LayerInformations> oLayerInfosCollection = oMapOper.LoadLayers(oLayerPaths, ref mapControl);
-                GlobeVariables.LayersInformationSet.AddRange(oLayerInfosCollection);
-                frmLegend.Instance.LoadLayersToLegend(this.mapControl);
-                frmNavigation.Instance.LoadBackgroudlayer(GlobeVariables.LayersInformationSet);
-            }
         }
 
         public delegate void LayerAddedEventHandler(object sender, EventArgs e);

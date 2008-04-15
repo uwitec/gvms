@@ -69,6 +69,11 @@ namespace GPSTrackingMonitor.BaseHandler
             return Convert.ToInt32(dtTemp.Rows[0]["maxvalue"]);
         }
 
+        public static string[] GetTablesNameFromDatabase(OleDbConnection connection)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }
