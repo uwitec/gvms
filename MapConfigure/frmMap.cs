@@ -138,7 +138,7 @@ namespace MapConfigure
                     this.labMeasure.Text = string.Format("³¤¶È £º {0} Ã×", oMapOper.ComputeDistance(this._measureLine).ToString());
                     break;
                 case MapUtil.MapOperationType.Identify:
-                    MapUtil.FeatureInformations oFeatureInfos = oMapOper.GetIdentifyFeatureInfos(oMousePosition, this.mapControl);
+                    MapUtil.FeatureInformations oFeatureInfos = oMapOper.GetIdentifyFeatureInfos(oMousePosition, this.mapControl,GlobeVariables.MapInfosCollection);
                     this._frmIdentify.UpdateFeatureInfos(oFeatureInfos, MousePosition);
                     break;
                 case MapUtil.MapOperationType.FetchPoint:

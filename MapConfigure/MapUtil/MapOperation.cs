@@ -85,11 +85,11 @@ namespace MapConfigure.MapUtil
         //    }
         //}
 
-        public FeatureInformations GetIdentifyFeatureInfos(MapObjects2.Point mousePosition,AxMapObjects2.AxMap mapControl)
+        public FeatureInformations GetIdentifyFeatureInfos(MapObjects2.Point mousePosition,AxMapObjects2.AxMap mapControl,MapProject.MapStruct mapInfosCollection)
         {
             FeatureInformations oFeatureInfos = null;
 
-            foreach (ILayerStruct oLayerInfos in GlobeVariables.MapInfosCollection.Layers)
+            foreach (ILayerStruct oLayerInfos in mapInfosCollection.Layers)
             {
                 if (oLayerInfos.LayerType != (short)LayerTypeConstants.moMapLayer)
                     continue;

@@ -156,6 +156,5 @@ namespace MapConfigure
             frmAboutUS oFrmAboutUS = new frmAboutUS();
             oFrmAboutUS.ShowDialog();
         }
-
     }
 }
