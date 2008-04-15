@@ -50,6 +50,8 @@
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="UtilityLibrary, Version=1.0.3.0, Culture=neutral">
@@ -112,12 +114,6 @@
     <Compile Include="frmLayerProperties.Designer.cs">
       <DependentUpon>frmLayerProperties.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLegend~1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmLegend~1.Designer.cs">
-      <DependentUpon>frmLegend~1.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmLegend.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +143,12 @@
     </Compile>
     <Compile Include="frmNavigation.Designer.cs">
       <DependentUpon>frmNavigation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSenderExceptionInfos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSenderExceptionInfos.Designer.cs">
+      <DependentUpon>frmSenderExceptionInfos.cs</DependentUpon>
     </Compile>
     <Compile Include="frmToolPanel.cs">
       <SubType>Form</SubType>
@@ -187,10 +189,6 @@
       <SubType>Designer</SubType>
       <DependentUpon>frmLayerProperties.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLegend~1.resx">
-      <DependentUpon>frmLegend~1.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmLegend.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmLegend.cs</DependentUpon>
@@ -210,6 +208,10 @@
     <EmbeddedResource Include="frmNavigation.resx">
       <DependentUpon>frmNavigation.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSenderExceptionInfos.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSenderExceptionInfos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTruetypeSymbolSelection.resx">
       <SubType>Designer</SubType>
@@ -239,6 +241,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="readme.txt" />
+    <None Include="Resources\information.bmp" />
+    <None Include="Resources\folder_closed.bmp" />
+    <None Include="Resources\flowchart_2.bmp" />
     <None Include="Resources\layers_3.bmp" />
     <None Include="Resources\234.bmp" />
     <None Include="Resources\123.bmp" />
@@ -266,6 +271,14 @@
     <None Include="Resources\ZoomOut.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <COMReference Include="ADODB">
+      <Guid>{2A75196C-D9EB-4129-B803-931327F72D5C}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
     <COMReference Include="AxMapObjects2">
       <Guid>{9BD6A640-CE75-11D1-AF04-204C4F4F5020}</Guid>
       <VersionMajor>2</VersionMajor>
@@ -280,6 +293,14 @@
       <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="CDO">
+      <Guid>{CD000000-8B95-11D1-82DB-00C04FB1625D}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
     </COMReference>
     <COMReference Include="MapObjects2">

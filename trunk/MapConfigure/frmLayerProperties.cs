@@ -500,7 +500,6 @@ namespace MapConfigure
                 this.pnlSymbolOutlineColor.Visible = false;
             }
         }
-
        
         #region old coder
 
